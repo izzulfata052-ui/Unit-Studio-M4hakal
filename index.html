@@ -2485,6 +2485,157 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   }
 }
 
+/* ===== REAL-TIME INVENTORY SHIMMER EFFECT ===== */
+@keyframes shimmerSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-animated {
+  background: linear-gradient(
+    90deg,
+    #E8ECF4 0%,
+    #F8FAFC 35%,
+    #DEE3ED 50%,
+    #F8FAFC 65%,
+    #E8ECF4 100%
+  );
+  background-size: 250% 100%;
+  animation: shimmerSweep 1.6s infinite linear;
+  border-radius: 8px;
+}
+
+html.dark .shimmer-animated {
+  background: linear-gradient(
+    90deg,
+    #151C28 0%,
+    #222B3D 35%,
+    #192231 50%,
+    #222B3D 65%,
+    #151C28 100%
+  );
+  background-size: 250% 100%;
+}
+
+.skeleton-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  border: 1px solid #E5EAF2;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+html.dark .skeleton-card {
+  background: #141822;
+  border-color: #222938;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.skeleton-img-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+.skeleton-meta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.skeleton-pill-sm {
+  height: 22px;
+  width: 110px;
+  border-radius: 99px;
+}
+
+.skeleton-pill-xs {
+  height: 22px;
+  width: 80px;
+  border-radius: 99px;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 78%;
+  margin: 0 auto 14px;
+  border-radius: 6px;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 4px;
+  margin-bottom: 9px;
+}
+
+.skeleton-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #EEF2F7;
+  display: flex;
+  gap: 8px;
+}
+html.dark .skeleton-footer {
+  border-top-color: #222938;
+}
+
+.skeleton-btn-sm {
+  height: 44px;
+  width: 80px;
+  border-radius: 12px;
+}
+
+.skeleton-btn-lg {
+  height: 44px;
+  flex: 1;
+  border-radius: 12px;
+}
+
+.realtime-shimmer-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1A73E8;
+  background: rgba(26, 115, 232, 0.08);
+  padding: 4px 11px;
+  border-radius: 99px;
+  border: 1px solid rgba(26, 115, 232, 0.2);
+  transition: all 0.2s ease;
+}
+html.dark .realtime-shimmer-indicator {
+  color: #60A5FA;
+  background: rgba(26, 115, 232, 0.18);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+.realtime-dot-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1A73E8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25);
+  animation: pulseDot 1.4s infinite ease-in-out;
+}
+html.dark .realtime-dot-pulse {
+  background: #38BDF8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+}
+
 /* ===== THEME TOGGLE BUTTON ===== */
 .theme-toggle-btn {
   display: flex;
@@ -3485,8 +3636,12 @@ html.dark .profile-theme-row {
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <div class="search-input" style="background:#fff">
             <span>🔍</span>
-            <input type="text" id="alatSearchInput" placeholder="Cari Focusrite Scarlett 2i2, MKH 416, URSA, ARRI, iCOM…" oninput="renderAlatGrid()">
+            <input type="text" id="alatSearchInput" placeholder="Cari Focusrite Scarlett 2i2, MKH 416, URSA, ARRI, iCOM…" oninput="handleAlatSearchInput()">
           </div>
+          <span id="alatRealtimeBadge" class="realtime-shimmer-indicator" style="display:none">
+            <span class="realtime-dot-pulse"></span>
+            <span>Memuat Real-Time…</span>
+          </span>
           <button class="btn btn-ghost" id="btnToggleAutoSlide" style="padding:8px 13px;font-size:12px" onclick="toggleAlatAutoSlide()">⏸ Jeda Geser</button>
         </div>
       </div>
@@ -3494,8 +3649,135 @@ html.dark .profile-theme-row {
       <!-- Sub-Category Filter Pills -->
       <div class="sub-filter-bar" id="alatSubCatBar"></div>
 
-      <!-- 3-Column Desktop (Windows/Mac) & 1-Column Mobile Touch-Friendly Grid -->
-      <div class="workshop-3col-grid workshop-4col-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 items-stretch pt-2" id="alatFullGrid"></div>
+      <!-- 3-Column Desktop (Windows/Mac) & 1-Column Mobile Touch-Friendly Grid with Shimmer Effect -->
+      <div class="workshop-3col-grid workshop-4col-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 items-stretch pt-2" id="alatFullGrid">
+        <!-- Shimmer Skeleton Card 1 -->
+        <div class="skeleton-card">
+          <div style="display:flex;flex-direction:column;flex:1">
+            <div class="skeleton-img-box shimmer-animated"></div>
+            <div class="skeleton-meta-strip">
+              <div class="skeleton-pill-sm shimmer-animated"></div>
+              <div class="skeleton-pill-xs shimmer-animated"></div>
+            </div>
+            <div class="skeleton-title shimmer-animated"></div>
+            <div style="margin:6px 0 16px">
+              <div class="skeleton-line shimmer-animated" style="width:95%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:88%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:76%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:82%"></div>
+            </div>
+          </div>
+          <div class="skeleton-footer">
+            <div class="skeleton-btn-sm shimmer-animated"></div>
+            <div class="skeleton-btn-lg shimmer-animated"></div>
+          </div>
+        </div>
+        <!-- Shimmer Skeleton Card 2 -->
+        <div class="skeleton-card">
+          <div style="display:flex;flex-direction:column;flex:1">
+            <div class="skeleton-img-box shimmer-animated"></div>
+            <div class="skeleton-meta-strip">
+              <div class="skeleton-pill-sm shimmer-animated"></div>
+              <div class="skeleton-pill-xs shimmer-animated"></div>
+            </div>
+            <div class="skeleton-title shimmer-animated"></div>
+            <div style="margin:6px 0 16px">
+              <div class="skeleton-line shimmer-animated" style="width:92%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:85%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:78%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:90%"></div>
+            </div>
+          </div>
+          <div class="skeleton-footer">
+            <div class="skeleton-btn-sm shimmer-animated"></div>
+            <div class="skeleton-btn-lg shimmer-animated"></div>
+          </div>
+        </div>
+        <!-- Shimmer Skeleton Card 3 -->
+        <div class="skeleton-card">
+          <div style="display:flex;flex-direction:column;flex:1">
+            <div class="skeleton-img-box shimmer-animated"></div>
+            <div class="skeleton-meta-strip">
+              <div class="skeleton-pill-sm shimmer-animated"></div>
+              <div class="skeleton-pill-xs shimmer-animated"></div>
+            </div>
+            <div class="skeleton-title shimmer-animated"></div>
+            <div style="margin:6px 0 16px">
+              <div class="skeleton-line shimmer-animated" style="width:94%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:80%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:88%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:72%"></div>
+            </div>
+          </div>
+          <div class="skeleton-footer">
+            <div class="skeleton-btn-sm shimmer-animated"></div>
+            <div class="skeleton-btn-lg shimmer-animated"></div>
+          </div>
+        </div>
+        <!-- Shimmer Skeleton Card 4 -->
+        <div class="skeleton-card">
+          <div style="display:flex;flex-direction:column;flex:1">
+            <div class="skeleton-img-box shimmer-animated"></div>
+            <div class="skeleton-meta-strip">
+              <div class="skeleton-pill-sm shimmer-animated"></div>
+              <div class="skeleton-pill-xs shimmer-animated"></div>
+            </div>
+            <div class="skeleton-title shimmer-animated"></div>
+            <div style="margin:6px 0 16px">
+              <div class="skeleton-line shimmer-animated" style="width:96%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:84%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:74%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:86%"></div>
+            </div>
+          </div>
+          <div class="skeleton-footer">
+            <div class="skeleton-btn-sm shimmer-animated"></div>
+            <div class="skeleton-btn-lg shimmer-animated"></div>
+          </div>
+        </div>
+        <!-- Shimmer Skeleton Card 5 -->
+        <div class="skeleton-card">
+          <div style="display:flex;flex-direction:column;flex:1">
+            <div class="skeleton-img-box shimmer-animated"></div>
+            <div class="skeleton-meta-strip">
+              <div class="skeleton-pill-sm shimmer-animated"></div>
+              <div class="skeleton-pill-xs shimmer-animated"></div>
+            </div>
+            <div class="skeleton-title shimmer-animated"></div>
+            <div style="margin:6px 0 16px">
+              <div class="skeleton-line shimmer-animated" style="width:90%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:78%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:86%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:80%"></div>
+            </div>
+          </div>
+          <div class="skeleton-footer">
+            <div class="skeleton-btn-sm shimmer-animated"></div>
+            <div class="skeleton-btn-lg shimmer-animated"></div>
+          </div>
+        </div>
+        <!-- Shimmer Skeleton Card 6 -->
+        <div class="skeleton-card">
+          <div style="display:flex;flex-direction:column;flex:1">
+            <div class="skeleton-img-box shimmer-animated"></div>
+            <div class="skeleton-meta-strip">
+              <div class="skeleton-pill-sm shimmer-animated"></div>
+              <div class="skeleton-pill-xs shimmer-animated"></div>
+            </div>
+            <div class="skeleton-title shimmer-animated"></div>
+            <div style="margin:6px 0 16px">
+              <div class="skeleton-line shimmer-animated" style="width:93%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:87%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:75%"></div>
+              <div class="skeleton-line shimmer-animated" style="width:84%"></div>
+            </div>
+          </div>
+          <div class="skeleton-footer">
+            <div class="skeleton-btn-sm shimmer-animated"></div>
+            <div class="skeleton-btn-lg shimmer-animated"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -5366,11 +5648,127 @@ function switchPage(pageId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+/* =========================================================================
+   REAL-TIME INVENTORY SHIMMER SKELETON EFFECT ENGINE
+   ========================================================================= */
+function getAlatShimmerSkeletonHtml(count = 6) {
+  const linePatterns = [
+    ['95%', '88%', '76%', '82%'],
+    ['92%', '85%', '78%', '90%'],
+    ['94%', '80%', '88%', '72%'],
+    ['96%', '84%', '74%', '86%'],
+    ['90%', '78%', '86%', '80%'],
+    ['93%', '87%', '75%', '84%']
+  ];
+
+  return Array.from({ length: count }).map((_, idx) => {
+    const lines = linePatterns[idx % linePatterns.length];
+    const delay = (idx * 0.04).toFixed(2);
+    return `
+      <div class="skeleton-card" style="animation: cardEntrance 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: ${delay}s">
+        <div style="display:flex;flex-direction:column;flex:1">
+          <!-- 16:9 Aspect Ratio Image Frame Shimmer -->
+          <div class="skeleton-img-box shimmer-animated"></div>
+
+          <!-- Meta Strip Shimmer -->
+          <div class="skeleton-meta-strip">
+            <div class="skeleton-pill-sm shimmer-animated"></div>
+            <div class="skeleton-pill-xs shimmer-animated"></div>
+          </div>
+
+          <!-- Serif Title Shimmer -->
+          <div class="skeleton-title shimmer-animated"></div>
+
+          <!-- Specification Bullets Shimmer -->
+          <div style="margin:6px 0 16px">
+            <div class="skeleton-line shimmer-animated" style="width:${lines[0]}"></div>
+            <div class="skeleton-line shimmer-animated" style="width:${lines[1]}"></div>
+            <div class="skeleton-line shimmer-animated" style="width:${lines[2]}"></div>
+            <div class="skeleton-line shimmer-animated" style="width:${lines[3]}"></div>
+          </div>
+        </div>
+
+        <!-- Action Footer Buttons Shimmer -->
+        <div class="skeleton-footer">
+          <div class="skeleton-btn-sm shimmer-animated"></div>
+          <div class="skeleton-btn-lg shimmer-animated"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderAlatShimmer(count = 6) {
+  const gridEl = document.getElementById('alatFullGrid');
+  if (gridEl) {
+    gridEl.innerHTML = getAlatShimmerSkeletonHtml(count);
+  }
+}
+
+let alatSearchTimer = null;
+function handleAlatSearchInput() {
+  const badge = document.getElementById('alatRealtimeBadge');
+  if (badge) {
+    badge.style.display = 'inline-flex';
+    badge.innerHTML = `<span class="realtime-dot-pulse"></span><span>Mencari Real-Time…</span>`;
+  }
+
+  // Tampilkan shimmer effect secara real-time saat pengguna mengetik
+  renderAlatShimmer(6);
+
+  clearTimeout(alatSearchTimer);
+  alatSearchTimer = setTimeout(() => {
+    renderAlatGrid();
+    if (badge) {
+      badge.innerHTML = `✓ Hasil Ditemukan`;
+      setTimeout(() => { badge.style.display = 'none'; }, 1000);
+    }
+  }, 220);
+}
+
+function clearAlatSearch() {
+  const inp = document.getElementById('alatSearchInput');
+  if (inp) inp.value = '';
+  handleAlatSearchInput();
+}
+
+function handleSubCatChange(sc) {
+  state.alatSubCat = sc;
+  const badge = document.getElementById('alatRealtimeBadge');
+  if (badge) {
+    badge.style.display = 'inline-flex';
+    badge.innerHTML = `<span class="realtime-dot-pulse"></span><span>Memuat ${sc}…</span>`;
+  }
+  renderAlatShimmer(6);
+  setTimeout(() => {
+    renderAlatPage();
+    if (badge) {
+      badge.style.display = 'none';
+    }
+  }, 180);
+}
+
 function openAlatCat(cat) {
   state.alatCat = cat;
   state.alatSubCat = 'Semua Sub-Kategori';
   switchPage('alat');
-  renderAlatPage();
+
+  const badge = document.getElementById('alatRealtimeBadge');
+  if (badge) {
+    badge.style.display = 'inline-flex';
+    badge.innerHTML = `<span class="realtime-dot-pulse"></span><span>Memuat ${cat}…</span>`;
+  }
+
+  // Aktifkan animasi shimmer effect saat berpindah kategori secara real-time
+  renderAlatShimmer(6);
+
+  setTimeout(() => {
+    renderAlatPage();
+    if (badge) {
+      badge.innerHTML = `✓ ${cat} Siap`;
+      setTimeout(() => { badge.style.display = 'none'; }, 1000);
+    }
+  }, 220);
 }
 
 /* =========================================================================
@@ -5634,7 +6032,7 @@ function renderAlatPage() {
     ];
     subBar.style.display = 'flex';
     subBar.innerHTML = subs.map(sc => `
-      <button class="sub-chip ${state.alatSubCat === sc ? 'active' : ''}" onclick="state.alatSubCat='${sc}';renderAlatGrid()">
+      <button class="sub-chip ${state.alatSubCat === sc ? 'active' : ''}" onclick="handleSubCatChange('${sc}')">
         ${sc}
       </button>
     `).join('');
@@ -5799,7 +6197,19 @@ function renderAlatGrid() {
 
   const gridEl = document.getElementById('alatFullGrid');
   if (!list.length) {
-    gridEl.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:42px;color:var(--muted)">Tidak ditemukan peralatan dengan kata kunci tersebut.</div>`;
+    const safeQ = (q || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    gridEl.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:52px 24px;background:var(--bg);border-radius:20px;border:1.5px dashed var(--line);margin:16px 0">
+        <div style="font-size:38px;margin-bottom:12px">🔍</div>
+        <div style="font-size:17px;font-weight:800;color:var(--ink);margin-bottom:6px">Peralatan Tidak Ditemukan</div>
+        <div style="font-size:13px;color:var(--muted);max-width:440px;margin:0 auto 18px">
+          Tidak ditemukan peralatan yang cocok dengan kata kunci "<strong>${safeQ}</strong>" pada inventaris ${state.alatCat}. Silakan periksa ejaan atau ganti kata kunci.
+        </div>
+        <button class="btn btn-ghost" onclick="clearAlatSearch()" style="padding:10px 18px;font-size:13px;font-weight:700">
+          ✕ Reset Pencarian
+        </button>
+      </div>
+    `;
     return;
   }
 
