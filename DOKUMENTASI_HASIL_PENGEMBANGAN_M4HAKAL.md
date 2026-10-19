@@ -143,9 +143,14 @@ Pada menu **SOP Peminjaman Alat**, disematkan modul khusus:
 - Tombol navigasi `Tim` pada navbar tetap dipertahankan untuk integritas struktur menu.
 - Bagian isi dan nama anggota tim dikosongkan secara bersih sesuai instruksi pengguna.
 
-### 5.7 Saran Pengadaan Alat & Voting Komunitas
-- Mahasiswa dapat mengajukan usulan alat baru yang dibutuhkan untuk mata kuliah atau proyek produksi.
-- Sistem voting interaktif satu-klik (*Upvote counter*) dengan persistensi ke database SQLite.
+### 5.7 Saran Pengadaan Alat & Voting Komunitas (SaaS Form v2.5 Redesign)
+- **Redesain Antarmuka SaaS**: Menggantikan total tampilan lama bergaya Google Forms (border aksen hijau olive, kotak verifikasi email manual, cloud autosave statis, dan tanda bintang merah) dengan arsitektur kartu dan komponen input/select modern yang identik dengan modul E-Bon v2.5 (`.form-card`, `.field`, `.field-grid`, `.badge b-dark`).
+- **Otomasi Profil Civitas Terverifikasi**: Menghilangkan input radio manual Tahun Angkatan dan Program Studi. Data civitas pengusul ditarik otomatis dari profil pengguna aktif (`Izzulft · NIM 024231441867 · D4 Manajemen Teknik Studio Produksi · Angkatan 2024`) dalam format *readonly field* yang bersih.
+- **Fokus Input Esensial**: Mahasiswa cukup mengisi 3 atribut utama:
+  1. *Kategori Studio / Laboratorium* (Dropdown Select)
+  2. *Nama & Seri Alat yang Diusulkan* (Input Text dengan placeholder spesifik)
+  3. *Urgensi Kebutuhan Produksi* (Textarea terperinci untuk mata kuliah / kendala produksi)
+- **Papan Aspirasi Live Voting**: Daftar usulan alat komunitas dengan upvote counter real-time, status disposisi kepala unit studio, dan persistensi otomatis ke SQLite backend.
 
 ---
 
@@ -213,4 +218,5 @@ Akses di browser: `http://localhost:3000`
 | **v2.3** | Penggantian Teks Pemuat Statis dengan Animasi Shimmer Effect: Penerapan efek kilau gradien dinamis (@keyframes shimmerSweep) dan skeleton card placeholder rasio 16:9 saat memuat data katalog inventaris secara real-time, pencarian responsif ter-debounce, indikator status sinkronisasi aktif, serta adaptasi otomatis pada mode terang dan gelap. |
 | **v2.4** | Implementasi Efek Spring Physics (Framer Motion) pada Pop-Up E-Bon & Kartu Identitas Peminjam: Integrasi library Framer Motion (Motion API), kalibrasi parameter pegas elastis (stiffness 360, damping 24, mass 0.9), animasi cascading spring pada elemen kartu identitas civitas dan tiket e-bon, efek transisi keluar halus (smooth spring exit), serta dukungan fallback CSS spring. |
 | **v2.5** | Penerapan Prinsip Progressive Disclosure pada Beranda: Eliminasi strip identitas pengguna redundan di atas KPI Cards. Menghilangkan pengulangan informasi civitas aktif (Izzulft · NIM 024231441867) dalam jarak scroll berdekatan dan memfokuskan representasi status pada Bento Card "Status Peminjaman Resmi / Kuota Bon" yang lebih kaya visual (dilengkapi progress meter real-time, badge status bebas tanggungan, dan tombol aksi terintegrasi). |
+| **v2.6** | Redesain Formulir Saran Pengadaan Alat ke Standar SaaS E-Bon v2.5: Mengeliminasi total tampilan bergaya Google Forms (border aksen hijau olive, kotak verifikasi email terpisah, icon cloud autosave statis, tanda bintang merah, serta radio button manual angkatan/prodi). Mengadopsi arsitektur input/select/field-grid/form-card modern identik dengan E-Bon v2.5 dengan penarikan otomatis profil civitas (Izzulft · NIM 024231441867 · Angkatan 2024 · D4 Manajemen Teknik Studio Produksi) sehingga pengguna cukup mengisi Kategori Studio, Nama/Seri Alat, dan Urgensi Kebutuhan Produksi. |
 

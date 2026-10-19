@@ -1853,25 +1853,30 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   font-weight: 700;
 }
 
-/* ===== SARAN PENGADAAN ALAT KAMPUS ===== */
+/* ===== SARAN PENGADAAN ALAT KAMPUS (SAAS REDESIGN v2.5) ===== */
 .saran-layout {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 24px;
   align-items: start;
 }
-.gform-card {
-  background: #fff;
+.saran-item-card {
+  border: 1px solid var(--line);
   border-radius: 14px;
-  border: 1px solid #DADCE0;
-  padding: 22px 24px;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  padding: 14px;
+  background: var(--bg);
+  transition: all 0.2s ease;
 }
-.gform-card.top-accent { border-top: 10px solid var(--olive); }
-.radio-list { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
-.radio-opt { display: flex; align-items: center; gap: 11px; font-size: 14px; cursor: pointer; }
-.radio-opt input { width: 18px; height: 18px; accent-color: var(--olive); }
+.field input[readonly] {
+  background: var(--bg);
+  color: var(--ink-soft);
+  cursor: default;
+}
+html.dark .field input[readonly] {
+  background: #11151F;
+  border-color: #222938;
+  color: #94A3B8;
+}
 
 /* ===== TIM STUDIO GRID ===== */
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -3121,16 +3126,8 @@ html.dark .sop-actions-bar {
   border-top-color: #222938;
 }
 
-/* Saran & Masukan */
-html.dark .gform-card {
-  background: #141822;
-  border-color: #222938;
-  color: #F1F4FA;
-}
-html.dark .radio-opt {
-  color: #E2E8F0;
-}
-html.dark #saranListContainer > div {
+/* Saran & Masukan (SaaS Redesign v2.5) */
+html.dark .saran-item-card {
   background: #19202C !important;
   border-color: #263143 !important;
 }
@@ -3842,69 +3839,66 @@ html.dark .profile-theme-row {
   <section class="page-section" id="page-saran">
     <div class="saran-layout">
       <div>
-        <div class="gform-card top-accent">
-          <h3 style="font-size:26px;font-weight:800;margin-bottom:8px">Saran Pengadaan Alat Kampus M4HAKAL</h3>
-          <p style="font-style:italic;color:var(--ink-soft);font-size:14px;line-height:1.5;margin-bottom:16px">
-            Kami harap kepada Saudara untuk mengisi sebenar-benarnya pada formulir di bawah ini guna mendukung peningkatan fasilitas produksi Unit Studio M4HAKAL.
-          </p>
-          <div style="border-top:1px solid #E2E6F0;padding-top:12px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div class="form-card">
+          <!-- SaaS Header matching E-Bon v2.5 -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)">
             <div>
-              <strong>izzulft@mail.m4hakal.ac.id</strong> <span style="color:var(--royal);font-weight:700;margin-left:6px">(Izzulft · NIM 024231441867)</span>
-              <div style="font-size:12px;color:var(--muted);margin-top:3px">☑️ Akun civitas M4HAKAL terverifikasi otomatis</div>
+              <div style="font-size:18px;font-weight:800">Formulir Usulan Pengadaan Alat Kampus M4HAKAL</div>
+              <div style="font-size:12.5px;color:var(--muted)">Sampaikan rekomendasi peralatan produksi siaran baru untuk peningkatan fasilitas studio</div>
             </div>
-            <span class="badge b-ok">☁️ Tersimpan Otomatis</span>
+            <span class="badge b-dark">PENGADAAN v2.5</span>
           </div>
-          <div style="margin-top:12px;font-size:12.5px;color:var(--bad);font-weight:600">* Menunjukkan pertanyaan yang wajib diisi</div>
-        </div>
 
-        <div class="gform-card">
-          <div style="font-size:14px;font-weight:800">TAHUN ANGKATAN <span style="color:var(--bad)">*</span></div>
-          <div class="radio-list">
-            <label class="radio-opt"><input type="radio" name="angkatan" value="2022"> <span>2022</span></label>
-            <label class="radio-opt"><input type="radio" name="angkatan" value="2023"> <span>2023</span></label>
-            <label class="radio-opt"><input type="radio" name="angkatan" value="2024" checked> <span>2024 (Angkatan Izzulft)</span></label>
-            <label class="radio-opt"><input type="radio" name="angkatan" value="2025"> <span>2025</span></label>
-            <label class="radio-opt"><input type="radio" name="angkatan" value="2026"> <span>2026 / Lainnya</span></label>
+          <!-- Civitas Identity Grid (Auto-populated from user profile, matching E-Bon v2.5) -->
+          <div class="field-grid">
+            <div class="field">
+              <label>Nama Pengusul &amp; NIM (Civitas Terverifikasi)</label>
+              <input type="text" value="Izzulft (NIM 024231441867)" readonly style="background:var(--bg);font-weight:700">
+            </div>
+            <div class="field">
+              <label>Program Studi &amp; Angkatan (Otomatis)</label>
+              <input type="text" value="D4 Manajemen Teknik Studio Produksi · Angkatan 2024" readonly style="background:var(--bg);font-weight:600">
+            </div>
+          </div>
+
+          <!-- Input Fields: Kategori Studio & Nama/Seri Alat -->
+          <div class="field-grid">
+            <div class="field">
+              <label>Kategori Studio / Laboratorium *</label>
+              <select id="saranKat">
+                <option value="Workshop ENG (Kamera & Audio Lapangan)">Workshop ENG (Kamera &amp; Audio Lapangan)</option>
+                <option value="Docking Video & OB Van">Docking Video &amp; OB Van</option>
+                <option value="Workshop Lighting & Grip">Workshop Lighting &amp; Grip</option>
+                <option value="Studio TV & Switcher">Studio TV &amp; Switcher</option>
+                <option value="Studio Radio & Podcast">Studio Radio &amp; Podcast</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Nama / Seri Alat yang Diusulkan *</label>
+              <input type="text" id="saranNamaAlat" placeholder="Contoh: Sony FX3 Cinema Line / Sound Devices MixPre-6 II">
+            </div>
+          </div>
+
+          <!-- Urgensi Kebutuhan Produksi -->
+          <div class="field" style="margin-bottom:20px">
+            <label>Urgensi Kebutuhan Produksi *</label>
+            <textarea id="saranAlasan" rows="4" placeholder="Jelaskan bagaimana alat ini membantu kegiatan praktikum, mata kuliah penunjang, atau kendala produksi yang terselesaikan…"></textarea>
+          </div>
+
+          <!-- SaaS Action Bar matching E-Bon v2.5 -->
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <button class="btn btn-pri" onclick="submitSaran()" style="padding:13px 24px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px">
+              🚀 Kirim Usulan Pengadaan (a.n. Izzulft)
+            </button>
+            <div style="font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px">
+              <span>🔒 Terverifikasi Otomatis via SSO Sivitas M4HAKAL</span>
+            </div>
           </div>
         </div>
-
-        <div class="gform-card">
-          <div style="font-size:14px;font-weight:800">PRODI <span style="color:var(--bad)">*</span></div>
-          <div class="radio-list">
-            <label class="radio-opt"><input type="radio" name="prodi" value="Manajemen Teknik Studio Produksi" checked> <span>Manajemen Teknik Studio Produksi</span></label>
-            <label class="radio-opt"><input type="radio" name="prodi" value="Produksi Film dan Televisi"> <span>Produksi Film dan Televisi</span></label>
-            <label class="radio-opt"><input type="radio" name="prodi" value="Animasi"> <span>Animasi</span></label>
-            <label class="radio-opt"><input type="radio" name="prodi" value="Desain Teknologi Permainan"> <span>Desain Teknologi Permainan</span></label>
-            <label class="radio-opt"><input type="radio" name="prodi" value="Manajemen Informasi Komunikasi"> <span>Manajemen Informasi Komunikasi</span></label>
-          </div>
-        </div>
-
-        <div class="gform-card">
-          <div class="field">
-            <label>KATEGORI LABORATORIUM / STUDIO <span style="color:var(--bad)">*</span></label>
-            <select id="saranKat">
-              <option value="Workshop ENG (Kamera & Audio Lapangan)">Workshop ENG (Kamera &amp; Audio Lapangan)</option>
-              <option value="Docking Video & OB Van">Docking Video &amp; OB Van</option>
-              <option value="Workshop Lighting & Grip">Workshop Lighting &amp; Grip</option>
-              <option value="Studio TV & Switcher">Studio TV &amp; Switcher</option>
-              <option value="Studio Radio & Podcast">Studio Radio &amp; Podcast</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>NAMA &amp; MERK ALAT YANG DIUSULKAN <span style="color:var(--bad)">*</span></label>
-            <input type="text" id="saranNamaAlat" placeholder="Contoh: Sony FX3 Full-Frame Cinema Line / Sound Devices MixPre-6 II">
-          </div>
-          <div class="field" style="margin-bottom:0">
-            <label>URGENSI &amp; ALASAN KEBUTUHAN PRAKTIKUM <span style="color:var(--bad)">*</span></label>
-            <textarea id="saranAlasan" rows="3" placeholder="Jelaskan bagaimana alat ini membantu kegiatan produksi mahasiswa M4HAKAL…"></textarea>
-          </div>
-        </div>
-
-        <button class="btn btn-pri" onclick="submitSaran()" style="padding:13px 24px;font-size:14px">📨 Kirim Usulan Pengadaan (a.n. Izzulft)</button>
       </div>
 
       <div class="form-card" style="position:sticky;top:88px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)">
           <div>
             <div style="font-size:17px;font-weight:800">Papan Aspirasi Pengadaan M4HAKAL</div>
             <div style="font-size:12.5px;color:var(--muted)">Dukung usulan alat agar diprioritaskan Unit Studio</div>
@@ -6945,7 +6939,7 @@ function toggleSopVideoFullscreen() {
    ========================================================================= */
 function renderSaranList() {
   document.getElementById('saranListContainer').innerHTML = state.suggestions.map(s => `
-    <div style="border:1px solid var(--line);border-radius:14px;padding:14px;background:#F9FAFC">
+    <div class="saran-item-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
         <div>
           <span class="badge b-info" style="margin-bottom:6px">${s.cat}</span>
@@ -6966,15 +6960,15 @@ function submitSaran() {
   const item = document.getElementById('saranNamaAlat').value.trim();
   const reason = document.getElementById('saranAlasan').value.trim();
   const cat = document.getElementById('saranKat').value;
-  const angkatan = document.querySelector('input[name="angkatan"]:checked')?.value || '2024';
-  const prodi = document.querySelector('input[name="prodi"]:checked')?.value || USER_PROFILE.prodi;
+  const angkatan = USER_PROFILE.angkatan || '2024';
+  const prodi = USER_PROFILE.prodi || 'Manajemen Teknik Studio Produksi';
 
   if (!item || !reason) {
-    showToast('⚠️ Mohon isi nama alat dan alasan kebutuhan praktikum terlebih dahulu.');
+    showToast('⚠️ Mohon isi nama/seri alat dan urgensi kebutuhan produksi terlebih dahulu.');
     return;
   }
 
-  const author = `Izzulft (${angkatan} · ${prodi})`;
+  const author = `Izzulft (${angkatan} · D4 ${prodi.replace(/^D4\s*/i, '')})`;
   const localEntry = {
     id: Date.now(),
     author,
