@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# SQLite temporary WAL files
+backend/*.sqlite-shm
+backend/*.sqlite-wal
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*

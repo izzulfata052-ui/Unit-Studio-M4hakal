@@ -1,0 +1,20 @@
+{
+  "name": "m4hakal-elounge-studio-fullstack",
+  "version": "2.0.0",
+  "description": "Full-Stack Portal Layanan Digital & E-Bon Peminjaman Alat Unit Studio & Pemancar M4HAKAL (Frontend UI + Node.js REST API + SQLite Database + HTTP Range Video Streamer)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "dev": "node --watch --no-warnings server.js"
+  },
+  "keywords": [
+    "m4hakal",
+    "studio-broadcast",
+    "ebon-peminjaman",
+    "fullstack",
+    "sqlite",
+    "rest-api"
+  ],
+  "author": "Izzulft (024231441867) — Unit Studio & Pemancar M4HAKAL",
+  "license": "MIT"
+}
