@@ -206,3 +206,5 @@ Akses di browser: `http://localhost:3000`
 | **v1.6** | Penyusunan dokumen rekomendasi arsitektur enterprise Next.js + Tailwind + PostgreSQL. |
 | **v1.7** | Pembersihan menu: eliminasi tab E-Lounge dan Stack/API dari antarmuka publik. |
 | **v1.8** | Pembersihan data privasi: pengosongan nama staf/koordinator/PJ di Beranda, Katalog Alat, dan Menu Tim. |
+| **v1.9** | Implementasi responsif Tailwind CSS: Layout 3 kolom desktop dengan rasio visual horizontal 16:9, otomatis 1 kolom vertikal ramah sentuhan (touch-friendly) di mobile/HP, tanpa gambar dan teks terpotong. |
+| **v2.0** | Konfigurasi CI/CD Auto-Deploy: Integrasi Git repositori GitHub dan konfigurasi Vercel/Netlify. |
