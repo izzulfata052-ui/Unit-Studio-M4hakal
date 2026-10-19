@@ -10,6 +10,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
+    darkMode: 'class',
     theme: {
       extend: {
         colors: {
@@ -31,6 +32,18 @@
       }
     }
   }
+</script>
+<script>
+  /* Anti-FOUC Early Theme Initializer */
+  (function() {
+    try {
+      var saved = localStorage.getItem('m4hakal_theme_mode');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch(e) {}
+  })();
 </script>
 <style>
 :root {
@@ -2416,6 +2429,15 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   .nav-right {
     gap: 8px !important;
   }
+  .theme-label {
+    display: none !important;
+  }
+  .theme-toggle-btn {
+    padding: 7px 10px !important;
+    min-height: 38px !important;
+    min-width: 38px !important;
+    justify-content: center !important;
+  }
   .profile-meta {
     display: none !important;
   }
@@ -2461,6 +2483,529 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
     overflow-y: auto !important;
     border-radius: 20px !important;
   }
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #E2E8F0;
+  padding: 6px 13px;
+  border-radius: 99px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  user-select: none;
+}
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+.theme-icon {
+  font-size: 14px;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.theme-toggle-btn:hover .theme-icon {
+  transform: rotate(18deg) scale(1.15);
+}
+html.dark .theme-toggle-btn {
+  background: rgba(212, 255, 0, 0.12);
+  border-color: rgba(212, 255, 0, 0.35);
+  color: #E2F567;
+}
+html.dark .theme-toggle-btn:hover {
+  background: rgba(212, 255, 0, 0.22);
+  border-color: rgba(212, 255, 0, 0.55);
+  color: #ffffff;
+}
+
+/* =========================================================================
+   TEMA GELAP (DARK MODE) COMPREHENSIVE STYLING
+   ========================================================================= */
+html.dark {
+  --bg: #0B0E14;
+  --card: #141822;
+  --ink: #F1F4FA;
+  --ink-soft: #CBD3E1;
+  --muted: #8E99AF;
+  --line: #222938;
+  --nav-bg: #07090D;
+  --nav-hover: #161B26;
+  --ok-bg: rgba(13, 138, 78, 0.22);
+  --warn-bg: rgba(178, 94, 0, 0.25);
+  --bad-bg: rgba(198, 40, 40, 0.25);
+  --info-bg: rgba(21, 88, 176, 0.25);
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 52px rgba(0, 0, 0, 0.65);
+}
+
+html.dark body {
+  background-color: var(--bg);
+  color: var(--ink);
+}
+
+/* Editorial & Banner Carousel */
+html.dark .editorial-intro {
+  background: #141822;
+  border-color: #222938;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+html.dark .editorial-intro p {
+  color: #D6DCE8;
+}
+html.dark .editorial-divider {
+  background: #242B3A;
+}
+html.dark .beranda-top-notch {
+  background: #141822;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+html.dark .beranda-top-notch .notch-studio-unit {
+  color: #F1F4FA;
+}
+html.dark .beranda-top-notch img.notch-logo-bukan,
+html.dark .beranda-top-notch img.notch-logo-mahakal {
+  filter: invert(1) brightness(1.2);
+}
+
+/* User Strip */
+html.dark .user-strip {
+  background: #131A26;
+  border-color: #1F2D42;
+  color: #E2E8F0;
+}
+html.dark .user-strip-left span {
+  color: #CBD5E1;
+}
+
+/* Bento Grid */
+html.dark .bento-card {
+  background: #141822;
+  border-color: #222938;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+html.dark .bento-card-rooms {
+  background: #141822;
+  border-color: #222938;
+}
+html.dark .bento-head {
+  border-bottom-color: #222938;
+}
+html.dark .bento-title {
+  color: #F8FAFC;
+}
+html.dark .bento-subtitle {
+  color: #94A3B8;
+}
+html.dark .bento-room-item {
+  background: #19202C;
+  border-color: #263143;
+}
+html.dark .bento-room-item:hover {
+  background: #1F2736;
+  border-color: #38BDF8;
+}
+html.dark .bento-room-name {
+  color: #F8FAFC;
+}
+html.dark .bento-room-meta {
+  background: #11151E;
+  border-color: #222938;
+  color: #CBD5E1;
+}
+html.dark .bento-card-shortcut {
+  background: #141822;
+  border-color: #222938;
+}
+html.dark .bento-card-shortcut:hover {
+  background: #18202D;
+  border-color: #3B82F6;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+html.dark .bento-shortcut-title {
+  color: #F8FAFC;
+}
+html.dark .bento-shortcut-desc {
+  color: #94A3B8;
+}
+html.dark .bento-shortcut-foot {
+  border-top-color: #222938;
+}
+
+/* Posters */
+html.dark .poster-top-tab {
+  background: #141822;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #F8FAFC;
+}
+html.dark .poster-top-tab .logos img {
+  filter: invert(1) brightness(1.2);
+}
+
+/* Stats */
+html.dark .stat-card {
+  background: #141822;
+  border-color: #222938;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+html.dark .stat-val {
+  color: #F8FAFC;
+}
+html.dark .stat-lbl {
+  color: #94A3B8;
+}
+
+/* Room Cards */
+html.dark .room-card {
+  background: #141822;
+  border-color: #222938;
+}
+html.dark .room-name {
+  color: #F8FAFC;
+}
+html.dark .room-pj {
+  color: #94A3B8;
+}
+html.dark .room-meta {
+  background: #19202C;
+  color: #CBD5E1;
+}
+
+/* Section Header */
+html.dark .section-hdr h3 {
+  color: #F8FAFC;
+}
+html.dark .section-hdr p {
+  color: #94A3B8;
+}
+
+/* Chips & Search */
+html.dark .chip {
+  background: #19202C;
+  color: #CBD5E1;
+  border-color: #263143;
+}
+html.dark .chip:hover {
+  border-color: #38BDF8;
+  color: #ffffff;
+}
+html.dark .chip.active {
+  background: var(--royal);
+  color: #ffffff;
+  border-color: var(--royal);
+}
+html.dark .sub-chip {
+  background: #19202C;
+  border-color: #263143;
+  color: #CBD5E1;
+}
+html.dark .sub-chip:hover {
+  background: #222A3A;
+  color: #ffffff;
+}
+html.dark .sub-chip.active {
+  background: var(--royal);
+  color: #ffffff;
+  border-color: var(--royal);
+}
+html.dark .search-input {
+  background: #19202C;
+  border-color: #263143;
+}
+html.dark .search-input input {
+  color: #F1F4FA;
+}
+html.dark .search-input input::placeholder {
+  color: #64748B;
+}
+
+/* Buttons */
+html.dark .btn-ghost {
+  background: #19202C;
+  color: #F1F4FA;
+  border-color: #263143;
+}
+html.dark .btn-ghost:hover {
+  border-color: #38BDF8;
+  color: #38BDF8;
+}
+
+/* Showcase & Moving Stage */
+html.dark .showcase-wrap {
+  background: #141822;
+  border-color: #222938;
+}
+html.dark .showcase-title {
+  color: #F8FAFC;
+}
+html.dark .showcase-sub {
+  color: #94A3B8;
+}
+html.dark .mmtc-stage-outer {
+  background: #141822;
+}
+html.dark .mmtc-carousel-shell::before {
+  background: linear-gradient(90deg, #141822 8%, rgba(20, 24, 34, 0) 100%);
+}
+html.dark .mmtc-carousel-shell::after {
+  background: linear-gradient(270deg, #141822 8%, rgba(20, 24, 34, 0) 100%);
+}
+html.dark .mmtc-carousel-item {
+  background: #19202C;
+  border: 1px solid #263143;
+}
+html.dark .mmtc-carousel-item img {
+  background: transparent;
+}
+html.dark .mmtc-stage-divider {
+  border-top-color: #222938;
+}
+html.dark .alat-anim-toolbar {
+  background: #19202C;
+  border-color: #222938;
+}
+
+/* Equipment 3-Column Catalog Cards */
+html.dark .workshop-col {
+  background: #141822;
+  border-color: #222938;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+html.dark .workshop-col:hover {
+  border-color: #3B82F6;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+html.dark .katalog-img-box {
+  background: #19202C;
+  border-color: #222938;
+}
+html.dark .katalog-slide {
+  background: #19202C;
+}
+html.dark .katalog-slide img {
+  background: transparent;
+}
+html.dark .unit-subcat-tag {
+  background: #1C222E;
+  color: #94A3B8;
+  border: 1px solid #263143;
+}
+html.dark .item-serif-title {
+  color: #F1F4FA;
+  border-bottom-color: #222938;
+}
+html.dark .item-square-bullets {
+  color: #CBD3E1;
+}
+html.dark .item-square-bullets li strong {
+  color: #F8FAFC;
+}
+html.dark .workshop-col-footer {
+  border-top-color: #222938;
+}
+
+/* Jadwal Pemakaian Studio */
+html.dark .cal-shell {
+  background: #141822;
+  border-color: #222938;
+}
+html.dark .cal-toolbar {
+  border-bottom-color: #222938;
+}
+html.dark .pill-outline {
+  background: #19202C;
+  border-color: #263143;
+  color: #E2E8F0;
+}
+html.dark .cal-today-row {
+  background: #121822;
+  border-bottom-color: #222938;
+}
+html.dark .sched-row {
+  border-bottom-color: #222938;
+}
+html.dark .sched-row:hover {
+  background: #19202D;
+}
+html.dark .sched-date .num {
+  color: #F8FAFC;
+}
+html.dark .sched-date .mon {
+  color: #94A3B8;
+}
+html.dark .sched-time {
+  color: #CBD5E1;
+}
+
+/* Formulir & E-Bon */
+html.dark .form-card {
+  background: #141822;
+  border-color: #222938;
+}
+html.dark .field label {
+  color: #CBD5E1;
+}
+html.dark .field input,
+html.dark .field select,
+html.dark .field textarea {
+  background: #19202C;
+  border-color: #263143;
+  color: #F1F4FA;
+}
+html.dark .field input:focus,
+html.dark .field select:focus,
+html.dark .field textarea:focus {
+  border-color: #38BDF8;
+}
+html.dark .field input::placeholder,
+html.dark .field textarea::placeholder {
+  color: #64748B;
+}
+html.dark .eq-check-item {
+  background: #19202C;
+  border-color: #263143;
+  color: #CBD5E1;
+}
+html.dark .eq-check-item:hover {
+  border-color: #38BDF8;
+}
+html.dark .eq-check-item.checked {
+  background: rgba(26, 115, 232, 0.22);
+  border-color: #38BDF8;
+  color: #93C5FD;
+}
+html.dark .bon-caption {
+  color: #F1F4FA;
+}
+
+/* SOP Peminjaman */
+html.dark .sop-peminjaman-card {
+  background: #141822;
+  border-color: #222938;
+}
+html.dark .sop-step-item {
+  background: #19202C;
+  border-color: #263143;
+}
+html.dark .sop-step-item:hover {
+  background: #1F2738;
+  border-color: #38BDF8;
+}
+html.dark .sop-step-body {
+  color: #E2E8F0;
+}
+html.dark .sop-step-time {
+  background: rgba(26, 115, 232, 0.22);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #60A5FA;
+}
+html.dark .sop-actions-bar {
+  border-top-color: #222938;
+}
+
+/* Saran & Masukan */
+html.dark .gform-card {
+  background: #141822;
+  border-color: #222938;
+  color: #F1F4FA;
+}
+html.dark .radio-opt {
+  color: #E2E8F0;
+}
+html.dark #saranListContainer > div {
+  background: #19202C !important;
+  border-color: #263143 !important;
+}
+html.dark #saranListContainer div[style*="font-weight:800"] {
+  color: #F8FAFC !important;
+}
+html.dark #saranListContainer p {
+  color: #CBD5E1 !important;
+}
+
+/* Tim Studio */
+html.dark .team-card {
+  background: #141822;
+  border-color: #222938;
+}
+html.dark .team-card div[style*="font-weight:800"] {
+  color: #F8FAFC !important;
+}
+
+/* Modals */
+html.dark .modal-box {
+  background: #141822;
+  border: 1px solid #263143;
+  color: #F1F4FA;
+}
+html.dark #alatPopupModalBody h3 {
+  color: #F8FAFC !important;
+}
+html.dark #alatPopupModalBody div[style*="background:#fff"] {
+  background: #19202C !important;
+  border-color: #263143 !important;
+}
+html.dark #alatPopupModalBody div[style*="background:#F8FAFC"] {
+  background: #19202C !important;
+  border-color: #263143 !important;
+}
+html.dark #alatPopupModalBody div[style*="color:#475569"] {
+  color: #94A3B8 !important;
+}
+html.dark #alatPopupModalBody img[src*="black.png"] {
+  filter: invert(1) brightness(1.2);
+}
+html.dark #popupMainImg {
+  background: transparent !important;
+}
+html.dark #alatPopupModalBody img[onclick] {
+  background: #19202C !important;
+  border-color: #263143 !important;
+}
+
+html.dark #myLoansModalContent > div {
+  background: #19202C !important;
+  border-color: #263143 !important;
+  color: #F1F4FA;
+}
+html.dark #myLoansModalContent div[style*="background:#F8FAFC"] {
+  background: #131720 !important;
+  border-color: #222938 !important;
+  color: #F1F4FA;
+}
+
+/* Toast */
+html.dark .toast {
+  background: #0B0E14;
+  border: 1px solid #242B3A;
+  color: #ffffff;
+}
+
+/* Profile Theme Switcher Row */
+.profile-theme-row {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+html.dark .profile-theme-row {
+  background: #19202C;
+  border-color: #263143;
 }
 @media print {
   .navbar, .royal-banner, .no-print { display: none !important; }
@@ -2518,6 +3063,10 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   </nav>
 
   <div class="nav-right">
+    <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Beralih ke Tema Gelap" aria-label="Beralih Tema">
+      <span class="theme-icon" id="themeIcon">🌙</span>
+      <span class="theme-label" id="themeLabel">Mode Gelap</span>
+    </button>
     <button class="bon-pill" onclick="openMyLoansModal()" title="Status Bon & QR Code Peminjaman Izzulft">
       <span>📋 Bon Saya</span>
       <span class="cnt" id="activeLoanCount">2</span>
@@ -3114,6 +3663,18 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
         <span>Reputasi Pinjam: <b>100% Tepat Waktu</b></span>
       </div>
     </div>
+    
+    <div class="profile-theme-row" style="margin-bottom:14px">
+      <div>
+        <div style="font-size:13.5px;font-weight:700">Tampilan Tema Website</div>
+        <div style="font-size:11.5px;color:var(--muted)">Mode Gelap / Terang (Disimpan otomatis)</div>
+      </div>
+      <button class="btn btn-ghost" id="profileThemeBtn" style="padding:6px 14px;font-size:12.5px;display:flex;align-items:center;gap:6px" onclick="toggleTheme()">
+        <span id="profileThemeIcon">🌙</span>
+        <span id="profileThemeLabel">Mode Gelap</span>
+      </button>
+    </div>
+
     <div style="display:flex;gap:10px">
       <button class="btn btn-pri" style="flex:1" onclick="closeProfileModal();openMyLoansModal()">Lihat Bon Aktif Saya</button>
       <button class="btn btn-ghost" onclick="closeProfileModal();switchPage('saran')">Beri Saran Alat</button>
@@ -6293,7 +6854,77 @@ function showToast(msg) {
   toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
 }
 
+/* =========================================================================
+   MODUL TEMA GELAP (DARK MODE) ENGINE
+   ========================================================================= */
+const THEME_STORAGE_KEY = 'm4hakal_theme_mode';
+
+function getPreferredTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    if (saved === 'dark' || saved === 'light') return saved;
+  } catch (e) {}
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+  return 'light';
+}
+
+function applyTheme(theme, save = true) {
+  const html = document.documentElement;
+  const isDark = theme === 'dark';
+  
+  if (isDark) {
+    html.classList.add('dark');
+  } else {
+    html.classList.remove('dark');
+  }
+
+  // Update Navbar Toggle Button
+  const iconEl = document.getElementById('themeIcon');
+  const labelEl = document.getElementById('themeLabel');
+  const btnEl = document.getElementById('themeToggleBtn');
+  if (iconEl) iconEl.textContent = isDark ? '☀️' : '🌙';
+  if (labelEl) labelEl.textContent = isDark ? 'Mode Terang' : 'Mode Gelap';
+  if (btnEl) btnEl.setAttribute('title', isDark ? 'Beralih ke Mode Terang (Light Mode)' : 'Beralih ke Mode Gelap (Dark Mode)');
+
+  // Update Profile Modal Toggle Button
+  const profIcon = document.getElementById('profileThemeIcon');
+  const profLabel = document.getElementById('profileThemeLabel');
+  if (profIcon) profIcon.textContent = isDark ? '☀️' : '🌙';
+  if (profLabel) profLabel.textContent = isDark ? 'Mode Terang' : 'Mode Gelap';
+
+  if (save) {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (e) {}
+  }
+}
+
+function toggleTheme() {
+  const isCurrentlyDark = document.documentElement.classList.contains('dark');
+  const nextTheme = isCurrentlyDark ? 'light' : 'dark';
+  applyTheme(nextTheme, true);
+  showToast(nextTheme === 'dark' ? '🌙 Mode Gelap aktif' : '☀️ Mode Terang aktif');
+}
+
+function initThemeEngine() {
+  const current = getPreferredTheme();
+  applyTheme(current, false);
+
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      try {
+        if (!localStorage.getItem(THEME_STORAGE_KEY)) {
+          applyTheme(e.matches ? 'dark' : 'light', false);
+        }
+      } catch (err) {}
+    });
+  }
+}
+
 function initApp() {
+  initThemeEngine();
   renderHome();
   renderSchedule();
   renderBonCards();

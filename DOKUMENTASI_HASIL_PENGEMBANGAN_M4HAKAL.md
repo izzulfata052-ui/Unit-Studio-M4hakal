@@ -209,3 +209,5 @@ Akses di browser: `http://localhost:3000`
 | **v1.9** | Implementasi responsif Tailwind CSS: Layout 3 kolom desktop dengan rasio visual horizontal 16:9, otomatis 1 kolom vertikal ramah sentuhan (touch-friendly) di mobile/HP, tanpa gambar dan teks terpotong. |
 | **v2.0** | Konfigurasi CI/CD Auto-Deploy: Integrasi Git repositori GitHub dan konfigurasi Vercel/Netlify. |
 | **v2.1** | Redesain Bento Grid Beranda: Penataan ulang Status Ruang Studio, Kuota Bon & Profil Izzulft, serta 3 Pintasan Alat utama (Workshop ENG, Docking & OB Van, Lighting) menggunakan tren Bento Grid modern untuk visual bersih, teratur, dan proporsional. |
+| **v2.2** | Implementasi Modul Tema Gelap (Dark Mode): Sakelar tema di navbar & modal profil dengan penyimpanan persisten (localStorage), deteksi preferensi OS otomatis (prefers-color-scheme), pencegah kedipan layar (Anti-FOUC), serta adaptasi palet warna gelap profesional pada Bento Grid, katalog alat, formulir, jadwal studio, dan SOP. |
+
