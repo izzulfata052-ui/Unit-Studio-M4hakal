@@ -5,8 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unit Studio M4HAKAL — Pusat Informasi & Layanan Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS Play CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          royal: '#1A73E8',
+          'royal-dark': '#0D47A1',
+          'royal-deep': '#072A6C',
+          lime: '#D4FF00',
+          'lime-soft': '#F4FFB8',
+          bg: '#F4F6FA',
+          card: '#FFFFFF',
+          ink: '#151821',
+          'ink-soft': '#3B4252',
+          muted: '#687082',
+          line: '#E2E6F0'
+        },
+        aspectRatio: {
+          '16/9': '16 / 9',
+        }
+      }
+    }
+  }
+</script>
 <style>
 :root {
   --nav-bg: #181A20;
@@ -995,11 +1020,12 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   margin-bottom: 16px;
 }
 
-/* ===== 4-COLUMN PROFESSIONAL EQUIPMENT GRID + CURSOR HOVER POP-UP ===== */
-.workshop-4col-grid {
+/* ===== 3-COLUMN RESPONSIVE EQUIPMENT GRID (DESKTOP) + 1-COLUMN (MOBILE) ===== */
+.workshop-4col-grid,
+.workshop-3col-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 30px 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 24px;
   align-items: stretch;
   padding-top: 8px;
 }
@@ -1017,6 +1043,8 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  overflow: visible;
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease;
@@ -1025,20 +1053,24 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
 .workshop-col:hover {
   z-index: 30;
   border-color: #CBD5E1;
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
 }
 
-/* 1:1 #Katalog Card Box that POPS UP on cursor hover (Matches reference screenshots!) */
+/* 16:9 Aspect Ratio Horizontal Visual Box (Pastikan gambar tidak terpotong) */
 .katalog-img-box {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9 !important;
   background: #ffffff;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid #F1F5F9;
   margin-bottom: 14px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
   transform: scale(1);
   transition:
     transform 0.32s cubic-bezier(0.34, 1.35, 0.64, 1),
@@ -1046,13 +1078,13 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
     border-radius 0.25s ease;
 }
 .workshop-col:hover .katalog-img-box {
-  transform: scale(1.14) translateY(-8px);
-  border-radius: 20px;
+  transform: scale(1.06) translateY(-6px);
+  border-radius: 18px;
   border-color: #ffffff;
   box-shadow:
-    0 26px 54px rgba(0, 0, 0, 0.22),
-    -14px 0 28px rgba(0, 0, 0, 0.07),
-    14px 0 28px rgba(0, 0, 0, 0.07);
+    0 22px 46px rgba(0, 0, 0, 0.18),
+    -10px 0 20px rgba(0, 0, 0, 0.05),
+    10px 0 20px rgba(0, 0, 0, 0.05);
   z-index: 35;
 }
 .katalog-carousel-track {
@@ -1072,23 +1104,27 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   justify-content: center;
   overflow: hidden;
   background: #ffffff;
+  padding: 4px;
 }
 .katalog-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain !important;
   background: #ffffff;
+  display: block;
 }
 .katalog-hover-hint {
   position: absolute;
-  bottom: 10px;
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: rgba(17, 24, 39, 0.86);
+  background: rgba(17, 24, 39, 0.88);
   color: #ffffff;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 4px 11px;
+  padding: 5px 12px;
   border-radius: 99px;
   white-space: nowrap;
   opacity: 0;
@@ -1106,10 +1142,10 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: rgba(33, 37, 46, 0.72);
+  background: rgba(33, 37, 46, 0.78);
   color: #fff;
   display: grid;
   place-items: center;
@@ -1150,50 +1186,55 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
 }
 .slide-dots span.on { background: var(--royal); width: 14px; border-radius: 99px; }
 
-/* Unit Meta Strip, Title & Clean Specification Bullets */
+/* Unit Meta Strip, Title & Clean Specification Bullets (Teks Tidak Terpotong) */
 .unit-meta-strip {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
-  margin-bottom: 6px;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 .unit-subcat-tag {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   color: #475569;
   background: #F1F5F9;
-  padding: 3px 8px;
+  padding: 4px 9px;
   border-radius: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 62%;
+  white-space: normal;
+  max-width: 100%;
+  line-height: 1.3;
+  display: inline-block;
+  word-break: break-word;
 }
 .item-serif-title {
   font-family: 'Merriweather', Georgia, serif;
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 700;
   text-align: center;
   color: #151821;
-  min-height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px 0 10px;
+  min-height: auto;
+  height: auto;
+  display: block;
+  margin: 4px 0 10px;
   padding-bottom: 10px;
   border-bottom: 1px dashed #E2E8F0;
-  line-height: 1.35;
+  line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .item-square-bullets {
   list-style-type: square;
   padding-left: 18px;
   font-family: 'Merriweather', Georgia, serif;
-  font-size: 11.8px;
+  font-size: 12.2px;
   line-height: 1.62;
   color: #2B303C;
   margin: 0 0 16px;
   flex: 1;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .item-square-bullets li {
   margin-bottom: 6px;
@@ -1203,7 +1244,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
 }
 .workshop-col-footer {
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 14px;
   border-top: 1px solid #EEF2F7;
   display: flex;
   align-items: center;
@@ -1890,17 +1931,168 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   color: #94A3B8;
 }
 
-@media (max-width: 1120px) {
-  .workshop-4col-grid { grid-template-columns: repeat(2, 1fr); }
-  .sop-peminjaman-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 760px) {
-  .poster-grid, .workshop-4col-grid, .rooms-strip, .bon-grid, .ebon-layout, .saran-layout, .team-grid, .sop-peminjaman-grid {
-    grid-template-columns: 1fr;
+/* Responsive Desktop (3 Kolom 16:9) vs Tablet (2 Kolom) vs Mobile (1 Kolom Vertikal Touch-Friendly) */
+@media (min-width: 1024px) {
+  .workshop-4col-grid,
+  .workshop-3col-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 28px 24px !important;
   }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .sched-row { grid-template-columns: 1fr; gap: 6px; }
-  .nav-links { overflow-x: auto; max-width: 48vw; }
+  .rooms-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .bon-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 769px) {
+  .workshop-4col-grid,
+  .workshop-3col-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+  }
+  .rooms-strip,
+  .bon-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .sop-peminjaman-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* OTOMATIS BERUBAH MENJADI 1 KOLOM VERTIKAL */
+  .poster-grid,
+  .workshop-4col-grid,
+  .workshop-3col-grid,
+  .rooms-strip,
+  .bon-grid,
+  .ebon-layout,
+  .saran-layout,
+  .team-grid,
+  .sop-peminjaman-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* RAMAH SENTUHAN (TOUCH-FRIENDLY BUTTONS & TAP TARGETS >= 44px) */
+  .workshop-col {
+    padding: 16px !important;
+    border-radius: 18px !important;
+  }
+  .workshop-col:active {
+    transform: scale(0.99);
+  }
+  .workshop-col-footer button,
+  .btn,
+  .bon-pill,
+  .chip,
+  .sub-chip {
+    min-height: 44px !important;
+    padding: 10px 16px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    touch-action: manipulation;
+  }
+  .slide-nav-btn {
+    opacity: 0.95 !important;
+    width: 40px !important;
+    height: 40px !important;
+    touch-action: manipulation;
+  }
+  .slide-nav-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .katalog-hover-hint {
+    opacity: 1 !important;
+    transform: translateX(-50%) translateY(0) !important;
+    font-size: 11px !important;
+    padding: 5px 12px !important;
+  }
+
+  /* NAVBAR RESPONSIF RAMAH SENTUHAN */
+  .navbar {
+    height: auto !important;
+    min-height: 64px !important;
+    padding: 10px 16px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  .brand-text h1 {
+    font-size: 16px !important;
+  }
+  .nav-links {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    padding: 6px 0 !important;
+    gap: 6px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-btn {
+    padding: 9px 14px !important;
+    font-size: 13px !important;
+    min-height: 42px !important;
+  }
+  .nav-right {
+    gap: 8px !important;
+  }
+  .profile-meta {
+    display: none !important;
+  }
+  .avatar {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  /* TEKS & KONTEN TIDAK TERPOTONG */
+  .section-hdr h3 {
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+  }
+  .section-hdr p {
+    font-size: 12.5px !important;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .stat-card {
+    padding: 14px !important;
+  }
+  .sched-row {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 14px !important;
+  }
+  .item-serif-title {
+    font-size: 15px !important;
+  }
+  .item-square-bullets {
+    font-size: 12px !important;
+  }
+
+  /* POPUP MODAL RAMAH LAYAR HP */
+  .modal-box {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    padding: 18px !important;
+    margin: 10px auto !important;
+    overflow-y: auto !important;
+    border-radius: 20px !important;
+  }
 }
 @media print {
   .navbar, .royal-banner, .no-print { display: none !important; }
@@ -2342,8 +2534,8 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
       <!-- Sub-Category Filter Pills -->
       <div class="sub-filter-bar" id="alatSubCatBar"></div>
 
-      <!-- 4-Column Professional Equipment Grid with Hover Pop-Up -->
-      <div class="workshop-4col-grid" id="alatFullGrid"></div>
+      <!-- 3-Column Desktop (Windows/Mac) & 1-Column Mobile Touch-Friendly Grid -->
+      <div class="workshop-3col-grid workshop-4col-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 items-stretch pt-2" id="alatFullGrid"></div>
     </div>
   </section>
 
@@ -4576,14 +4768,14 @@ function openAlatPopupModal(itemId, event) {
         <span class="badge b-info">${item.cat}</span>
         <span class="badge ${badgeCls}">${badgeTxt}</span>
       </div>
-      <button class="btn btn-ghost" onclick="closeAlatPopupModal()">✕ Tutup</button>
+      <button class="btn btn-ghost" style="min-height:44px;padding:8px 16px;font-size:13.5px;font-weight:700" onclick="closeAlatPopupModal()">✕ Tutup</button>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;align-items:start">
       <div style="background:#fff;border-radius:22px;padding:12px;box-shadow:0 22px 48px rgba(0,0,0,0.16);border:1px solid #EEF2F7">
-        <img id="popupMainImg" src="${item.images[curSlide]}" alt="${item.name}" style="width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:16px;background:#fff">
+        <img id="popupMainImg" src="${item.images[curSlide]}" alt="${item.name}" style="width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:16px;background:#fff;padding:6px">
         ${item.images.length > 1 ? `
-          <div style="display:flex;justify-content:center;gap:10px;margin-top:10px">
+          <div style="display:flex;justify-content:center;gap:10px;margin-top:10px;flex-wrap:wrap">
             ${item.images.map((src, idx) => `
               <img src="${src}" onclick="document.getElementById('popupMainImg').src='${src}'"
                    style="width:58px;height:58px;object-fit:contain;border-radius:10px;border:2px solid ${idx===curSlide?'#1A73E8':'#E2E8F0'};cursor:pointer;background:#fff;padding:3px">
@@ -4596,18 +4788,18 @@ function openAlatPopupModal(itemId, event) {
         <div style="font-size:11.5px;font-weight:800;color:var(--royal);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:4px">
           #Katalog Resmi Unit Studio &amp; Pemancar M4HAKAL
         </div>
-        <h3 style="font-family:'Merriweather',serif;font-size:22px;font-weight:700;color:#111827;margin-bottom:14px">
+        <h3 style="font-family:'Merriweather',serif;font-size:22px;font-weight:700;color:#111827;margin-bottom:14px;word-break:break-word">
           ${item.name}
         </h3>
         <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:16px;padding:16px 18px;margin-bottom:18px">
           <div style="font-size:12px;font-weight:800;color:#475569;margin-bottom:8px;text-transform:uppercase">Spesifikasi Teknis &amp; Kelengkapan:</div>
-          <ul class="item-square-bullets" style="margin-bottom:0;font-size:12.8px">
+          <ul class="item-square-bullets" style="margin-bottom:0;font-size:12.8px;word-break:break-word">
             ${item.bullets.map(b => `<li>${b}</li>`).join('')}
           </ul>
         </div>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="btn ${inBon ? 'btn-lime' : 'btn-pri'}" style="flex:1;padding:12px 16px" onclick="quickAddEquipToBon('${item.id}');closeAlatPopupModal()">
+          <button class="btn ${inBon ? 'btn-lime' : 'btn-pri'}" style="flex:1;min-height:48px;padding:12px 18px;font-size:14px;font-weight:700;border-radius:14px" onclick="quickAddEquipToBon('${item.id}');closeAlatPopupModal()">
             ${inBon ? '✓ Sudah di E-Bon Izzulft (Buka Formulir)' : '+ Masukkan ke E-Bon Peminjaman Izzulft'}
           </button>
         </div>
@@ -4652,7 +4844,7 @@ function renderAlatGrid() {
            onmouseenter="state.hoveredCardId='${item.id}'"
            onmouseleave="if(state.hoveredCardId==='${item.id}') state.hoveredCardId=null">
         <div style="display:flex;flex-direction:column;flex:1">
-          <!-- 1:1 #Katalog Card Box that Pops Up on Hover (Identical to reference screenshot) -->
+          <!-- 16:9 Aspect Ratio Horizontal Visual Box with Hover & Click Pop-Up -->
           <div class="katalog-img-box" onclick="openAlatPopupModal('${item.id}', event)" title="Arahkan kursor untuk Pop-Up · Klik untuk melihat detail ${item.name}">
             <div class="katalog-carousel-track" id="track-${item.id}" style="transform:translateX(-${curSlide * 100}%)">
               ${item.images.map(src => `
@@ -4677,26 +4869,26 @@ function renderAlatGrid() {
             ` : ''}
           </div>
 
-          <!-- Clean Meta Strip Below #Katalog Image -->
+          <!-- Clean Meta Strip Below 16:9 Image -->
           <div class="unit-meta-strip">
             <span class="unit-subcat-tag" title="${item.subCat}">${item.subCat}</span>
             <span class="badge ${badgeCls}" style="font-size:10.5px;padding:3px 8px">${badgeTxt}</span>
           </div>
 
-          <!-- Uniform Centered Serif Title -->
+          <!-- Uniform Centered Serif Title (Tidak Terpotong) -->
           <h4 class="item-serif-title">${item.name}</h4>
 
-          <!-- Clean Square Bullet Specifications -->
+          <!-- Clean Square Bullet Specifications (Tidak Terpotong) -->
           <ul class="item-square-bullets">
             ${item.bullets.map(b => `<li>${b}</li>`).join('')}
           </ul>
         </div>
 
-        <!-- Pinned Bottom Action Footer -->
+        <!-- Pinned Bottom Action Footer (Ramah Sentuhan min-height 44px) -->
         <div class="workshop-col-footer">
           <div style="display:flex;gap:8px;width:100%">
-            <button class="btn btn-ghost" style="padding:7px 10px;font-size:11.5px" onclick="openAlatPopupModal('${item.id}', event)" title="Lihat Pop-Up #Katalog">🔍</button>
-            <button class="btn ${inBon ? 'btn-lime' : 'btn-pri'}" style="flex:1;padding:7px 12px;font-size:12px" onclick="quickAddEquipToBon('${item.id}')">
+            <button class="btn btn-ghost" style="padding:10px 14px;min-height:44px;font-size:13px;border-radius:12px;font-weight:600" onclick="openAlatPopupModal('${item.id}', event)" title="Lihat Pop-Up Detail">🔍 Detail</button>
+            <button class="btn ${inBon ? 'btn-lime' : 'btn-pri'}" style="flex:1;padding:10px 14px;min-height:44px;font-size:13px;font-weight:700;border-radius:12px" onclick="quickAddEquipToBon('${item.id}')">
               ${inBon ? '✓ Masuk E-Bon' : '+ Pinjam Alat'}
             </button>
           </div>
