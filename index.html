@@ -812,9 +812,6 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   gap: 6px;
 }
 .bento-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
   font-size: 11px;
   font-weight: 700;
   background: rgba(16, 185, 129, 0.22);
@@ -822,12 +819,6 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
   border: 1px solid rgba(16, 185, 129, 0.4);
   padding: 2px 8px;
   border-radius: 99px;
-}
-.bento-pill-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10B981;
 }
 .bento-quota-actions {
   display: flex;
@@ -3278,11 +3269,11 @@ html.dark .profile-theme-row {
 
   <div class="nav-right">
     <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Beralih ke Tema Gelap" aria-label="Beralih Tema">
-      <span class="theme-icon" id="themeIcon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+      <span class="theme-icon" id="themeIcon">🌙</span>
       <span class="theme-label" id="themeLabel">Mode Gelap</span>
     </button>
     <button class="bon-pill" onclick="openMyLoansModal()" title="Status Bon & QR Code Peminjaman Izzulft">
-      <span>Bon Saya</span>
+      <span>📋 Bon Saya</span>
       <span class="cnt" id="activeLoanCount">2</span>
     </button>
     <button class="profile-btn" onclick="openProfileModal()" title="Profil Civitas M4HAKAL — Izzulft">
@@ -3359,10 +3350,10 @@ html.dark .profile-theme-row {
 
         <div class="beranda-bottom-bar">
           <div class="beranda-social-row">
-            <span>Instagram @m4hakal.id</span>
-            <span>studio.m4hakal.ac.id</span>
-            <span>TikTok @m4hakal.id</span>
-            <span>YouTube M4HAKAL Official</span>
+            <span>📸 @m4hakal.id</span>
+            <span>🌐 studio.m4hakal.ac.id</span>
+            <span>🎵 @m4hakal.id</span>
+            <span>▶️ M4HAKAL Official</span>
           </div>
           <div class="beranda-carousel-dots" id="berandaCarouselDots">
             <button class="beranda-dot active" onclick="goToBerandaBanner(0)" aria-label="Slide 1"></button>
@@ -3378,28 +3369,28 @@ html.dark .profile-theme-row {
     <!-- Live Metrics Strip -->
     <div class="stats-grid" style="margin-bottom:24px">
       <div class="stat-card">
-        <div class="stat-ic" style="background:#E8F0FE;color:#1A73E8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></div>
+        <div class="stat-ic" style="background:#E8F0FE;color:#1A73E8">🎙️</div>
         <div>
           <div class="stat-val" id="statTotalItems">45 Tipe</div>
           <div class="stat-lbl">Katalog Alat Workshop, Docking &amp; Lighting</div>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-ic" style="background:#E4F8EE;color:#0D8A4E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"></path><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"></path><circle cx="12" cy="12" r="2"></circle><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"></path><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19.1"></path></svg></div>
+        <div class="stat-ic" style="background:#E4F8EE;color:#0D8A4E">📡</div>
         <div>
           <div class="stat-val">5 / 6</div>
           <div class="stat-lbl">Studio &amp; Lab Siap Pakai</div>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-ic" style="background:#FFF3DC;color:#B25E00"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+        <div class="stat-ic" style="background:#FFF3DC;color:#B25E00">⏱️</div>
         <div>
           <div class="stat-val">&lt; 2 Jam</div>
           <div class="stat-lbl">Rata-Rata Approval Bon</div>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-ic" style="background:#EEF0FF;color:#4F46E5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+        <div class="stat-ic" style="background:#EEF0FF;color:#4F46E5">👤</div>
         <div>
           <div class="stat-val" id="statMyQuota">1 / 3</div>
           <div class="stat-lbl">Kuota Bon Aktif Izzulft</div>
@@ -3449,14 +3440,14 @@ html.dark .profile-theme-row {
               <div class="bento-progress-fill" id="bentoQuotaBar" style="width: 33.3%"></div>
             </div>
             <div class="bento-quota-desc">
-              <span class="bento-status-pill"><span class="bento-pill-dot"></span>Bebas Tanggungan</span>
+              <span class="bento-status-pill">🟢 Bebas Tanggungan</span>
               <span style="font-size:12px;color:#E2E8F0">2 Slot Peminjaman Tersedia</span>
             </div>
           </div>
 
           <div class="bento-quota-actions">
             <button class="btn bento-btn-loans" onclick="openMyLoansModal()">
-              <span>Status Bon &amp; QR Code Saya</span>
+              <span>📲 Status Bon &amp; QR Code Saya</span>
               <span class="badge b-info" id="bentoActiveCount">2</span>
             </button>
             <button class="btn bento-btn-new" onclick="switchPage('formulir');switchBonTab('ebon')">
@@ -3470,7 +3461,7 @@ html.dark .profile-theme-row {
       <div class="bento-shortcuts-grid">
         <!-- Shortcut 1: Workshop ENG -->
         <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Workshop ENG')">
-          <div class="bento-shortcut-icon" style="background:#EBF5FF;color:#1A73E8"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div>
+          <div class="bento-shortcut-icon" style="background:#EBF5FF;color:#1A73E8">🎙️</div>
           <div class="bento-shortcut-body">
             <div class="bento-shortcut-tag">Katalog Peralatan</div>
             <h4 class="bento-shortcut-title">Daftar Alat Workshop ENG</h4>
@@ -3484,7 +3475,7 @@ html.dark .profile-theme-row {
 
         <!-- Shortcut 2: Docking Video & OB Van -->
         <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Docking & OB Van')">
-          <div class="bento-shortcut-icon" style="background:#F0FDF4;color:#16A34A"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg></div>
+          <div class="bento-shortcut-icon" style="background:#F0FDF4;color:#16A34A">🎛️</div>
           <div class="bento-shortcut-body">
             <div class="bento-shortcut-tag">Mobile Production</div>
             <h4 class="bento-shortcut-title">Daftar Alat Docking &amp; OB Van</h4>
@@ -3498,7 +3489,7 @@ html.dark .profile-theme-row {
 
         <!-- Shortcut 3: Workshop Lighting & SOP Studio -->
         <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Workshop Lighting')">
-          <div class="bento-shortcut-icon" style="background:#FFFBEB;color:#D97706"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg></div>
+          <div class="bento-shortcut-icon" style="background:#FFFBEB;color:#D97706">💡</div>
           <div class="bento-shortcut-body">
             <div class="bento-shortcut-tag">Tata Cahaya &amp; FOH</div>
             <h4 class="bento-shortcut-title">Daftar Alat Workshop Lighting</h4>
@@ -3530,7 +3521,7 @@ html.dark .profile-theme-row {
           <span style="font-weight:800;font-size:15px">Okt 2026 – Mar 2027 ▾</span>
           <div class="chip-group" id="schedRoomFilter"></div>
         </div>
-        <span class="badge b-info">Terhubung e-Kalender Studio M4HAKAL</span>
+        <span class="badge b-info">📅 Terhubung e-Kalender Studio M4HAKAL</span>
       </div>
 
       <div class="cal-today-row">
@@ -3552,8 +3543,8 @@ html.dark .profile-theme-row {
         <p>Pilih lembar Bon resmi sesuai studio yang digunakan atau isi langsung lewat E-Bon Digital atas nama <b>Izzulft</b>.</p>
       </div>
       <div class="chip-group">
-        <button class="chip active" id="tabBtn-lembar" onclick="switchBonTab('lembar')">6 Lembar Bon Resmi (Pratinjau &amp; Cetak)</button>
-        <button class="chip" id="tabBtn-ebon" onclick="switchBonTab('ebon')">Isi E-Bon Digital (a.n. Izzulft)</button>
+        <button class="chip active" id="tabBtn-lembar" onclick="switchBonTab('lembar')">📄 6 Lembar Bon Resmi (Pratinjau &amp; Cetak)</button>
+        <button class="chip" id="tabBtn-ebon" onclick="switchBonTab('ebon')">⚡ Isi E-Bon Digital (a.n. Izzulft)</button>
       </div>
     </div>
 
@@ -3569,7 +3560,8 @@ html.dark .profile-theme-row {
               <div style="font-size:18px;font-weight:800">Formulir Pengajuan E-Bon Peminjaman M4HAKAL</div>
               <div style="font-size:12.5px;color:var(--muted)">Otomatis terhubung dengan identitas civitas <b>Izzulft</b></div>
             </div>
-            </div>
+            <span class="badge b-dark">E-BON v2.5</span>
+          </div>
 
           <div class="field-grid">
             <div class="field">
@@ -3646,8 +3638,8 @@ html.dark .profile-theme-row {
           </label>
 
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <button class="btn btn-pri" id="ebonSubmitBtn" onclick="submitEbon()" style="flex:1;padding:14px">Kirim E-Bon &amp; Buat QR Code Serah Terima</button>
-            <button class="btn btn-ghost" onclick="previewCurrentEbonSheet()">Pratinjau Lembar Cetak</button>
+            <button class="btn btn-pri" id="ebonSubmitBtn" onclick="submitEbon()" style="flex:1;padding:14px">🚀 Kirim E-Bon &amp; Buat QR Code Serah Terima</button>
+            <button class="btn btn-ghost" onclick="previewCurrentEbonSheet()">🖨️ Pratinjau Lembar Cetak</button>
           </div>
         </div>
 
@@ -3681,14 +3673,14 @@ html.dark .profile-theme-row {
         <div class="chip-group" id="alatCatChips"></div>
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <div class="search-input" style="background:#fff">
-            <span style="display:inline-flex;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--muted)"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+            <span>🔍</span>
             <input type="text" id="alatSearchInput" placeholder="Cari Focusrite Scarlett 2i2, MKH 416, URSA, ARRI, iCOM…" oninput="handleAlatSearchInput()">
           </div>
           <span id="alatRealtimeBadge" class="realtime-shimmer-indicator" style="display:none">
             <span class="realtime-dot-pulse"></span>
             <span>Memuat Real-Time…</span>
           </span>
-          <button class="btn btn-ghost" id="btnToggleAutoSlide" style="padding:8px 13px;font-size:12px" onclick="toggleAlatAutoSlide()">Jeda Geser</button>
+          <button class="btn btn-ghost" id="btnToggleAutoSlide" style="padding:8px 13px;font-size:12px" onclick="toggleAlatAutoSlide()">⏸ Jeda Geser</button>
         </div>
       </div>
 
@@ -3854,7 +3846,8 @@ html.dark .profile-theme-row {
               <div style="font-size:18px;font-weight:800">Formulir Usulan Pengadaan Alat Kampus M4HAKAL</div>
               <div style="font-size:12.5px;color:var(--muted)">Sampaikan rekomendasi peralatan produksi siaran baru untuk peningkatan fasilitas studio</div>
             </div>
-            </div>
+            <span class="badge b-dark">PENGADAAN v2.5</span>
+          </div>
 
           <!-- Civitas Identity Grid (Auto-populated from user profile, matching E-Bon v2.5) -->
           <div class="field-grid">
@@ -3894,11 +3887,11 @@ html.dark .profile-theme-row {
 
           <!-- SaaS Action Bar matching E-Bon v2.5 -->
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-            <button class="btn btn-pri" onclick="submitSaran()" style="padding:13px 24px;font-size:14px;font-weight:700">
-              Kirim Usulan Pengadaan (a.n. Izzulft)
+            <button class="btn btn-pri" onclick="submitSaran()" style="padding:13px 24px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px">
+              🚀 Kirim Usulan Pengadaan (a.n. Izzulft)
             </button>
             <div style="font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px">
-              <span>Terverifikasi Otomatis via SSO Sivitas M4HAKAL</span>
+              <span>🔒 Terverifikasi Otomatis via SSO Sivitas M4HAKAL</span>
             </div>
           </div>
         </div>
@@ -3939,7 +3932,7 @@ html.dark .profile-theme-row {
         <div style="font-size:20px;font-weight:800">Status Bon &amp; Peminjaman Saya — Izzulft</div>
         <div style="font-size:12.5px;color:var(--muted)">NIM 024231441867 · izzulft@mail.m4hakal.ac.id · Kuota Maksimal 3 Paket Aktif</div>
       </div>
-      <button class="btn btn-ghost" onclick="closeLoansModal()">Tutup</button>
+      <button class="btn btn-ghost" onclick="closeLoansModal()">✕ Tutup</button>
     </div>
     <div id="myLoansModalContent"></div>
   </div>
@@ -3949,10 +3942,10 @@ html.dark .profile-theme-row {
 <div class="modal-backdrop" id="printBonModal" onclick="if(event.target===this)closePrintBonModal()">
   <div class="modal-box" style="max-width:720px">
     <div class="no-print" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <div style="font-weight:800;font-size:16px">Lembar Resmi Bon Pemakaian Ruang/Alat Studio M4HAKAL</div>
+      <div style="font-weight:800;font-size:16px">📄 Lembar Resmi Bon Pemakaian Ruang/Alat Studio M4HAKAL</div>
       <div style="display:flex;gap:8px">
-        <button class="btn btn-pri" onclick="window.print()">Cetak / Simpan PDF</button>
-        <button class="btn btn-ghost" onclick="closePrintBonModal()">Tutup</button>
+        <button class="btn btn-pri" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+        <button class="btn btn-ghost" onclick="closePrintBonModal()">✕</button>
       </div>
     </div>
     <div id="printableBonSheet"></div>
@@ -3964,7 +3957,7 @@ html.dark .profile-theme-row {
   <div class="modal-box" style="max-width:520px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <div style="font-size:18px;font-weight:800">Kartu Identitas Peminjam Studio M4HAKAL</div>
-      <button class="btn btn-ghost" onclick="closeProfileModal()">Tutup</button>
+      <button class="btn btn-ghost" onclick="closeProfileModal()">✕</button>
     </div>
     <div class="civitas-id-card" id="profileCivitasCard">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
@@ -3994,7 +3987,7 @@ html.dark .profile-theme-row {
         <div style="font-size:11.5px;color:var(--muted)">Mode Gelap / Terang (Disimpan otomatis)</div>
       </div>
       <button class="btn btn-ghost" id="profileThemeBtn" style="padding:6px 14px;font-size:12.5px;display:flex;align-items:center;gap:6px" onclick="toggleTheme()">
-        <span id="profileThemeIcon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span id="profileThemeIcon">🌙</span>
         <span id="profileThemeLabel">Mode Gelap</span>
       </button>
     </div>
@@ -5762,7 +5755,7 @@ function handleAlatSearchInput() {
   alatSearchTimer = setTimeout(() => {
     renderAlatGrid();
     if (badge) {
-      badge.innerHTML = `Hasil Ditemukan`;
+      badge.innerHTML = `✓ Hasil Ditemukan`;
       setTimeout(() => { badge.style.display = 'none'; }, 1000);
     }
   }, 220);
@@ -5807,7 +5800,7 @@ function openAlatCat(cat) {
   setTimeout(() => {
     renderAlatPage();
     if (badge) {
-      badge.innerHTML = `${cat} Siap`;
+      badge.innerHTML = `✓ ${cat} Siap`;
       setTimeout(() => { badge.style.display = 'none'; }, 1000);
     }
   }, 220);
@@ -5852,7 +5845,7 @@ function rebuildMmtcStageCarousel() {
          onmouseleave="onMmtcItemLeave(this)"
          onclick="onMmtcItemClick('${item.id}')">
       <img src="${item.images[0]}" alt="${item.name}" loading="lazy">
-      <span class="mmtc-stage-hover-pill">${item.name} · Klik Pop-Up Detail</span>
+      <span class="mmtc-stage-hover-pill">🔍 ${item.name} · Klik Pop-Up Detail</span>
     </div>
   `).join('');
 
@@ -6148,15 +6141,15 @@ function toggleAlatAutoSlide() {
   if (state.autoSlideEnabled) {
     if (btnEl) {
       btnEl.className = 'btn btn-ghost';
-      btnEl.innerHTML = 'Jeda Geser';
+      btnEl.innerHTML = '⏸ Jeda Geser';
     }
-    showToast('Animasi bergeser otomatis diaktifkan');
+    showToast('▶️ Animasi bergeser otomatis diaktifkan');
   } else {
     if (btnEl) {
       btnEl.className = 'btn btn-lime';
-      btnEl.innerHTML = 'Lanjutkan Geser';
+      btnEl.innerHTML = '▶️ Lanjutkan Geser';
     }
-    showToast('Animasi bergeser otomatis dijeda');
+    showToast('⏸ Animasi bergeser otomatis dijeda');
   }
 }
 
@@ -6180,7 +6173,7 @@ function openAlatPopupModal(itemId, event) {
         <span class="badge b-info">${item.cat}</span>
         <span class="badge ${badgeCls}">${badgeTxt}</span>
       </div>
-      <button class="btn btn-ghost" style="min-height:44px;padding:8px 16px;font-size:13.5px;font-weight:700" onclick="closeAlatPopupModal()">Tutup</button>
+      <button class="btn btn-ghost" style="min-height:44px;padding:8px 16px;font-size:13.5px;font-weight:700" onclick="closeAlatPopupModal()">✕ Tutup</button>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;align-items:start">
@@ -6212,7 +6205,7 @@ function openAlatPopupModal(itemId, event) {
 
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button class="btn ${inBon ? 'btn-lime' : 'btn-pri'}" style="flex:1;min-height:48px;padding:12px 18px;font-size:14px;font-weight:700;border-radius:14px" onclick="quickAddEquipToBon('${item.id}');closeAlatPopupModal()">
-            ${inBon ? 'Sudah di E-Bon Izzulft (Buka Formulir)' : '+ Masukkan ke E-Bon Peminjaman Izzulft'}
+            ${inBon ? '✓ Sudah di E-Bon Izzulft (Buka Formulir)' : '+ Masukkan ke E-Bon Peminjaman Izzulft'}
           </button>
         </div>
       </div>
@@ -6242,13 +6235,13 @@ function renderAlatGrid() {
     const safeQ = (q || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     gridEl.innerHTML = `
       <div style="grid-column:1/-1;text-align:center;padding:52px 24px;background:var(--bg);border-radius:20px;border:1.5px dashed var(--line);margin:16px 0">
-        <div style="font-size:16px;margin-bottom:12px;color:var(--muted)">[ Tidak Ditemukan ]</div>
+        <div style="font-size:38px;margin-bottom:12px">🔍</div>
         <div style="font-size:17px;font-weight:800;color:var(--ink);margin-bottom:6px">Peralatan Tidak Ditemukan</div>
         <div style="font-size:13px;color:var(--muted);max-width:440px;margin:0 auto 18px">
           Tidak ditemukan peralatan yang cocok dengan kata kunci "<strong>${safeQ}</strong>" pada inventaris ${state.alatCat}. Silakan periksa ejaan atau ganti kata kunci.
         </div>
         <button class="btn btn-ghost" onclick="clearAlatSearch()" style="padding:10px 18px;font-size:13px;font-weight:700">
-          Reset Pencarian
+          ✕ Reset Pencarian
         </button>
       </div>
     `;
@@ -6278,7 +6271,7 @@ function renderAlatGrid() {
               `).join('')}
             </div>
 
-            <span class="katalog-hover-hint">Klik Pop-Up Detail</span>
+            <span class="katalog-hover-hint">🔍 Klik Pop-Up Detail</span>
 
             ${hasMulti ? `
               <button class="slide-nav-btn prev" onclick="changeItemSlide('${item.id}', -1, event)" title="Slide sebelumnya">
@@ -6311,9 +6304,9 @@ function renderAlatGrid() {
         <!-- Pinned Bottom Action Footer (Ramah Sentuhan min-height 44px) -->
         <div class="workshop-col-footer">
           <div style="display:flex;gap:8px;width:100%">
-            <button class="btn btn-ghost" style="padding:10px 14px;min-height:44px;font-size:13px;border-radius:12px;font-weight:600" onclick="openAlatPopupModal('${item.id}', event)" title="Lihat Pop-Up Detail">Detail</button>
+            <button class="btn btn-ghost" style="padding:10px 14px;min-height:44px;font-size:13px;border-radius:12px;font-weight:600" onclick="openAlatPopupModal('${item.id}', event)" title="Lihat Pop-Up Detail">🔍 Detail</button>
             <button class="btn ${inBon ? 'btn-lime' : 'btn-pri'}" style="flex:1;padding:10px 14px;min-height:44px;font-size:13px;font-weight:700;border-radius:12px" onclick="quickAddEquipToBon('${item.id}')">
-              ${inBon ? 'Masuk E-Bon' : '+ Pinjam Alat'}
+              ${inBon ? '✓ Masuk E-Bon' : '+ Pinjam Alat'}
             </button>
           </div>
         </div>
@@ -6326,7 +6319,7 @@ function quickAddEquipToBon(id) {
   const eq = EQUIPMENT_DATA.find(e => e.id === id);
   if (!state.selectedEquipIds.includes(id)) {
     state.selectedEquipIds.push(id);
-    showToast(`"${eq.name}" ditambahkan ke E-Bon Izzulft`);
+    showToast(`➕ "${eq.name}" ditambahkan ke E-Bon Izzulft`);
     renderAlatGrid();
   } else {
     switchPage('formulir');
@@ -6378,7 +6371,7 @@ function renderHome() {
             </div>
             <span class="badge ${r.cls}">${r.status}</span>
           </div>
-          <div class="bento-room-meta" style="margin-top:8px">${r.next}</div>
+          <div class="bento-room-meta" style="margin-top:8px">📌 ${r.next}</div>
         </div>
         <div class="bento-room-actions">
           <button class="btn btn-ghost" style="flex:1;padding:7px 10px;font-size:12px;min-height:38px" onclick="switchPage('jadwal')">Cek Jadwal</button>
@@ -6462,11 +6455,11 @@ function renderBonCards() {
           </div>
           <div style="font-weight:700;font-size:8.2px;margin-top:4px">A. Fasilitas Ruang yang Dipinjam:</div>
           <div class="bon-mini-list">
-            ${b.roomsList.map(r => `<div>• ${r}</div>`).join('')}
+            ${b.roomsList.map(r => `<div>☑ ${r}</div>`).join('')}
           </div>
           <div style="font-weight:700;font-size:8.2px;margin-top:6px">B. Peralatan Pendukung Studio:</div>
           <div class="bon-mini-list">
-            ${b.gearList.slice(0, 6).map(g => `<div>• ${g}</div>`).join('')}
+            ${b.gearList.slice(0, 6).map(g => `<div>☐ ${g}</div>`).join('')}
           </div>
           <div style="margin-top:8px;padding-top:5px;border-top:1px dashed #CCC;display:flex;justify-content:flex-end;font-size:7.5px">
             <span>Peminjam: <b>Izzulft</b></span>
@@ -6474,13 +6467,13 @@ function renderBonCards() {
         </div>
         <div class="bon-zoom-bar">
           <span>Halaman 1 / 1</span>
-          <button onclick="openOfficialBonPreview(${idx})" title="Perbesar & Cetak">Pratinjau</button>
+          <button onclick="openOfficialBonPreview(${idx})" title="Perbesar & Cetak">🔍 Pratinjau</button>
         </div>
       </div>
       <div class="bon-caption">${b.title}</div>
       <div style="display:flex;gap:8px;width:100%">
-        <button class="btn btn-pri" style="flex:1;padding:9px 12px;font-size:12.5px" onclick="selectBonTemplate(${idx})">Isi E-Bon Ini</button>
-        <button class="btn btn-ghost" style="padding:9px 12px;font-size:12.5px" onclick="openOfficialBonPreview(${idx})">Cetak</button>
+        <button class="btn btn-pri" style="flex:1;padding:9px 12px;font-size:12.5px" onclick="selectBonTemplate(${idx})">✍️ Isi E-Bon Ini</button>
+        <button class="btn btn-ghost" style="padding:9px 12px;font-size:12.5px" onclick="openOfficialBonPreview(${idx})">🖨️ Cetak</button>
       </div>
     </div>
   `).join('');
@@ -6495,7 +6488,7 @@ function selectBonTemplate(idx) {
     sel.value = tpl.title;
     renderEbonForm();
   }
-  showToast(`Template "${tpl.title}" dipilih atas nama Izzulft`);
+  showToast(`📄 Template "${tpl.title}" dipilih atas nama Izzulft`);
 }
 
 function renderEbonForm() {
@@ -6548,7 +6541,7 @@ function renderEbonSummary() {
       <div style="display:flex;justify-content:space-between"><span>Periode:</span><b>${start} s.d. ${end} (${diffDays} hari)</b></div>
       <div style="display:flex;justify-content:space-between"><span>Mata Kuliah:</span><b>${course}</b></div>
       <div style="display:flex;justify-content:space-between"><span>Kelompok:</span><b>${group}</b></div>
-      ${!validDur ? `<div style="margin-top:8px;color:var(--bad);font-weight:700">Durasi harus 1–3 hari sesuai aturan Studio M4HAKAL.</div>` : ''}
+      ${!validDur ? `<div style="margin-top:8px;color:var(--bad);font-weight:700">⚠️ Durasi harus 1–3 hari sesuai aturan Studio M4HAKAL.</div>` : ''}
       <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #CBD5E1">
         <div style="font-weight:800;margin-bottom:4px">Daftar Alat Dipilih (${selectedItems.length} item):</div>
         ${selectedItems.length ? selectedItems.map(i => `<div style="font-size:12px">• ${i.name} <span style="color:var(--muted)">(${i.cat})</span></div>`).join('') : '<div style="color:var(--bad)">Belum ada alat dipilih.</div>'}
@@ -6588,7 +6581,7 @@ function submitEbon() {
   renderHome();
   renderAlatPage();
   openMyLoansModal();
-  showToast('E-Bon berhasil diajukan atas nama Izzulft! Silakan pantau status & QR Code.');
+  showToast('✅ E-Bon berhasil diajukan atas nama Izzulft! Silakan pantau status & QR Code.');
 
   // Persist to Backend REST API + SQLite Database if running
   fetch(getApiUrl('/api/loans'), {
@@ -6692,7 +6685,7 @@ function openSopTab(tab) {
                 + Buat E-Bon Peminjaman
               </button>
               <button class="btn btn-ghost" onclick="openAlatCat('Workshop ENG')">
-                Cek Daftar Alat Studio
+                🎙️ Cek Daftar Alat Studio
               </button>
             </div>
           </div>
@@ -6714,7 +6707,7 @@ function openSopTab(tab) {
                     <img class="v-logo-mahakal" src="assets/logos/mahakal-white.png" alt="MAHAKAL">
                   </div>
                   <button class="sop-theater-btn" id="sopTheaterBtn" onclick="toggleSopVideoTheater()" title="Ubah ukuran tampilan video (Normal / Mode Teater Lebar)">
-                    ${sopVideoTheaterMode ? 'Mode Standar' : 'Mode Teater'}
+                    ${sopVideoTheaterMode ? '🗗 Mode Standar' : '⤢ Mode Teater'}
                   </button>
                 </div>
               </div>
@@ -6733,8 +6726,8 @@ function openSopTab(tab) {
                 <!-- Glassmorphic Studio Play Overlay -->
                 <div class="sop-video-cover" id="sopVideoCover" onclick="sopVideoPlayFromCover()">
                   <div class="sop-cover-top">
-                    <span class="sop-cover-pill">OFFICIAL VIDEO TUTORIAL · 1080p FULL HD</span>
-                    <span class="sop-cover-pill">03:25</span>
+                    <span class="sop-cover-pill">🎬 OFFICIAL VIDEO TUTORIAL · 1080p FULL HD</span>
+                    <span class="sop-cover-pill">⏱️ 03:25</span>
                   </div>
                   <div class="sop-cover-play-wrap">
                     <div class="sop-cover-play-btn" title="Putar Video Tutorial Peminjaman Alat">▶</div>
@@ -6769,7 +6762,7 @@ function openSopTab(tab) {
                   <button class="sop-vbtn" id="sopSpeed-125" onclick="setSopVideoSpeed(1.25)">1.25x</button>
                   <button class="sop-vbtn" id="sopSpeed-15" onclick="setSopVideoSpeed(1.5)">1.5x</button>
                   <button class="sop-vbtn" onclick="toggleSopVideoPiP()" title="Picture-in-Picture (Layar Mengambang)">⧉ PiP</button>
-                  <button class="sop-vbtn" onclick="toggleSopVideoFullscreen()" title="Tampilkan Layar Penuh (Fullscreen)">Fullscreen</button>
+                  <button class="sop-vbtn" onclick="toggleSopVideoFullscreen()" title="Tampilkan Layar Penuh (Fullscreen)">⛶ Fullscreen</button>
                 </div>
               </div>
 
@@ -6844,7 +6837,7 @@ function bindSopVideoEvents() {
 
   vid.addEventListener('play', () => {
     if (cover) cover.classList.add('hidden');
-    if (playBtn) playBtn.innerHTML = 'Jeda Video';
+    if (playBtn) playBtn.innerHTML = '⏸ Jeda Video';
     if (statusTag) statusTag.textContent = 'VIDEO TUTORIAL PEMINJAMAN ALAT · SEDANG DIPUTAR';
   });
 
@@ -6905,7 +6898,7 @@ function setSopVideoSpeed(rate) {
   });
   const activeBtn = document.getElementById(map[rate]);
   if (activeBtn) activeBtn.classList.add('active-speed');
-  showToast(`Kecepatan putar Video Tutorial diatur ke ${rate}x`);
+  showToast(`⚡ Kecepatan putar Video Tutorial diatur ke ${rate}x`);
 }
 
 function toggleSopVideoTheater() {
@@ -6913,7 +6906,7 @@ function toggleSopVideoTheater() {
   const grid = document.getElementById('sopPeminjamanGrid');
   const btn = document.getElementById('sopTheaterBtn');
   if (grid) grid.classList.toggle('theater-mode', sopVideoTheaterMode);
-  if (btn) btn.innerHTML = sopVideoTheaterMode ? 'Mode Standar' : 'Mode Teater';
+  if (btn) btn.innerHTML = sopVideoTheaterMode ? '🗗 Mode Standar' : '⤢ Mode Teater';
 }
 
 async function toggleSopVideoPiP() {
@@ -6927,7 +6920,7 @@ async function toggleSopVideoPiP() {
       await vid.requestPictureInPicture();
     }
   } catch (e) {
-    showToast('Mode Picture-in-Picture siap digunakan saat video sedang diputar.');
+    showToast('ℹ️ Mode Picture-in-Picture siap digunakan saat video sedang diputar.');
   }
 }
 
@@ -6958,7 +6951,7 @@ function renderSaranList() {
         </button>
       </div>
       <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px;line-height:1.5">“${s.reason}”</p>
-      <div style="margin-top:8px;font-size:11.5px;font-weight:700;color:var(--ok)">Status: ${s.status}</div>
+      <div style="margin-top:8px;font-size:11.5px;font-weight:700;color:var(--ok)">📌 Status: ${s.status}</div>
     </div>
   `).join('');
 }
@@ -6971,7 +6964,7 @@ function submitSaran() {
   const prodi = USER_PROFILE.prodi || 'Manajemen Teknik Studio Produksi';
 
   if (!item || !reason) {
-    showToast('Mohon isi nama/seri alat dan urgensi kebutuhan produksi terlebih dahulu.');
+    showToast('⚠️ Mohon isi nama/seri alat dan urgensi kebutuhan produksi terlebih dahulu.');
     return;
   }
 
@@ -6991,7 +6984,7 @@ function submitSaran() {
   document.getElementById('saranNamaAlat').value = '';
   document.getElementById('saranAlasan').value = '';
   renderSaranList();
-  showToast('Terima kasih Izzulft! Usulan pengadaan alat berhasil tercatat.');
+  showToast('🎉 Terima kasih Izzulft! Usulan pengadaan alat berhasil tercatat.');
 
   // Persist to Backend REST API + SQLite Database if running
   fetch(getApiUrl('/api/suggestions'), {
@@ -7039,8 +7032,8 @@ function renderTeam() {
         </div>
         <div style="font-size:13px;font-weight:700;color:var(--royal);margin-top:2px">${t.role}</div>
         <div style="font-size:12px;color:var(--muted);margin-top:3px">${t.area}</div>
-        <button class="btn btn-ghost" style="margin-top:10px;padding:6px 11px;font-size:11.5px" onclick="showToast('Menghubungi ${t.name} (${t.role})…')">
-          Hubungi Koordinator
+        <button class="btn btn-ghost" style="margin-top:10px;padding:6px 11px;font-size:11.5px" onclick="showToast('💬 Menghubungi ${t.name} (${t.role})…')">
+          💬 Hubungi Koordinator
         </button>
       </div>
     </div>
@@ -7215,7 +7208,7 @@ function renderMyLoansModal() {
         <div style="display:grid;grid-template-columns:1fr auto;gap:16px;margin-top:14px;align-items:center;background:#F8FAFC;padding:14px;border-radius:12px">
           <div>
             <div style="font-size:12.5px;font-weight:700;margin-bottom:6px">Daftar Ruang / Peralatan (${l.start} s.d. ${l.end}):</div>
-            ${l.items.map(it => `<div style="font-size:12.5px;color:var(--ink-soft)">• ${it}</div>`).join('')}
+            ${l.items.map(it => `<div style="font-size:12.5px;color:var(--ink-soft)">✓ ${it}</div>`).join('')}
           </div>
           <div style="text-align:center;background:#fff;padding:8px;border-radius:10px;border:1px solid var(--line)">
             ${makeQrSvg(l.id)}
@@ -7224,8 +7217,8 @@ function renderMyLoansModal() {
         </div>
 
         <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
-          <button class="btn btn-ghost" style="font-size:12.5px;padding:8px 14px" onclick="openLoanPrintPreview(${idx})">Cetak Lembar Bon Resmi</button>
-          ${nextAction ? `<button class="btn btn-pri" style="font-size:12.5px;padding:8px 14px" onclick="advanceLoanStatus(${idx})">Simulasi Laboran: ${nextAction}</button>` : ''}
+          <button class="btn btn-ghost" style="font-size:12.5px;padding:8px 14px" onclick="openLoanPrintPreview(${idx})">🖨️ Cetak Lembar Bon Resmi</button>
+          ${nextAction ? `<button class="btn btn-pri" style="font-size:12.5px;padding:8px 14px" onclick="advanceLoanStatus(${idx})">⚡ Simulasi Laboran: ${nextAction}</button>` : ''}
         </div>
       </div>
     `;
@@ -7237,13 +7230,13 @@ function advanceLoanStatus(idx) {
   if (!loan) return;
   if (loan.status === 'Menunggu') {
     loan.status = 'Disetujui';
-    showToast(`Bon ${loan.id} disetujui Koordinator! QR Code siap dipindai di studio.`);
+    showToast(`✅ Bon ${loan.id} disetujui Koordinator! QR Code siap dipindai di studio.`);
   } else if (loan.status === 'Disetujui') {
     loan.status = 'Dipinjam';
-    showToast(`Alat untuk Bon ${loan.id} telah diserahkan kepada Izzulft.`);
+    showToast(`📦 Alat untuk Bon ${loan.id} telah diserahkan kepada Izzulft.`);
   } else if (loan.status === 'Dipinjam') {
     loan.status = 'Selesai';
-    showToast(`Alat telah dikembalikan tepat waktu oleh Izzulft. Kondisi: Baik.`);
+    showToast(`✔️ Alat telah dikembalikan tepat waktu oleh Izzulft. Kondisi: Baik.`);
   }
   renderHome();
   renderMyLoansModal();
@@ -7353,8 +7346,8 @@ function renderPrintableBon(data) {
             <tr>
               <td style="border:1px solid #111;padding:6px;text-align:center">${i + 1}</td>
               <td style="border:1px solid #111;padding:6px">${item}</td>
-              <td style="border:1px solid #111;padding:6px;text-align:center">[X] Baik</td>
-              <td style="border:1px solid #111;padding:6px;text-align:center">[ ] Baik</td>
+              <td style="border:1px solid #111;padding:6px;text-align:center">☑ Baik</td>
+              <td style="border:1px solid #111;padding:6px;text-align:center">☐ Baik</td>
             </tr>
           `).join('')}
         </tbody>
@@ -7458,16 +7451,17 @@ function applyTheme(theme, save = true) {
   }
 
   // Update Navbar Toggle Button
-  const moonSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
-  const sunSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
-  if (iconEl) iconEl.innerHTML = isDark ? sunSvg : moonSvg;
+  const iconEl = document.getElementById('themeIcon');
+  const labelEl = document.getElementById('themeLabel');
+  const btnEl = document.getElementById('themeToggleBtn');
+  if (iconEl) iconEl.textContent = isDark ? '☀️' : '🌙';
   if (labelEl) labelEl.textContent = isDark ? 'Mode Terang' : 'Mode Gelap';
   if (btnEl) btnEl.setAttribute('title', isDark ? 'Beralih ke Mode Terang (Light Mode)' : 'Beralih ke Mode Gelap (Dark Mode)');
 
   // Update Profile Modal Toggle Button
   const profIcon = document.getElementById('profileThemeIcon');
   const profLabel = document.getElementById('profileThemeLabel');
-  if (profIcon) profIcon.innerHTML = isDark ? sunSvg : moonSvg;
+  if (profIcon) profIcon.textContent = isDark ? '☀️' : '🌙';
   if (profLabel) profLabel.textContent = isDark ? 'Mode Terang' : 'Mode Gelap';
 
   if (save) {
@@ -7481,7 +7475,7 @@ function toggleTheme() {
   const isCurrentlyDark = document.documentElement.classList.contains('dark');
   const nextTheme = isCurrentlyDark ? 'light' : 'dark';
   applyTheme(nextTheme, true);
-  showToast(nextTheme === 'dark' ? 'Mode Gelap aktif' : 'Mode Terang aktif');
+  showToast(nextTheme === 'dark' ? '🌙 Mode Gelap aktif' : '☀️ Mode Terang aktif');
 }
 
 function initThemeEngine() {
