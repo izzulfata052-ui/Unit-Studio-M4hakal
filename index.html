@@ -570,6 +570,374 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
 }
 .user-strip-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
+/* ===== MODERN BENTO GRID (STATUS RUANG, KUOTA BON & PINTASAN ALAT) ===== */
+.bento-home-wrap {
+  margin: 24px 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.bento-grid-main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+.bento-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.bento-card-rooms {
+  grid-column: span 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bento-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #F1F5F9;
+}
+.bento-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bento-pulse-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  display: inline-block;
+  animation: pulseDot 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2); }
+  50% { transform: scale(1.18); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.35); }
+}
+.bento-title {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: #0F172A;
+  margin: 0;
+}
+.bento-subtitle {
+  font-size: 12.5px;
+  color: #64748B;
+  margin-top: 2px;
+}
+.bento-rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.bento-room-item {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+.bento-room-item:hover {
+  background: #ffffff;
+  border-color: #CBD5E1;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+  transform: translateY(-2px);
+}
+.bento-room-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.bento-room-name {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.25;
+}
+.bento-room-meta {
+  font-size: 11.8px;
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  line-height: 1.35;
+}
+.bento-room-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+/* Bento Kuota Bon & Profil Izzulft */
+.bento-card-quota {
+  grid-column: span 4;
+  background: radial-gradient(circle at 85% 15%, rgba(212, 255, 0, 0.2), transparent 45%),
+              linear-gradient(145deg, #072A6C 0%, #0E47A1 55%, #1565C0 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 40px rgba(7, 42, 108, 0.24);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+.bento-quota-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 99px;
+  color: #E2E8F0;
+  width: fit-content;
+}
+.bento-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bento-avatar {
+  width: 48px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #D4FF00, #A3E635);
+  color: #072A6C;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 14px rgba(212, 255, 0, 0.35);
+  flex-shrink: 0;
+}
+.bento-user-name {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: #ffffff;
+}
+.bento-user-id {
+  font-size: 12px;
+  color: #CBD5E1;
+  font-weight: 600;
+}
+.bento-user-prodi {
+  font-size: 11.5px;
+  color: #93C5FD;
+  margin-top: 1px;
+}
+.bento-quota-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 16px;
+  backdrop-filter: blur(8px);
+}
+.bento-quota-metric {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.bento-quota-num {
+  font-size: 26px;
+  font-weight: 800;
+  color: #D4FF00;
+  letter-spacing: -0.5px;
+}
+.bento-quota-lbl {
+  font-size: 12px;
+  color: #E2E8F0;
+  font-weight: 600;
+}
+.bento-progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 6px 0 10px;
+}
+.bento-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4FF00, #38BDF8);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+.bento-quota-desc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.bento-status-pill {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.22);
+  color: #6EE7B7;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.bento-quota-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.bento-btn-loans {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  min-height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.bento-btn-loans:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+.bento-btn-new {
+  background: #D4FF00;
+  color: #072A6C;
+  min-height: 46px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(212, 255, 0, 0.35);
+  transition: all 0.2s ease;
+}
+.bento-btn-new:hover {
+  background: #c3eb00;
+  transform: translateY(-1px);
+}
+
+/* Bento Row 2: Pintasan Alat (Modular 3-Kolom) */
+.bento-shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.bento-card-shortcut {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 22px;
+  border-radius: 22px;
+}
+.bento-card-shortcut:hover {
+  transform: translateY(-4px);
+  border-color: #93C5FD;
+  box-shadow: 0 16px 36px rgba(26, 115, 232, 0.09);
+}
+.bento-shortcut-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+.bento-shortcut-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: #1A73E8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.bento-shortcut-title {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.bento-shortcut-desc {
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.5;
+}
+.bento-shortcut-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px dashed #E2E8F0;
+  margin-top: 6px;
+}
+.bento-cta {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A73E8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Bento Responsive Media Queries */
+@media (max-width: 1023px) {
+  .bento-grid-main {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .bento-card-rooms,
+  .bento-card-quota {
+    grid-column: span 1;
+  }
+  .bento-shortcuts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .bento-rooms-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .bento-shortcuts-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .bento-card {
+    padding: 18px !important;
+    border-radius: 20px !important;
+  }
+}
+
 /* ===== SPLIT POSTER BANNERS ===== */
 .poster-grid {
   display: grid;
@@ -2244,7 +2612,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
       </div>
 
       <div class="editorial-divider"></div>
-      <div class="user-strip">
+      <div class="user-strip" style="margin-bottom:20px">
         <div class="user-strip-left">
           <div class="avatar" style="width:38px;height:38px;font-size:14px">IZ</div>
           <div>
@@ -2253,67 +2621,15 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
           </div>
         </div>
         <div class="user-strip-actions">
-          <button class="btn btn-ghost" onclick="openAlatCat('Workshop ENG')">🎙️ Lihat Daftar Alat Workshop ENG</button>
-          <button class="btn btn-ghost" onclick="openMyLoansModal()">📲 Status Bon &amp; QR Saya</button>
-          <button class="btn btn-pri" onclick="switchPage('formulir');switchBonTab('ebon')">+ Buat E-Bon Peminjaman</button>
+          <button class="btn btn-ghost" onclick="openAlatCat('Workshop ENG')">🎙️ Daftar Alat ENG</button>
+          <button class="btn btn-ghost" onclick="openMyLoansModal()">📲 Status Bon &amp; QR</button>
+          <button class="btn btn-pri" onclick="switchPage('formulir');switchBonTab('ebon')">+ Buat E-Bon</button>
         </div>
       </div>
     </div>
 
-    <!-- Split Poster Cards -->
-    <div class="poster-grid">
-      <div class="poster-card" onclick="openAlatCat('Workshop ENG')">
-        <div class="poster-top-tab">
-          <span>📡 Unit Studio &amp; Pemancar</span>
-          <div class="logos">
-            <img class="tab-logo-bukan" src="assets/logos/bukan-official-black.png" alt="Bukan Official">
-            <img class="tab-logo-mahakal" src="assets/logos/mahakal-black.png" alt="MAHAKAL">
-          </div>
-        </div>
-        <div class="poster-body">
-          <div class="poster-sub">Katalog Inventaris Real-Time</div>
-          <div class="poster-title">Daftar<br>Peralatan<br>Studio</div>
-          <div class="poster-desc">45 tipe peralatan resmi (37 Alat Workshop ENG): Mikrofon Sennheiser/Shure/AKG, Wireless EW-D/G4/Saramonic, Yamaha MG16XU/MG10XU, Libec LX-7/650EX, Aten UC3020, DJI Ronin S2, Hollyland Mars 400S Pro, Ezcap 262 U3, Sony AC V700, Canon 7D II/XA-65, Sony a7 IV/PXW-X70/Z190, Hyperdeck, UGREEN SATA, ATEM 2M/E &amp; AVMATRIX.</div>
-        </div>
-        <div class="poster-footer">
-          <span class="poster-cta">Buka Daftar Alat Workshop →</span>
-          <span style="font-size:12px;font-weight:700;color:#DCE7FF">Lengkap dengan #Katalog Resmi</span>
-        </div>
-        <svg class="poster-art" width="170" height="170" viewBox="0 0 120 120" fill="none">
-          <rect x="14" y="34" width="66" height="48" rx="8" stroke="#fff" stroke-width="5"/>
-          <path d="M80 48L106 34V82L80 68V48Z" stroke="#D4FF00" stroke-width="5"/>
-          <circle cx="46" cy="58" r="12" stroke="#D4FF00" stroke-width="4"/>
-        </svg>
-      </div>
-
-      <div class="poster-card" onclick="switchPage('formulir')">
-        <div class="poster-top-tab">
-          <span>📋 Layanan Administrasi Digital</span>
-          <div class="logos">
-            <img class="tab-logo-bukan" src="assets/logos/bukan-official-black.png" alt="Bukan Official">
-            <img class="tab-logo-mahakal" src="assets/logos/mahakal-black.png" alt="MAHAKAL">
-          </div>
-        </div>
-        <div class="poster-body">
-          <div class="poster-sub">Unit Studio dan Pemancar M4HAKAL</div>
-          <div class="poster-title">Formulir<br>Peminjaman<br>Alat &amp; Bon</div>
-          <div class="poster-desc">Ajukan Bon Pemakaian Ruang/Alat Studio TV, Radio, Workshop ENG, Docking Video &amp; OB Van secara online atas nama <b>Izzulft</b> atau cetak PDF resmi.</div>
-        </div>
-        <div class="poster-footer">
-          <span class="poster-cta">Buka Formulir &amp; E-Bon →</span>
-          <span style="font-size:12px;font-weight:700;color:#DCE7FF">6 Template Bon Resmi + QR</span>
-        </div>
-        <svg class="poster-art" width="170" height="170" viewBox="0 0 120 120" fill="none">
-          <rect x="24" y="16" width="68" height="88" rx="8" stroke="#fff" stroke-width="5"/>
-          <line x1="38" y1="38" x2="78" y2="38" stroke="#D4FF00" stroke-width="5" stroke-linecap="round"/>
-          <line x1="38" y1="54" x2="78" y2="54" stroke="#D4FF00" stroke-width="5" stroke-linecap="round"/>
-          <line x1="38" y1="70" x2="62" y2="70" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- Live Metrics -->
-    <div class="stats-grid">
+    <!-- Live Metrics Strip -->
+    <div class="stats-grid" style="margin-bottom:24px">
       <div class="stat-card">
         <div class="stat-ic" style="background:#E8F0FE;color:#1A73E8">🎙️</div>
         <div>
@@ -2344,15 +2660,110 @@ button { cursor: pointer; border: none; background: none; color: inherit; }
       </div>
     </div>
 
-    <!-- Live Studio Availability Snapshot -->
-    <div class="section-hdr">
-      <div>
-        <h3>Status Ruang Studio &amp; Fasilitas M4HAKAL Hari Ini</h3>
-        <p>Minggu, 18 Oktober 2026 · Pantauan langsung pemakaian ruang produksi</p>
+    <!-- ==================== BENTO GRID: STATUS RUANG, KUOTA BON & PINTASAN ALAT ==================== -->
+    <div class="bento-home-wrap">
+      <!-- Bento Row 1: Status Ruang Studio (Hero Bento, 8 cols) + Kuota Bon & Profil (4 cols) -->
+      <div class="bento-grid-main">
+        <!-- Bento Card 1: Status Ruang Studio & Fasilitas M4HAKAL (8 Cols) -->
+        <div class="bento-card bento-card-rooms">
+          <div class="bento-head">
+            <div class="bento-title-group">
+              <span class="bento-pulse-dot"></span>
+              <div>
+                <h3 class="bento-title">Status Ruang Studio &amp; Fasilitas M4HAKAL</h3>
+                <p class="bento-subtitle">Pantauan operasional studio TV, Radio, Auditorium &amp; OB Van Hari Ini</p>
+              </div>
+            </div>
+            <button class="btn btn-ghost bento-head-btn" style="min-height:38px;padding:7px 14px;font-size:12.5px" onclick="switchPage('jadwal')">Lihat Jadwal Lengkap →</button>
+          </div>
+
+          <!-- 6 Studio Rooms rendered inside Bento -->
+          <div class="bento-rooms-grid" id="homeRoomsStrip"></div>
+        </div>
+
+        <!-- Bento Card 2: Kuota Bon & Profil Civitas Izzulft (4 Cols) -->
+        <div class="bento-card bento-card-quota">
+          <div class="bento-quota-badge">STATUS PEMINJAMAN RESMI</div>
+          <div class="bento-user-profile">
+            <div class="avatar bento-avatar">IZ</div>
+            <div>
+              <div class="bento-user-name">Izzulft</div>
+              <div class="bento-user-id">NIM 024231441867 · Angkatan 2024</div>
+              <div class="bento-user-prodi">D4 Manajemen Teknik Studio Produksi</div>
+            </div>
+          </div>
+
+          <div class="bento-quota-box">
+            <div class="bento-quota-metric">
+              <span class="bento-quota-num" id="bentoQuotaVal">1 / 3</span>
+              <span class="bento-quota-lbl">Kuota Bon Aktif Terpakai</span>
+            </div>
+            <div class="bento-progress-track">
+              <div class="bento-progress-fill" id="bentoQuotaBar" style="width: 33.3%"></div>
+            </div>
+            <div class="bento-quota-desc">
+              <span class="bento-status-pill">🟢 Bebas Tanggungan</span>
+              <span style="font-size:12px;color:#E2E8F0">2 Slot Peminjaman Tersedia</span>
+            </div>
+          </div>
+
+          <div class="bento-quota-actions">
+            <button class="btn bento-btn-loans" onclick="openMyLoansModal()">
+              <span>📲 Status Bon &amp; QR Code Saya</span>
+              <span class="badge b-info" id="bentoActiveCount">2</span>
+            </button>
+            <button class="btn bento-btn-new" onclick="switchPage('formulir');switchBonTab('ebon')">
+              + Buat E-Bon Digital Baru
+            </button>
+          </div>
+        </div>
       </div>
-      <button class="btn btn-ghost" onclick="switchPage('jadwal')">Lihat Jadwal Lengkap →</button>
+
+      <!-- Bento Row 2: Pintasan Alat & Inventaris Siaran (Modular 3-Kolom Desktop) -->
+      <div class="bento-shortcuts-grid">
+        <!-- Shortcut 1: Workshop ENG -->
+        <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Workshop ENG')">
+          <div class="bento-shortcut-icon" style="background:#EBF5FF;color:#1A73E8">🎙️</div>
+          <div class="bento-shortcut-body">
+            <div class="bento-shortcut-tag">Katalog Peralatan</div>
+            <h4 class="bento-shortcut-title">Daftar Alat Workshop ENG</h4>
+            <p class="bento-shortcut-desc">37 tipe peralatan liputan broadcast: Sony PXW-Z190, a7 IV, Sennheiser MKH 416, Libec LX-7, Yamaha MG16XU, Aten UC3020.</p>
+          </div>
+          <div class="bento-shortcut-foot">
+            <span class="bento-cta">Buka Workshop ENG →</span>
+            <span class="badge b-ok">37 Unit Siap</span>
+          </div>
+        </div>
+
+        <!-- Shortcut 2: Docking Video & OB Van -->
+        <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Docking & OB Van')">
+          <div class="bento-shortcut-icon" style="background:#F0FDF4;color:#16A34A">🎛️</div>
+          <div class="bento-shortcut-body">
+            <div class="bento-shortcut-tag">Mobile Production</div>
+            <h4 class="bento-shortcut-title">Daftar Alat Docking &amp; OB Van</h4>
+            <p class="bento-shortcut-desc">Master Control &amp; Live Switcher: BMD ATEM 2M/E Production 4K, URSA Broadcast, Hollyland Mars 400S, Multicore Cable.</p>
+          </div>
+          <div class="bento-shortcut-foot">
+            <span class="bento-cta">Buka Docking &amp; OB Van →</span>
+            <span class="badge b-info">Live Setup</span>
+          </div>
+        </div>
+
+        <!-- Shortcut 3: Workshop Lighting & SOP Studio -->
+        <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Workshop Lighting')">
+          <div class="bento-shortcut-icon" style="background:#FFFBEB;color:#D97706">💡</div>
+          <div class="bento-shortcut-body">
+            <div class="bento-shortcut-tag">Tata Cahaya &amp; FOH</div>
+            <h4 class="bento-shortcut-title">Daftar Alat Workshop Lighting</h4>
+            <p class="bento-shortcut-desc">Fresnel Tungsten, ARRI SkyPanel S60-C, L7-D, Avolites Titan Console, Sekonic Light Meter, C-Stand studio.</p>
+          </div>
+          <div class="bento-shortcut-foot">
+            <span class="bento-cta">Buka Workshop Lighting →</span>
+            <span class="badge b-ok">Studio Ready</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="rooms-strip" id="homeRoomsStrip"></div>
   </section>
 
   <!-- ==================== 2. JADWAL PEMAKAIAN STUDIO ==================== -->
@@ -4915,36 +5326,54 @@ function quickAddEquipToBon(id) {
    ========================================================================= */
 function renderHome() {
   const activeCount = state.loans.filter(l => ['Menunggu', 'Disetujui', 'Dipinjam'].includes(l.status)).length;
-  document.getElementById('activeLoanCount').textContent = activeCount;
-  document.getElementById('statMyQuota').textContent = `${activeCount} / 3`;
-  document.getElementById('statTotalItems').textContent = `${EQUIPMENT_DATA.length} Tipe`;
+  const activeEl = document.getElementById('activeLoanCount');
+  if (activeEl) activeEl.textContent = activeCount;
+  const statQuotaEl = document.getElementById('statMyQuota');
+  if (statQuotaEl) statQuotaEl.textContent = `${activeCount} / 3`;
+  const statTotalEl = document.getElementById('statTotalItems');
+  if (statTotalEl) statTotalEl.textContent = `${EQUIPMENT_DATA.length} Tipe`;
+
+  // Bento Quota Card dynamic elements
+  const bentoQuotaVal = document.getElementById('bentoQuotaVal');
+  if (bentoQuotaVal) bentoQuotaVal.textContent = `${activeCount} / 3`;
+  const bentoActiveCount = document.getElementById('bentoActiveCount');
+  if (bentoActiveCount) bentoActiveCount.textContent = activeCount;
+  const bentoQuotaBar = document.getElementById('bentoQuotaBar');
+  if (bentoQuotaBar) {
+    const pct = Math.min(100, Math.round((activeCount / 3) * 100));
+    bentoQuotaBar.style.width = `${pct}%`;
+  }
 
   const rooms = [
-    { name: 'Workshop ENG (Alat Liputan & Audio)', status: 'Buka Layanan', cls: 'b-ok', next: 'Sennheiser MKH 416, Scarlett 2i2, iCOM IC-V86, Yamaha MG16XU siap pinjam', action: () => openAlatCat('Workshop ENG') },
-    { name: 'Studio TV 1 & Sub Control', status: 'Siap Pakai', cls: 'b-ok', next: 'Sesi berikutnya: 13.00 WIB (Multi-Cam)', action: () => selectBonTemplate(0) },
-    { name: 'Studio TV 2 & Audio Control', status: 'Siap Pakai', cls: 'b-ok', next: 'Tersedia untuk booking praktikum', action: () => selectBonTemplate(1) },
-    { name: 'Studio Radio 1 & 2', status: 'Siap Pakai', cls: 'b-ok', next: 'Sennheiser MD 441 U, MD 421 II & Shure SM 94/81 siap pakai', action: () => selectBonTemplate(2) },
-    { name: 'Docking Video & OB Van', status: 'Terbatas', cls: 'b-warn', next: 'BMD ATEM 4K & URSA Broadcast siap digunakan', action: () => openAlatCat('Docking & OB Van') },
-    { name: 'Studio 3 & Auditorium', status: 'Siap Pakai', cls: 'b-ok', next: 'Lighting ARRI & FOH Auditorium siap digunakan', action: () => openAlatCat('Workshop Lighting') }
+    { name: 'Workshop ENG', cat: 'Alat Liputan & Audio Siaran', status: 'Buka Layanan', cls: 'b-ok', next: 'Sennheiser MKH 416, Scarlett 2i2, iCOM, Yamaha MG16XU siap', action: "openAlatCat('Workshop ENG')" },
+    { name: 'Studio TV 1', cat: 'Multi-Cam HD Live Broadcast', status: 'Siap Pakai', cls: 'b-ok', next: 'Sesi berikutnya: 13.00 WIB (Talkshow Berita)', action: "selectBonTemplate(0)" },
+    { name: 'Studio TV 2', cat: 'Virtual Studio & Green Screen', status: 'Siap Pakai', cls: 'b-ok', next: 'Tersedia untuk praktikum produksi kreatif', action: "selectBonTemplate(1)" },
+    { name: 'Studio Radio 1 & 2', cat: 'On-Air Broadcast & Podcast', status: 'Siap Pakai', cls: 'b-ok', next: 'Sennheiser MD 441 U, Shure SM 94 siap digunakan', action: "selectBonTemplate(2)" },
+    { name: 'Docking Video & OB Van', cat: 'Outside Broadcast Truck', status: 'Terbatas', cls: 'b-warn', next: 'BMD ATEM 4K & URSA Broadcast standby di dock', action: "openAlatCat('Docking & OB Van')" },
+    { name: 'Studio 3 & Auditorium', cat: 'Grand Production & FOH', status: 'Siap Pakai', cls: 'b-ok', next: 'Lighting ARRI & FOH Console siap pakai', action: "openAlatCat('Workshop Lighting')" }
   ];
 
-  document.getElementById('homeRoomsStrip').innerHTML = rooms.map((r, i) => `
-    <div class="room-card">
-      <div>
-        <div class="room-head">
-          <div>
-            <div class="room-name">${r.name}</div>
+  const stripEl = document.getElementById('homeRoomsStrip');
+  if (stripEl) {
+    stripEl.innerHTML = rooms.map(r => `
+      <div class="bento-room-item">
+        <div>
+          <div class="bento-room-head">
+            <div>
+              <div class="bento-room-name">${r.name}</div>
+              <div class="bento-room-cat">${r.cat}</div>
+            </div>
+            <span class="badge ${r.cls}">${r.status}</span>
           </div>
-          <span class="badge ${r.cls}">${r.status}</span>
+          <div class="bento-room-meta" style="margin-top:8px">📌 ${r.next}</div>
         </div>
-        <div class="room-meta" style="margin-top:10px">📌 ${r.next}</div>
+        <div class="bento-room-actions">
+          <button class="btn btn-ghost" style="flex:1;padding:7px 10px;font-size:12px;min-height:38px" onclick="switchPage('jadwal')">Cek Jadwal</button>
+          <button class="btn btn-pri" style="flex:1;padding:7px 10px;font-size:12px;min-height:38px" onclick="${r.action}">Pilih Ruang</button>
+        </div>
       </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-ghost" style="flex:1;padding:8px 10px;font-size:12.5px" onclick="switchPage('jadwal')">Cek Jadwal</button>
-        <button class="btn btn-pri" style="flex:1;padding:8px 10px;font-size:12.5px" onclick="openAlatCat('Workshop ENG')">Lihat Alat</button>
-      </div>
-    </div>
-  `).join('');
+    `).join('');
+  }
 }
 
 /* =========================================================================
