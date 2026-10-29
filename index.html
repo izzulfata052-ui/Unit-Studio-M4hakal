@@ -1878,6 +1878,176 @@ html.dark .field input[readonly] {
   color: #94A3B8;
 }
 
+/* ===== SMOOTH MOVING TEAM STAGE CAROUSEL (SESUAI REFERENSI MENU DAFTAR ALAT) ===== */
+.team-stage-outer {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  margin: 8px auto 24px;
+  background: transparent;
+}
+.team-carousel-shell {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 34px 0 42px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.team-carousel-shell::before,
+.team-carousel-shell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 86px;
+  z-index: 12;
+  pointer-events: none;
+}
+.team-carousel-shell::before {
+  left: 0;
+  background: linear-gradient(90deg, #ffffff 10%, rgba(255, 255, 255, 0) 100%);
+}
+.team-carousel-shell::after {
+  right: 0;
+  background: linear-gradient(270deg, #ffffff 10%, rgba(255, 255, 255, 0) 100%);
+}
+html.dark .team-carousel-shell::before {
+  background: linear-gradient(90deg, #141822 10%, rgba(20, 24, 34, 0) 100%);
+}
+html.dark .team-carousel-shell::after {
+  background: linear-gradient(270deg, #141822 10%, rgba(20, 24, 34, 0) 100%);
+}
+.team-carousel-track {
+  display: flex;
+  gap: 24px;
+  will-change: transform;
+  cursor: grab;
+  align-items: center;
+}
+.team-carousel-track.dragging {
+  cursor: grabbing;
+}
+.team-carousel-item {
+  position: relative;
+  flex: 0 0 auto;
+  width: 220px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 10px 10px 14px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  transform: scale(0.92);
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.35, 0.64, 1),
+    box-shadow 0.3s cubic-bezier(0.34, 1.35, 0.64, 1),
+    border-color 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+html.dark .team-carousel-item {
+  background: #19202C;
+  border-color: #263143;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+.team-carousel-item.active,
+.team-carousel-item:hover {
+  transform: scale(1.12);
+  box-shadow:
+    0 24px 50px rgba(15, 23, 42, 0.18),
+    -10px 0 24px rgba(15, 23, 42, 0.05),
+    10px 0 24px rgba(15, 23, 42, 0.05);
+  border-color: rgba(26, 86, 219, 0.45);
+  z-index: 10;
+}
+.team-carousel-item:hover {
+  transform: scale(1.15);
+  box-shadow:
+    0 28px 58px rgba(15, 23, 42, 0.24),
+    -12px 0 28px rgba(15, 23, 42, 0.07),
+    12px 0 28px rgba(15, 23, 42, 0.07);
+  z-index: 15;
+}
+.team-stage-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+html.dark .team-stage-photo-wrap {
+  background: #1e2638;
+}
+.team-stage-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.team-carousel-item:hover .team-stage-photo {
+  transform: scale(1.04);
+}
+.team-stage-info {
+  padding: 12px 6px 2px;
+  text-align: center;
+  width: 100%;
+}
+.team-stage-name {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  text-align: center;
+  display: block;
+}
+html.dark .team-stage-name {
+  color: #F1F5F9;
+}
+.team-stage-hover-pill {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%) translateY(8px);
+  background: rgba(17, 24, 39, 0.90);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 99px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  z-index: 20;
+}
+.team-carousel-item:hover .team-stage-hover-pill {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.team-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F8FAFC;
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+html.dark .team-control-bar {
+  background: #19202C !important;
+  border-color: #263143;
+}
+
 /* ===== TIM UNIT STUDIO & PEMANCAR ROSTER ===== */
 .team-grid {
   display: grid;
@@ -4236,7 +4406,37 @@ html.dark .profile-theme-row {
 
   <!-- ==================== 7. TIM UNIT STUDIO & PEMANCAR M4HAKAL ==================== -->
   <section class="page-section" id="page-tim">
-    <div class="team-grid" id="teamGridContainer"></div>
+    <div class="showcase-wrap">
+      <!-- Centered Section Title (Exact Match to Menu Daftar Alat) -->
+      <h3 class="showcase-title">TIM UNIT STUDIO &amp; PEMANCAR M4HAKAL</h3>
+      <p class="showcase-sub">Kru teknis &amp; operasional produksi penyiaran kampus M4HAKAL</p>
+
+      <!-- Smooth Moving Team Stage Carousel (Sesuai Referensi Menu Daftar Alat) -->
+      <div class="team-stage-outer">
+        <div class="team-carousel-shell" id="teamCarouselShell">
+          <div class="team-carousel-track" id="teamCarouselTrack"></div>
+        </div>
+      </div>
+
+      <!-- Action & Control Bar -->
+      <div class="team-control-bar">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="status-dot"></span>
+          <span style="font-size:13px;font-weight:700;color:var(--ink-soft)">13 Kru Terverifikasi · Rotasi Otomatis Aktif</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <button class="btn btn-ghost" id="btnToggleTeamAutoSlide" style="padding:8px 14px;font-size:12.5px" onclick="toggleTeamAutoSlide()">
+            Jeda Rotasi
+          </button>
+        </div>
+      </div>
+
+      <!-- Thin Divider Line Matching Reference Screenshots -->
+      <hr class="mmtc-stage-divider">
+
+      <!-- Complete Roster Grid (Minimalist: Photo & Centered Large Name) -->
+      <div class="team-grid" id="teamGridContainer"></div>
+    </div>
   </section>
 
 </main>
@@ -6064,7 +6264,9 @@ function switchPage(pageId) {
   document.getElementById('heroTitle').textContent = meta.title;
   document.getElementById('heroSubtitle').textContent = meta.sub;
   updateMenuHeroBanner(pageId);
-  if (pageId === 'tim') renderTeam();
+  if (pageId === 'tim') { renderTeam();
+  rebuildTeamStageCarousel();
+  initTeamStageEvents(); rebuildTeamStageCarousel(); initTeamStageEvents(); }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -7406,6 +7608,225 @@ function toggleVoteSaran(id) {
     .catch(() => {});
 }
 
+/* =========================================================================
+   AUTHENTIC SMOOTH MOVING TEAM STAGE CAROUSEL ENGINE (SESUAI MENU DAFTAR ALAT)
+   ========================================================================= */
+const TEAM_GAP = 24;
+const TEAM_AUTO_SPEED = 0.85; // Smooth slow glide matching studio.mmtc.ac.id
+const TEAM_RESUME_DELAY = 1000;
+
+let teamStageItems = [];
+let teamItemWidth = 220;
+let teamStep = 244;
+let teamPos = 0;
+let teamAuto = true;
+let teamDragging = false;
+let teamHoverPaused = false;
+let teamHoveredNode = null;
+let teamLastX = 0;
+let teamDragDist = 0;
+let teamVelocity = 0;
+let teamResumeTimer = null;
+let teamLastActive = null;
+let teamLoopStarted = false;
+
+function rebuildTeamStageCarousel() {
+  const shell = document.getElementById('teamCarouselShell');
+  const track = document.getElementById('teamCarouselTrack');
+  if (!shell || !track) return;
+
+  teamStageItems = TEAM_DATA;
+
+  // Triple array for seamless infinite loop in both directions
+  const loopList = [...teamStageItems, ...teamStageItems, ...teamStageItems];
+
+  track.innerHTML = loopList.map((item, loopIdx) => {
+    const realIdx = loopIdx % teamStageItems.length;
+    return `
+      <div class="team-carousel-item" data-team-idx="${realIdx}" data-loop-idx="${loopIdx}"
+           onmouseenter="onTeamStageItemEnter(this, ${realIdx}, event)"
+           onmouseleave="onTeamStageItemLeave(this)"
+           onclick="onTeamStageItemClick(${realIdx})">
+        <div class="team-stage-photo-wrap">
+          <img src="${item.photo}" alt="${item.name}" loading="lazy" class="team-stage-photo" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'team-fallback\\'>${item.name.charAt(0)}</span>';">
+          <span class="team-stage-hover-pill">${item.name} · Lihat Foto</span>
+        </div>
+        <div class="team-stage-info">
+          <span class="team-stage-name">${item.name}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  teamLastActive = null;
+  setTimeout(recalcTeamStage, 20);
+}
+
+function recalcTeamStage() {
+  const shell = document.getElementById('teamCarouselShell');
+  const track = document.getElementById('teamCarouselTrack');
+  if (!shell || !track || !teamStageItems.length) return;
+
+  const shellWidth = shell.clientWidth || 980;
+  teamItemWidth = Math.max(160, Math.min(225, Math.floor(shellWidth / 4 - (TEAM_GAP * 3) / 4)));
+  teamStep = teamItemWidth + TEAM_GAP;
+
+  track.querySelectorAll('.team-carousel-item').forEach(el => {
+    el.style.width = teamItemWidth + 'px';
+  });
+
+  teamPos = -teamStageItems.length * teamStep;
+  track.style.transform = `translateX(${teamPos}px)`;
+  updateTeamActiveCenter();
+}
+
+function updateTeamActiveCenter() {
+  const shell = document.getElementById('teamCarouselShell');
+  const track = document.getElementById('teamCarouselTrack');
+  if (!shell || !track) return;
+
+  if (teamHoveredNode) {
+    if (teamLastActive && teamLastActive !== teamHoveredNode) {
+      teamLastActive.classList.remove('active');
+    }
+    teamHoveredNode.classList.add('active');
+    teamLastActive = teamHoveredNode;
+    return;
+  }
+
+  const items = track.querySelectorAll('.team-carousel-item');
+  const shellRect = shell.getBoundingClientRect();
+  if (!shellRect.width) return;
+  const centerX = shellRect.left + shellRect.width / 2;
+
+  let closest = null;
+  let minDist = Infinity;
+
+  items.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    const itemCenter = rect.left + rect.width / 2;
+    const dist = Math.abs(itemCenter - centerX);
+    if (dist < minDist) {
+      minDist = dist;
+      closest = item;
+    }
+  });
+
+  if (closest && closest !== teamLastActive) {
+    if (teamLastActive) teamLastActive.classList.remove('active');
+    closest.classList.add('active');
+    teamLastActive = closest;
+  }
+}
+
+function onTeamStageItemEnter(node, idx, event) {
+  teamHoverPaused = true;
+  teamHoveredNode = node;
+  updateTeamActiveCenter();
+  showTeamHoverPreview(event, idx);
+}
+
+function onTeamStageItemLeave(node) {
+  teamHoverPaused = false;
+  teamHoveredNode = null;
+  hideTeamHoverPreview();
+}
+
+function onTeamStageItemClick(idx) {
+  if (teamDragDist > 8) return;
+  openTeamPhotoModal(idx);
+}
+
+function teamStageLoop() {
+  const track = document.getElementById('teamCarouselTrack');
+  if (track && state.page === 'tim' && teamStageItems.length) {
+    if (state.teamAutoSlideEnabled !== false && teamAuto && !teamDragging && !teamHoverPaused) {
+      teamPos -= TEAM_AUTO_SPEED;
+    }
+    const limit = teamStageItems.length * teamStep;
+    if (limit > 0) {
+      if (teamPos < -limit * 2) teamPos += limit;
+      if (teamPos > -limit * 0.3) teamPos -= limit;
+    }
+    track.style.transform = `translateX(${teamPos}px)`;
+    updateTeamActiveCenter();
+  }
+  requestAnimationFrame(teamStageLoop);
+}
+
+function initTeamStageEvents() {
+  if (teamLoopStarted) return;
+  teamLoopStarted = true;
+
+  const track = document.getElementById('teamCarouselTrack');
+  if (!track) return;
+
+  function startDrag(x) {
+    teamDragging = true;
+    teamAuto = false;
+    teamLastX = x;
+    teamDragDist = 0;
+    teamVelocity = 0;
+    track.classList.add('dragging');
+    clearTimeout(teamResumeTimer);
+  }
+
+  function moveDrag(x) {
+    if (!teamDragging) return;
+    const dx = x - teamLastX;
+    teamLastX = x;
+    teamDragDist += Math.abs(dx);
+    teamVelocity = dx;
+    teamPos += dx;
+    track.style.transform = `translateX(${teamPos}px)`;
+    updateTeamActiveCenter();
+  }
+
+  function endDrag() {
+    if (!teamDragging) return;
+    teamDragging = false;
+    track.classList.remove('dragging');
+
+    let m = teamVelocity;
+    (function inertia() {
+      if (Math.abs(m) < 0.25 || teamDragging) return;
+      teamPos += m;
+      track.style.transform = `translateX(${teamPos}px)`;
+      updateTeamActiveCenter();
+      m *= 0.9;
+      requestAnimationFrame(inertia);
+    })();
+
+    teamResumeTimer = setTimeout(() => { teamAuto = true; }, TEAM_RESUME_DELAY);
+  }
+
+  track.addEventListener('pointerdown', e => startDrag(e.clientX));
+  window.addEventListener('pointermove', e => moveDrag(e.clientX));
+  window.addEventListener('pointerup', endDrag);
+  window.addEventListener('resize', recalcTeamStage);
+
+  teamStageLoop();
+}
+
+function toggleTeamAutoSlide() {
+  if (state.teamAutoSlideEnabled === undefined) state.teamAutoSlideEnabled = true;
+  state.teamAutoSlideEnabled = !state.teamAutoSlideEnabled;
+  const btnEl = document.getElementById('btnToggleTeamAutoSlide');
+  if (state.teamAutoSlideEnabled) {
+    if (btnEl) {
+      btnEl.className = 'btn btn-ghost';
+      btnEl.innerHTML = 'Jeda Rotasi';
+    }
+    showToast('Rotasi otomatis kru diaktifkan');
+  } else {
+    if (btnEl) {
+      btnEl.className = 'btn btn-lime';
+      btnEl.innerHTML = 'Lanjutkan Rotasi';
+    }
+    showToast('Rotasi otomatis kru dijeda');
+  }
+}
+
 function renderTeam() {
   const container = document.getElementById('teamGridContainer');
   if (!container) return;
@@ -7451,7 +7872,7 @@ function showTeamHoverPreview(e, idx) {
 function positionTeamHoverPreview(cardEl) {
   const preview = document.getElementById('teamHoverPreview');
   if (!preview || !cardEl) return;
-  const card = cardEl.closest ? (cardEl.closest('.team-card') || cardEl) : cardEl;
+  const card = cardEl.closest ? (cardEl.closest('.team-card') || cardEl.closest('.team-carousel-item') || cardEl) : cardEl;
   const rect = card.getBoundingClientRect();
   const previewWidth = 290;
   const previewHeight = 410;
