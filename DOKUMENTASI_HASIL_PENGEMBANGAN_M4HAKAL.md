@@ -221,27 +221,28 @@ Akses di browser: `http://localhost:3000`
 | **v2.5** | Penerapan Prinsip Progressive Disclosure pada Beranda: Eliminasi strip identitas pengguna redundan di atas KPI Cards. Menghilangkan pengulangan informasi civitas aktif (Izzulft · NIM 024231441867) dalam jarak scroll berdekatan dan memfokuskan representasi status pada Bento Card "Status Peminjaman Resmi / Kuota Bon" yang lebih kaya visual (dilengkapi progress meter real-time, badge status bebas tanggungan, dan tombol aksi terintegrasi). |
 | **v2.6** | Redesain Formulir Saran Pengadaan Alat ke Standar SaaS E-Bon v2.5: Mengeliminasi total tampilan bergaya Google Forms (border aksen hijau olive, kotak verifikasi email terpisah, icon cloud autosave statis, tanda bintang merah, serta radio button manual angkatan/prodi). Mengadopsi arsitektur input/select/field-grid/form-card modern identik dengan E-Bon v2.5 dengan penarikan otomatis profil civitas (Izzulft · NIM 024231441867 · Angkatan 2024 · D4 Manajemen Teknik Studio Produksi) sehingga pengguna cukup mengisi Kategori Studio, Nama/Seri Alat, dan Urgensi Kebutuhan Produksi. |
 | **v2.7** | Integrasi Foto & Profil 13 Kru ke dalam Menu Tim: Mengimpor seluruh foto kru dari folder c:\Users\Acer\Downloads\Foto all crew MAHAKAL ke dalam direktori aset web (ssets/crew/), menamai setiap kru sesuai dengan nama file aslinya (Aufa, Dika, Dio, Felix, Greg, Hazza, Izzul, Jagad, Keekal, Najwan, Reandy, Tristan, Zulfan), mengoptimasi resolusi dan kompresi visual foto agar ringan dan responsif, serta memperbarui antarmuka Menu Tim dengan header kartu verifikasi 13 kru, kartu profil kru berdesain modern, avatar potret proporsional, lencana peran/area operasional, dan adaptasi tema gelap serta tata letak responsif desktop (3 kolom), tablet (2 kolom), dan mobile (1 kolom). |
+| **v2.8** | Penyederhanaan & Redesain Minimalis Editorial Menu Tim (Anti-AI Slop): Mengeliminasi seluruh nama jabatan, prodi, nama studio, nama pengelola/pengurus, tombol hubungi kru, badge status penugasan, serta elemen header berlebihan. Menyajikan tata letak roster editorial human-crafted: kartu potret berasio 3:4 yang proporsional, nama kru yang tegas dan bersih, efek hover zoom mikro (scale 1.03), serta grid adaptif 4 kolom desktop, 3 kolom tablet, dan 2 kolom mobile lengkap dengan tema gelap. |
 
 
 
 ---
 
-## 10. Daftar Anggota Kru Menu Tim Unit Studio & Pemancar M4HAKAL
+## 10. Daftar Anggota Kru Menu Tim Unit Studio & Pemancar M4HAKAL (Minimalis & Bersih)
 
-Seluruh 13 anggota tim telah diintegrasikan dari berkas foto asli pada folder c:\Users\Acer\Downloads\Foto all crew MAHAKAL ke dalam sistem antarmuka Menu Tim:
+Seluruh 13 anggota kru diintegrasikan dengan tata letak minimalis non-AI Slop, murni menampilkan foto potret resmi dan nama masing-masing kru:
 
-| No | Nama Kru (Sesuai File) | Peran / Jabatan Teknis | Area Operasional / Unit | Status Penugasan | Berkas Aset Web |
-| :---: | :--- | :--- | :--- | :--- | :--- |
-| 1 | **Izzul** | Koordinator Unit Studio & Penyiaran | Manajemen Teknik Studio Produksi | 🟢 Piket Hari Ini | ssets/crew/Izzul.png |
-| 2 | **Aufa** | Technical Director & Switcher MCR | Studio TV 1 & Master Control | 🔵 Aktif Bertugas | ssets/crew/Aufa.jpg |
-| 3 | **Dika** | Floor Director & Production Coordinator | Studio TV 2 & Virtual Stage | 🟡 Standby Studio | ssets/crew/Dika.jpg |
-| 4 | **Dio** | Audio Engineer & Sound Recordist | Studio Radio 1 & Audio Post | 🟢 Piket Hari Ini | ssets/crew/Dio.jpg |
-| 5 | **Felix** | Lighting Director & Gaffer Studio | Workshop Lighting & Grip | 🔵 Aktif Bertugas | ssets/crew/Felix.jpg |
-| 6 | **Greg** | Camera Operator & ENG Specialist | Workshop ENG & Field Ops | 🟡 Standby Studio | ssets/crew/Greg.jpg |
-| 7 | **Hazza** | Video Operator & Docking OB Van | Outside Broadcasting Unit | 🔵 Aktif Bertugas | ssets/crew/Hazza.jpg |
-| 8 | **Jagad** | Broadcast & Transmission Engineer | Pemancar & RF Engineering | 🟢 Piket Hari Ini | ssets/crew/Jagad.jpg |
-| 9 | **Keekal** | Master Control Room (MCR) Specialist | Multi-Camera Live System | 🔵 Aktif Bertugas | ssets/crew/Keekal.jpg |
-| 10 | **Najwan** | Post-Production & Virtual Studio Lead | Auditorium & Live Streaming | 🟡 Standby Studio | ssets/crew/Najwan.jpg |
-| 11 | **Reandy** | Radio Broadcast & Podcast Engineer | Studio Radio 2 & Podcast Hub | 🔵 Aktif Bertugas | ssets/crew/Reandy.jpg |
-| 12 | **Tristan** | Grip, Rigging & Stage Technician | Workshop Lighting & Stage | 🟢 Piket Hari Ini | ssets/crew/Tristan.jpg |
-| 13 | **Zulfan** | Equipment Inventory & QC Specialist | Logistik & Maintenance Alat | 🔵 Aktif Bertugas | ssets/crew/Zulfan.jpg |
+| No | Nama Kru (Sesuai File Asli) | Berkas Foto Aset Web | Rasio Tampilan |
+| :---: | :--- | :--- | :---: |
+| 1 | **Aufa** | `assets/crew/Aufa.jpg` | 3:4 Potret |
+| 2 | **Dika** | `assets/crew/Dika.jpg` | 3:4 Potret |
+| 3 | **Dio** | `assets/crew/Dio.jpg` | 3:4 Potret |
+| 4 | **Felix** | `assets/crew/Felix.jpg` | 3:4 Potret |
+| 5 | **Greg** | `assets/crew/Greg.jpg` | 3:4 Potret |
+| 6 | **Hazza** | `assets/crew/Hazza.jpg` | 3:4 Potret |
+| 7 | **Izzul** | `assets/crew/Izzul.png` | 3:4 Potret |
+| 8 | **Jagad** | `assets/crew/Jagad.jpg` | 3:4 Potret |
+| 9 | **Keekal** | `assets/crew/Keekal.jpg` | 3:4 Potret |
+| 10 | **Najwan** | `assets/crew/Najwan.jpg` | 3:4 Potret |
+| 11 | **Reandy** | `assets/crew/Reandy.jpg` | 3:4 Potret |
+| 12 | **Tristan** | `assets/crew/Tristan.jpg` | 3:4 Potret |
+| 13 | **Zulfan** | `assets/crew/Zulfan.jpg` | 3:4 Potret |

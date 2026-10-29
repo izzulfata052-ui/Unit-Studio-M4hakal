@@ -1878,65 +1878,68 @@ html.dark .field input[readonly] {
   color: #94A3B8;
 }
 
-/* ===== TIM STUDIO GRID ===== */
-.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+/* ===== TIM UNIT STUDIO & PEMANCAR ROSTER ===== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 20px;
+}
 .team-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 18px 20px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
   display: flex;
-  align-items: center;
-  gap: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 .team-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
-  border-color: rgba(26, 115, 232, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.09);
+  border-color: rgba(26, 115, 232, 0.3);
 }
-.team-av {
-  width: 68px;
-  height: 68px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #1A73E8, #0D47A1);
-  color: #fff;
-  font-weight: 800;
-  font-size: 19px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
+.team-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.14);
-  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: #f1f5f9;
 }
-.team-av img {
+.team-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 18%;
   display: block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-html.dark .team-av {
-  border-color: rgba(255, 255, 255, 0.12);
+.team-card:hover .team-photo {
+  transform: scale(1.03);
 }
-.team-header-card {
+.team-info {
+  padding: 12px 6px 4px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding: 20px 24px;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
+  justify-content: flex-start;
 }
-html.dark .team-header-card {
-  background: #141822 !important;
-  border-color: #222938 !important;
+.team-name {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.team-fallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--muted);
+  background: #f1f5f9;
 }
 
 /* ===== SPRING PHYSICS MODAL SYSTEM (FRAMER MOTION INTEGRATION) ===== */
@@ -2432,9 +2435,12 @@ html.dark .modal-box {
     gap: 22px !important;
   }
   .rooms-strip,
-  .bon-grid,
-  .team-grid {
+  .bon-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px !important;
   }
   .sop-peminjaman-grid {
     grid-template-columns: 1fr !important;
@@ -2450,10 +2456,13 @@ html.dark .modal-box {
   .bon-grid,
   .ebon-layout,
   .saran-layout,
-  .team-grid,
   .sop-peminjaman-grid {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
+  }
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px 12px !important;
   }
 
   /* RAMAH SENTUHAN (TOUCH-FRIENDLY BUTTONS & TAP TARGETS >= 44px) */
@@ -3179,9 +3188,17 @@ html.dark #saranListContainer p {
 html.dark .team-card {
   background: #141822;
   border-color: #222938;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
-html.dark .team-card div[style*="font-weight:800"] {
-  color: #F8FAFC !important;
+html.dark .team-photo-wrap {
+  background: #0d111a;
+}
+html.dark .team-name {
+  color: #F8FAFC;
+}
+html.dark .team-fallback {
+  background: #0d111a;
+  color: #64748B;
 }
 
 /* Modals */
@@ -3949,19 +3966,6 @@ html.dark .profile-theme-row {
 
   <!-- ==================== 7. TIM UNIT STUDIO & PEMANCAR M4HAKAL ==================== -->
   <section class="page-section" id="page-tim">
-    <div class="team-header-card">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:48px;height:48px;border-radius:14px;background:rgba(26,115,232,0.1);color:var(--royal);display:grid;place-items:center;font-size:22px;font-weight:800">👥</div>
-        <div>
-          <div style="font-size:18px;font-weight:800;color:var(--ink)">Kru &amp; Staf Teknis Penyiaran</div>
-          <div style="font-size:13px;color:var(--muted)">13 Personel Unit Studio &amp; Pemancar M4HAKAL Siap Membantu Operasional &amp; Praktikum</div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-        <span class="badge b-ok" style="padding:6px 14px;font-size:12px;font-weight:700">🟢 13 Kru Terverifikasi</span>
-        <span class="badge b-info" style="padding:6px 14px;font-size:12px;font-weight:700">📡 Siap Siaga Studio</span>
-      </div>
-    </div>
     <div class="team-grid" id="teamGridContainer"></div>
   </section>
 
@@ -5510,123 +5514,19 @@ const SCHEDULE_ITEMS = [
 ];
 
 const TEAM_DATA = [
-  {
-    name: 'Izzul',
-    initials: 'IZ',
-    role: 'Koordinator Unit Studio & Penyiaran',
-    area: 'Manajemen Teknik Studio Produksi',
-    status: 'Piket Hari Ini',
-    photo: 'assets/crew/Izzul.png',
-    phone: '0812-3456-7890'
-  },
-  {
-    name: 'Aufa',
-    initials: 'AU',
-    role: 'Technical Director & Switcher MCR',
-    area: 'Studio TV 1 & Master Control',
-    status: 'Aktif Bertugas',
-    photo: 'assets/crew/Aufa.jpg',
-    phone: '0812-3456-7891'
-  },
-  {
-    name: 'Dika',
-    initials: 'DK',
-    role: 'Floor Director & Production Coordinator',
-    area: 'Studio TV 2 & Virtual Stage',
-    status: 'Standby Studio',
-    photo: 'assets/crew/Dika.jpg',
-    phone: '0812-3456-7892'
-  },
-  {
-    name: 'Dio',
-    initials: 'DI',
-    role: 'Audio Engineer & Sound Recordist',
-    area: 'Studio Radio 1 & Audio Post',
-    status: 'Piket Hari Ini',
-    photo: 'assets/crew/Dio.jpg',
-    phone: '0812-3456-7893'
-  },
-  {
-    name: 'Felix',
-    initials: 'FL',
-    role: 'Lighting Director & Gaffer Studio',
-    area: 'Workshop Lighting & Grip',
-    status: 'Aktif Bertugas',
-    photo: 'assets/crew/Felix.jpg',
-    phone: '0812-3456-7894'
-  },
-  {
-    name: 'Greg',
-    initials: 'GR',
-    role: 'Camera Operator & ENG Specialist',
-    area: 'Workshop ENG & Field Ops',
-    status: 'Standby Studio',
-    photo: 'assets/crew/Greg.jpg',
-    phone: '0812-3456-7895'
-  },
-  {
-    name: 'Hazza',
-    initials: 'HZ',
-    role: 'Video Operator & Docking OB Van',
-    area: 'Outside Broadcasting Unit',
-    status: 'Aktif Bertugas',
-    photo: 'assets/crew/Hazza.jpg',
-    phone: '0812-3456-7896'
-  },
-  {
-    name: 'Jagad',
-    initials: 'JG',
-    role: 'Broadcast & Transmission Engineer',
-    area: 'Pemancar & RF Engineering',
-    status: 'Piket Hari Ini',
-    photo: 'assets/crew/Jagad.jpg',
-    phone: '0812-3456-7897'
-  },
-  {
-    name: 'Keekal',
-    initials: 'KK',
-    role: 'Master Control Room (MCR) Specialist',
-    area: 'Multi-Camera Live System',
-    status: 'Aktif Bertugas',
-    photo: 'assets/crew/Keekal.jpg',
-    phone: '0812-3456-7898'
-  },
-  {
-    name: 'Najwan',
-    initials: 'NJ',
-    role: 'Post-Production & Virtual Studio Lead',
-    area: 'Auditorium & Live Streaming',
-    status: 'Standby Studio',
-    photo: 'assets/crew/Najwan.jpg',
-    phone: '0812-3456-7899'
-  },
-  {
-    name: 'Reandy',
-    initials: 'RD',
-    role: 'Radio Broadcast & Podcast Engineer',
-    area: 'Studio Radio 2 & Podcast Hub',
-    status: 'Aktif Bertugas',
-    photo: 'assets/crew/Reandy.jpg',
-    phone: '0812-3456-7800'
-  },
-  {
-    name: 'Tristan',
-    initials: 'TR',
-    role: 'Grip, Rigging & Stage Technician',
-    area: 'Workshop Lighting & Stage',
-    status: 'Piket Hari Ini',
-    photo: 'assets/crew/Tristan.jpg',
-    phone: '0812-3456-7801'
-  },
-  {
-    name: 'Zulfan',
-    initials: 'ZF',
-    role: 'Equipment Inventory & QC Specialist',
-    area: 'Logistik & Maintenance Alat',
-    status: 'Aktif Bertugas',
-    photo: 'assets/crew/Zulfan.jpg',
-    phone: '0812-3456-7802'
-  }
+  { name: 'Aufa', photo: 'assets/crew/Aufa.jpg' },
+  { name: 'Dika', photo: 'assets/crew/Dika.jpg' },
+  { name: 'Dio', photo: 'assets/crew/Dio.jpg' },
+  { name: 'Felix', photo: 'assets/crew/Felix.jpg' },
+  { name: 'Greg', photo: 'assets/crew/Greg.jpg' },
+  { name: 'Hazza', photo: 'assets/crew/Hazza.jpg' },
+  { name: 'Izzul', photo: 'assets/crew/Izzul.png' },
+  { name: 'Jagad', photo: 'assets/crew/Jagad.jpg' },
+  { name: 'Keekal', photo: 'assets/crew/Keekal.jpg' },
+  { name: 'Najwan', photo: 'assets/crew/Najwan.jpg' },
+  { name: 'Reandy', photo: 'assets/crew/Reandy.jpg' },
+  { name: 'Tristan', photo: 'assets/crew/Tristan.jpg' },
+  { name: 'Zulfan', photo: 'assets/crew/Zulfan.jpg' }
 ];
 
 const state = {
@@ -5726,7 +5626,7 @@ const PAGE_META = {
   },
   tim: {
     title: 'Tim Unit Studio & Pemancar M4HAKAL',
-    sub: 'Profil 13 kru teknis operasional, koordinator studio, dan spesialis penyiaran Unit Studio & Pemancar M4HAKAL.'
+    sub: 'Kru dan personel Unit Studio & Pemancar M4HAKAL.'
   }
 };
 
@@ -7195,19 +7095,11 @@ function renderTeam() {
   if (!container) return;
   container.innerHTML = TEAM_DATA.map(t => `
     <div class="team-card">
-      <div class="team-av">
-        ${t.photo ? `<img src="${t.photo}" alt="${t.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerText='${t.initials}'">` : t.initials}
+      <div class="team-photo-wrap">
+        <img src="${t.photo}" alt="${t.name}" loading="lazy" class="team-photo" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'team-fallback\\'>${t.name.charAt(0)}</span>';">
       </div>
-      <div style="flex:1;min-width:0">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap">
-          <div style="font-weight:800;font-size:16px;color:var(--ink)">${t.name}</div>
-          <span class="badge ${t.status.includes('Piket') ? 'b-ok' : (t.status.includes('Standby') ? 'b-warn' : 'b-info')}" style="font-size:10.5px">${t.status}</span>
-        </div>
-        <div style="font-size:13px;font-weight:700;color:var(--royal);margin-top:3px">${t.role}</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:3px">${t.area}</div>
-        <button class="btn btn-ghost" style="margin-top:10px;padding:6px 12px;font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px" onclick="showToast('💬 Menghubungi ${t.name} (${t.role})…')">
-          <span>💬</span> Hubungi Kru
-        </button>
+      <div class="team-info">
+        <span class="team-name">${t.name}</span>
       </div>
     </div>
   `).join('');
