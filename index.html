@@ -2055,6 +2055,83 @@ html.dark .team-modal-close:hover {
   }
 }
 
+/* ===== FLOATING HOVER PHOTO POP-UP (MENU TIM) ===== */
+.team-hover-preview {
+  position: fixed;
+  z-index: 180;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.88) translateY(10px);
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.22s;
+  will-change: transform, opacity, top, left;
+}
+.team-hover-preview.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+}
+.team-hover-box {
+  width: 290px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 10px 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.28),
+              0 8px 18px -4px rgba(15, 23, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+html.dark .team-hover-box {
+  background: #141822 !important;
+  border-color: #263143 !important;
+  box-shadow: 0 24px 56px -10px rgba(0, 0, 0, 0.7),
+              0 8px 24px -4px rgba(0, 0, 0, 0.4) !important;
+}
+.team-hover-photo-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+  position: relative;
+}
+.team-hover-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+.team-hover-caption {
+  padding: 12px 6px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.team-hover-name {
+  font-size: 17.5px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+html.dark .team-hover-name {
+  color: #F8FAFC !important;
+}
+@media (hover: none) {
+  .team-hover-preview {
+    display: none !important;
+  }
+}
+
 /* ===== SPRING PHYSICS MODAL SYSTEM (FRAMER MOTION INTEGRATION) ===== */
 .modal-backdrop {
   position: fixed;
@@ -4124,6 +4201,18 @@ html.dark .profile-theme-row {
       <button class="btn btn-ghost team-modal-btn" onclick="nextTeamPhoto(event)" id="teamModalNextBtn">
         Berikutnya →
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FLOATING HOVER POP-UP FOTO KRU ==================== -->
+<div id="teamHoverPreview" class="team-hover-preview" aria-hidden="true">
+  <div class="team-hover-box">
+    <div class="team-hover-photo-wrap">
+      <img id="teamHoverImg" src="" alt="Preview Foto Kru" class="team-hover-photo">
+    </div>
+    <div class="team-hover-caption">
+      <span id="teamHoverName" class="team-hover-name">Nama Kru</span>
     </div>
   </div>
 </div>
@@ -7244,7 +7333,11 @@ function renderTeam() {
   const container = document.getElementById('teamGridContainer');
   if (!container) return;
   container.innerHTML = TEAM_DATA.map((t, idx) => `
-    <div class="team-card" onclick="openTeamPhotoModal(${idx})" title="Klik untuk memperbesar foto ${t.name}">
+    <div class="team-card"
+         onclick="openTeamPhotoModal(${idx})"
+         onmouseenter="showTeamHoverPreview(event, ${idx})"
+         onmouseleave="hideTeamHoverPreview()"
+         title="Arahkan kursor atau klik untuk melihat foto ${t.name}">
       <div class="team-photo-wrap">
         <img src="${t.photo}" alt="${t.name}" loading="lazy" class="team-photo" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'team-fallback\\'>${t.name.charAt(0)}</span>';">
       </div>
@@ -7257,7 +7350,62 @@ function renderTeam() {
 
 let currentTeamIdx = 0;
 
+function showTeamHoverPreview(e, idx) {
+  const modal = document.getElementById('teamPhotoModal');
+  if (modal && modal.classList.contains('open')) return;
+
+  const member = TEAM_DATA[idx];
+  if (!member) return;
+
+  const preview = document.getElementById('teamHoverPreview');
+  const img = document.getElementById('teamHoverImg');
+  const name = document.getElementById('teamHoverName');
+  if (!preview || !img || !name) return;
+
+  name.textContent = member.name;
+  img.src = member.photo;
+  img.alt = member.name;
+
+  const card = e.currentTarget || (e.target ? e.target.closest('.team-card') : null);
+  positionTeamHoverPreview(card);
+  preview.classList.add('active');
+}
+
+function positionTeamHoverPreview(cardEl) {
+  const preview = document.getElementById('teamHoverPreview');
+  if (!preview || !cardEl) return;
+  const card = cardEl.closest ? (cardEl.closest('.team-card') || cardEl) : cardEl;
+  const rect = card.getBoundingClientRect();
+  const previewWidth = 290;
+  const previewHeight = 410;
+  const gap = 16;
+
+  let left;
+  if (rect.right + previewWidth + gap <= window.innerWidth) {
+    left = rect.right + gap;
+  } else if (rect.left - previewWidth - gap >= 0) {
+    left = rect.left - previewWidth - gap;
+  } else {
+    left = Math.max(12, (window.innerWidth - previewWidth) / 2);
+  }
+
+  let top = rect.top + (rect.height / 2) - (previewHeight / 2);
+  top = Math.max(16, Math.min(window.innerHeight - previewHeight - 16, top));
+
+  preview.style.left = `${Math.round(left)}px`;
+  preview.style.top = `${Math.round(top)}px`;
+}
+
+function hideTeamHoverPreview() {
+  const preview = document.getElementById('teamHoverPreview');
+  if (!preview) return;
+  preview.classList.remove('active');
+}
+
+window.addEventListener('scroll', hideTeamHoverPreview, { passive: true });
+
 function openTeamPhotoModal(idx) {
+  hideTeamHoverPreview();
   if (typeof idx !== 'number' || idx < 0 || idx >= TEAM_DATA.length) idx = 0;
   currentTeamIdx = idx;
   updateTeamPhotoModalContent();
