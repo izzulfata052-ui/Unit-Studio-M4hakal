@@ -1893,11 +1893,16 @@ html.dark .field input[readonly] {
   padding: 12px 12px 16px;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+  cursor: pointer;
+  user-select: none;
 }
 .team-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.09);
-  border-color: rgba(26, 115, 232, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px -6px rgba(15, 23, 42, 0.12);
+  border-color: rgba(26, 115, 232, 0.35);
+}
+.team-card:active {
+  transform: scale(0.98);
 }
 .team-photo-wrap {
   position: relative;
@@ -1945,6 +1950,109 @@ html.dark .field input[readonly] {
   font-weight: 700;
   color: var(--muted);
   background: #f1f5f9;
+}
+
+/* ===== POP-UP MODAL FOTO KRU MENU TIM ===== */
+.team-modal-box {
+  max-width: 440px !important;
+  width: 92vw !important;
+  padding: 16px 18px 18px !important;
+  border-radius: 24px !important;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35);
+}
+html.dark .team-modal-box {
+  background: #141822 !important;
+  border: 1px solid #222938 !important;
+}
+.team-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+.team-modal-name {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+html.dark .team-modal-name {
+  color: #F8FAFC !important;
+}
+.team-modal-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.team-modal-close:hover {
+  background: var(--line);
+  transform: scale(1.08);
+}
+html.dark .team-modal-close {
+  background: #19202C !important;
+  border-color: #263143 !important;
+  color: #F8FAFC !important;
+}
+html.dark .team-modal-close:hover {
+  background: #222938 !important;
+}
+.team-modal-photo-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0f172a;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.18);
+  position: relative;
+}
+.team-modal-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+.team-modal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+  margin-top: 2px;
+}
+.team-modal-counter {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.team-modal-btn {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 7px 14px !important;
+  border-radius: 12px !important;
+}
+@media (max-width: 640px) {
+  .team-modal-box {
+    max-width: 360px !important;
+    padding: 14px 14px 16px !important;
+    border-radius: 20px !important;
+  }
+  .team-modal-name {
+    font-size: 18.5px !important;
+  }
 }
 
 /* ===== SPRING PHYSICS MODAL SYSTEM (FRAMER MOTION INTEGRATION) ===== */
@@ -3995,6 +4103,28 @@ html.dark .profile-theme-row {
 <div class="modal-backdrop" id="alatPopupModal" onclick="if(event.target===this)closeAlatPopupModal()">
   <div class="modal-box" style="max-width:780px;border-radius:26px;padding:28px">
     <div id="alatPopupModalBody"></div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: POP-UP FOTO KRU MENU TIM ==================== -->
+<div class="modal-backdrop" id="teamPhotoModal" onclick="if(event.target===this)closeTeamPhotoModal()">
+  <div class="modal-box team-modal-box">
+    <div class="team-modal-header">
+      <div class="team-modal-name" id="teamModalName">Nama Kru</div>
+      <button class="team-modal-close" onclick="closeTeamPhotoModal()" aria-label="Tutup">✕</button>
+    </div>
+    <div class="team-modal-photo-wrap">
+      <img id="teamModalImg" src="" alt="Foto Kru" class="team-modal-photo">
+    </div>
+    <div class="team-modal-nav">
+      <button class="btn btn-ghost team-modal-btn" onclick="prevTeamPhoto(event)" id="teamModalPrevBtn">
+        ← Sebelumnya
+      </button>
+      <span class="team-modal-counter" id="teamModalCounter">1 / 13</span>
+      <button class="btn btn-ghost team-modal-btn" onclick="nextTeamPhoto(event)" id="teamModalNextBtn">
+        Berikutnya →
+      </button>
+    </div>
   </div>
 </div>
 
@@ -7113,8 +7243,8 @@ function toggleVoteSaran(id) {
 function renderTeam() {
   const container = document.getElementById('teamGridContainer');
   if (!container) return;
-  container.innerHTML = TEAM_DATA.map(t => `
-    <div class="team-card">
+  container.innerHTML = TEAM_DATA.map((t, idx) => `
+    <div class="team-card" onclick="openTeamPhotoModal(${idx})" title="Klik untuk memperbesar foto ${t.name}">
       <div class="team-photo-wrap">
         <img src="${t.photo}" alt="${t.name}" loading="lazy" class="team-photo" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'team-fallback\\'>${t.name.charAt(0)}</span>';">
       </div>
@@ -7124,6 +7254,79 @@ function renderTeam() {
     </div>
   `).join('');
 }
+
+let currentTeamIdx = 0;
+
+function openTeamPhotoModal(idx) {
+  if (typeof idx !== 'number' || idx < 0 || idx >= TEAM_DATA.length) idx = 0;
+  currentTeamIdx = idx;
+  updateTeamPhotoModalContent();
+  openModalWithSpring('teamPhotoModal', {
+    stiffness: 380,
+    damping: 24,
+    mass: 0.9,
+    cascadeSelector: '.team-modal-photo-wrap'
+  });
+}
+
+function updateTeamPhotoModalContent() {
+  const member = TEAM_DATA[currentTeamIdx];
+  if (!member) return;
+  const nameEl = document.getElementById('teamModalName');
+  const imgEl = document.getElementById('teamModalImg');
+  const counterEl = document.getElementById('teamModalCounter');
+
+  if (nameEl) nameEl.textContent = member.name;
+  if (imgEl) {
+    imgEl.src = member.photo;
+    imgEl.alt = member.name;
+  }
+  if (counterEl) {
+    counterEl.textContent = `${currentTeamIdx + 1} / ${TEAM_DATA.length}`;
+  }
+}
+
+function prevTeamPhoto(e) {
+  if (e) e.stopPropagation();
+  currentTeamIdx = (currentTeamIdx - 1 + TEAM_DATA.length) % TEAM_DATA.length;
+  updateTeamPhotoModalContent();
+  animateTeamModalPhotoSwap();
+}
+
+function nextTeamPhoto(e) {
+  if (e) e.stopPropagation();
+  currentTeamIdx = (currentTeamIdx + 1) % TEAM_DATA.length;
+  updateTeamPhotoModalContent();
+  animateTeamModalPhotoSwap();
+}
+
+function animateTeamModalPhotoSwap() {
+  const wrap = document.querySelector('.team-modal-photo-wrap');
+  if (window.Motion && typeof window.Motion.animate === 'function' && wrap) {
+    window.Motion.animate(
+      wrap,
+      { scale: [0.93, 1], opacity: [0.65, 1] },
+      { duration: 0.26, easing: 'ease-out' }
+    );
+  }
+}
+
+function closeTeamPhotoModal() {
+  closeModalWithSpring('teamPhotoModal');
+}
+
+// Keyboard Navigation for Team Photo Modal (Escape, ArrowLeft, ArrowRight)
+document.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('teamPhotoModal');
+  if (!modal || !modal.classList.contains('open')) return;
+  if (e.key === 'Escape') {
+    closeTeamPhotoModal();
+  } else if (e.key === 'ArrowLeft') {
+    prevTeamPhoto();
+  } else if (e.key === 'ArrowRight') {
+    nextTeamPhoto();
+  }
+});
 
 /* =========================================================================
    FRAMER MOTION SPRING PHYSICS ENGINE FOR PREMIUM POP-UPS
