@@ -3475,6 +3475,72 @@ html.dark .profile-theme-row {
   .navbar, .royal-banner, .no-print { display: none !important; }
   body { background: #fff; }
 }
+
+/* ===== AESTHETIC & PROFESSIONAL ENHANCEMENTS ===== */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  animation: statusDotPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes statusDotPulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70% { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+.theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+.theme-icon svg, #profileThemeIcon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+.stat-ic {
+  display: grid !important;
+  place-items: center !important;
+}
+.stat-ic svg {
+  display: block;
+}
+.bento-shortcut-icon {
+  display: grid !important;
+  place-items: center !important;
+}
+.bento-shortcut-icon svg {
+  display: block;
+}
+.bento-card, .form-card, .stat-card, .bon-doc-card, .workshop-col {
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 14px rgba(15, 23, 42, 0.02) !important;
+  border: 1px solid var(--line) !important;
+}
+.bento-card:hover, .workshop-col:hover {
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.08) !important;
+}
+.btn-pri {
+  background: #1A56DB !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  box-shadow: 0 1px 2px rgba(26, 86, 219, 0.2) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.btn-pri:hover {
+  background: #1E40AF !important;
+  box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3) !important;
+  transform: translateY(-1px);
+}
+.btn-pri:active {
+  transform: translateY(0);
+}
 </style>
 </head>
 <body>
@@ -3528,11 +3594,11 @@ html.dark .profile-theme-row {
 
   <div class="nav-right">
     <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Beralih ke Tema Gelap" aria-label="Beralih Tema">
-      <span class="theme-icon" id="themeIcon">🌙</span>
+      <span class="theme-icon" id="themeIcon"></span>
       <span class="theme-label" id="themeLabel">Mode Gelap</span>
     </button>
     <button class="bon-pill" onclick="openMyLoansModal()" title="Status Bon & QR Code Peminjaman Izzulft">
-      <span>📋 Bon Saya</span>
+      <span style="display:inline-flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="7.01" y2="15"/><line x1="11" y1="15" x2="13" y2="15"/></svg> Bon Saya</span>
       <span class="cnt" id="activeLoanCount">2</span>
     </button>
     <button class="profile-btn" onclick="openProfileModal()" title="Profil Civitas M4HAKAL — Izzulft">
@@ -3609,10 +3675,9 @@ html.dark .profile-theme-row {
 
         <div class="beranda-bottom-bar">
           <div class="beranda-social-row">
-            <span>📸 @m4hakal.id</span>
-            <span>🌐 studio.m4hakal.ac.id</span>
-            <span>🎵 @m4hakal.id</span>
-            <span>▶️ M4HAKAL Official</span>
+            <span>@m4hakal.id</span>
+            <span>studio.m4hakal.ac.id</span>
+            <span>M4HAKAL Official</span>
           </div>
           <div class="beranda-carousel-dots" id="berandaCarouselDots">
             <button class="beranda-dot active" onclick="goToBerandaBanner(0)" aria-label="Slide 1"></button>
@@ -3628,28 +3693,28 @@ html.dark .profile-theme-row {
     <!-- Live Metrics Strip -->
     <div class="stats-grid" style="margin-bottom:24px">
       <div class="stat-card">
-        <div class="stat-ic" style="background:#E8F0FE;color:#1A73E8">🎙️</div>
+        <div class="stat-ic" style="background:#EBF5FF;color:#1A56DB"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
         <div>
           <div class="stat-val" id="statTotalItems">45 Tipe</div>
           <div class="stat-lbl">Katalog Alat Workshop, Docking &amp; Lighting</div>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-ic" style="background:#E4F8EE;color:#0D8A4E">📡</div>
+        <div class="stat-ic" style="background:#ECFDF5;color:#059669"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.93 19.07a10 10 0 0 1 0-14.14"/><path d="M7.76 16.24a6 6 0 0 1 0-8.48"/><path d="M10.59 13.41a2 2 0 0 1 0-2.83"/><circle cx="12" cy="12" r="1"/></svg></div>
         <div>
           <div class="stat-val">5 / 6</div>
           <div class="stat-lbl">Studio &amp; Lab Siap Pakai</div>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-ic" style="background:#FFF3DC;color:#B25E00">⏱️</div>
+        <div class="stat-ic" style="background:#FFFBEB;color:#D97706"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <div>
           <div class="stat-val">&lt; 2 Jam</div>
           <div class="stat-lbl">Rata-Rata Approval Bon</div>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-ic" style="background:#EEF0FF;color:#4F46E5">👤</div>
+        <div class="stat-ic" style="background:#EEF2FF;color:#4F46E5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div>
           <div class="stat-val" id="statMyQuota">1 / 3</div>
           <div class="stat-lbl">Kuota Bon Aktif Izzulft</div>
@@ -3699,18 +3764,18 @@ html.dark .profile-theme-row {
               <div class="bento-progress-fill" id="bentoQuotaBar" style="width: 33.3%"></div>
             </div>
             <div class="bento-quota-desc">
-              <span class="bento-status-pill">🟢 Bebas Tanggungan</span>
+              <span class="bento-status-pill"><span class="status-dot"></span> Bebas Tanggungan</span>
               <span style="font-size:12px;color:#E2E8F0">2 Slot Peminjaman Tersedia</span>
             </div>
           </div>
 
           <div class="bento-quota-actions">
             <button class="btn bento-btn-loans" onclick="openMyLoansModal()">
-              <span>📲 Status Bon &amp; QR Code Saya</span>
+              <span>Lihat Status Bon &amp; QR Code</span>
               <span class="badge b-info" id="bentoActiveCount">2</span>
             </button>
             <button class="btn bento-btn-new" onclick="switchPage('formulir');switchBonTab('ebon')">
-              + Buat E-Bon Digital Baru
+              + Buat E-Bon Digital
             </button>
           </div>
         </div>
@@ -3720,7 +3785,7 @@ html.dark .profile-theme-row {
       <div class="bento-shortcuts-grid">
         <!-- Shortcut 1: Workshop ENG -->
         <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Workshop ENG')">
-          <div class="bento-shortcut-icon" style="background:#EBF5FF;color:#1A73E8">🎙️</div>
+          <div class="bento-shortcut-icon" style="background:#EBF5FF;color:#1A56DB"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
           <div class="bento-shortcut-body">
             <div class="bento-shortcut-tag">Katalog Peralatan</div>
             <h4 class="bento-shortcut-title">Daftar Alat Workshop ENG</h4>
@@ -3734,7 +3799,7 @@ html.dark .profile-theme-row {
 
         <!-- Shortcut 2: Docking Video & OB Van -->
         <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Docking & OB Van')">
-          <div class="bento-shortcut-icon" style="background:#F0FDF4;color:#16A34A">🎛️</div>
+          <div class="bento-shortcut-icon" style="background:#ECFDF5;color:#059669"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
           <div class="bento-shortcut-body">
             <div class="bento-shortcut-tag">Mobile Production</div>
             <h4 class="bento-shortcut-title">Daftar Alat Docking &amp; OB Van</h4>
@@ -3748,7 +3813,7 @@ html.dark .profile-theme-row {
 
         <!-- Shortcut 3: Workshop Lighting & SOP Studio -->
         <div class="bento-card bento-card-shortcut" onclick="openAlatCat('Workshop Lighting')">
-          <div class="bento-shortcut-icon" style="background:#FFFBEB;color:#D97706">💡</div>
+          <div class="bento-shortcut-icon" style="background:#FFFBEB;color:#D97706"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3 6h8c1.5-1.5 3-3.5 3-6a7 7 0 0 0-7-7z"/></svg></div>
           <div class="bento-shortcut-body">
             <div class="bento-shortcut-tag">Tata Cahaya &amp; FOH</div>
             <h4 class="bento-shortcut-title">Daftar Alat Workshop Lighting</h4>
@@ -3770,7 +3835,7 @@ html.dark .profile-theme-row {
         <h3>Jadwal Pemakaian Studio &amp; Kalender Akademik M4HAKAL</h3>
         <p>Pantau jadwal produksi Studio TV, Radio, Auditorium, dan OB Van agar tidak terjadi bentrok jadwal.</p>
       </div>
-      <button class="btn btn-pri" onclick="switchPage('formulir');switchBonTab('ebon')">+ Booking Jadwal Studio (a.n. Izzulft)</button>
+      <button class="btn btn-pri" onclick="switchPage('formulir');switchBonTab('ebon')">+ Booking Jadwal Studio</button>
     </div>
 
     <div class="cal-shell">
@@ -3780,7 +3845,7 @@ html.dark .profile-theme-row {
           <span style="font-weight:800;font-size:15px">Okt 2026 – Mar 2027 ▾</span>
           <div class="chip-group" id="schedRoomFilter"></div>
         </div>
-        <span class="badge b-info">📅 Terhubung e-Kalender Studio M4HAKAL</span>
+        <span class="badge b-info">e-Kalender Studio M4HAKAL</span>
       </div>
 
       <div class="cal-today-row">
@@ -3799,11 +3864,11 @@ html.dark .profile-theme-row {
     <div class="section-hdr">
       <div>
         <h3>Formulir &amp; Bon Pemakaian Ruang / Alat Studio M4HAKAL</h3>
-        <p>Pilih lembar Bon resmi sesuai studio yang digunakan atau isi langsung lewat E-Bon Digital atas nama <b>Izzulft</b>.</p>
+        <p>Pilih lembar Bon resmi sesuai studio yang digunakan atau ajukan melalui formulir E-Bon Digital.</p>
       </div>
       <div class="chip-group">
-        <button class="chip active" id="tabBtn-lembar" onclick="switchBonTab('lembar')">📄 6 Lembar Bon Resmi (Pratinjau &amp; Cetak)</button>
-        <button class="chip" id="tabBtn-ebon" onclick="switchBonTab('ebon')">⚡ Isi E-Bon Digital (a.n. Izzulft)</button>
+        <button class="chip active" id="tabBtn-lembar" onclick="switchBonTab('lembar')">Lembar Bon Resmi</button>
+        <button class="chip" id="tabBtn-ebon" onclick="switchBonTab('ebon')">E-Bon Digital</button>
       </div>
     </div>
 
@@ -3817,9 +3882,9 @@ html.dark .profile-theme-row {
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)">
             <div>
               <div style="font-size:18px;font-weight:800">Formulir Pengajuan E-Bon Peminjaman M4HAKAL</div>
-              <div style="font-size:12.5px;color:var(--muted)">Otomatis terhubung dengan identitas civitas <b>Izzulft</b></div>
+              <div style="font-size:12.5px;color:var(--muted)">Terhubung dengan profil peminjam aktif</div>
             </div>
-            <span class="badge b-dark">E-BON v2.5</span>
+            
           </div>
 
           <div class="field-grid">
@@ -3897,13 +3962,13 @@ html.dark .profile-theme-row {
           </label>
 
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <button class="btn btn-pri" id="ebonSubmitBtn" onclick="submitEbon()" style="flex:1;padding:14px">🚀 Kirim E-Bon &amp; Buat QR Code Serah Terima</button>
-            <button class="btn btn-ghost" onclick="previewCurrentEbonSheet()">🖨️ Pratinjau Lembar Cetak</button>
+            <button class="btn btn-pri" id="ebonSubmitBtn" onclick="submitEbon()" style="flex:1;padding:14px">Kirim E-Bon &amp; Buat QR Code</button>
+            <button class="btn btn-ghost" onclick="previewCurrentEbonSheet()">Pratinjau Lembar Cetak</button>
           </div>
         </div>
 
         <div class="form-card" style="position:sticky;top:88px">
-          <div style="font-size:15px;font-weight:800;margin-bottom:10px">Ringkasan E-Bon Izzulft</div>
+          <div style="font-size:15px;font-weight:800;margin-bottom:10px">Ringkasan E-Bon</div>
           <div id="ebonLiveSummary"></div>
         </div>
       </div>
@@ -3932,14 +3997,14 @@ html.dark .profile-theme-row {
         <div class="chip-group" id="alatCatChips"></div>
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <div class="search-input" style="background:#fff">
-            <span>🔍</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.65;margin-right:6px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <input type="text" id="alatSearchInput" placeholder="Cari Focusrite Scarlett 2i2, MKH 416, URSA, ARRI, iCOM…" oninput="handleAlatSearchInput()">
           </div>
           <span id="alatRealtimeBadge" class="realtime-shimmer-indicator" style="display:none">
             <span class="realtime-dot-pulse"></span>
             <span>Memuat Real-Time…</span>
           </span>
-          <button class="btn btn-ghost" id="btnToggleAutoSlide" style="padding:8px 13px;font-size:12px" onclick="toggleAlatAutoSlide()">⏸ Jeda Geser</button>
+          <button class="btn btn-ghost" id="btnToggleAutoSlide" style="padding:8px 13px;font-size:12px" onclick="toggleAlatAutoSlide()">Jeda Rotasi</button>
         </div>
       </div>
 
@@ -4105,7 +4170,7 @@ html.dark .profile-theme-row {
               <div style="font-size:18px;font-weight:800">Formulir Usulan Pengadaan Alat Kampus M4HAKAL</div>
               <div style="font-size:12.5px;color:var(--muted)">Sampaikan rekomendasi peralatan produksi siaran baru untuk peningkatan fasilitas studio</div>
             </div>
-            <span class="badge b-dark">PENGADAAN v2.5</span>
+            
           </div>
 
           <!-- Civitas Identity Grid (Auto-populated from user profile, matching E-Bon v2.5) -->
@@ -4147,10 +4212,10 @@ html.dark .profile-theme-row {
           <!-- SaaS Action Bar matching E-Bon v2.5 -->
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
             <button class="btn btn-pri" onclick="submitSaran()" style="padding:13px 24px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px">
-              🚀 Kirim Usulan Pengadaan (a.n. Izzulft)
+              Kirim Usulan Pengadaan
             </button>
             <div style="font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px">
-              <span>🔒 Terverifikasi Otomatis via SSO Sivitas M4HAKAL</span>
+              <span class="status-dot"></span> <span>Akun Civitas Terverifikasi</span>
             </div>
           </div>
         </div>
@@ -4162,7 +4227,7 @@ html.dark .profile-theme-row {
             <div style="font-size:17px;font-weight:800">Papan Aspirasi Pengadaan M4HAKAL</div>
             <div style="font-size:12.5px;color:var(--muted)">Dukung usulan alat agar diprioritaskan Unit Studio</div>
           </div>
-          <span class="badge b-info">Live Voting</span>
+          <span class="badge b-info">Aspirasi Civitas</span>
         </div>
         <div id="saranListContainer" style="display:flex;flex-direction:column;gap:12px"></div>
       </div>
@@ -4188,7 +4253,7 @@ html.dark .profile-theme-row {
   <div class="modal-box team-modal-box">
     <div class="team-modal-header">
       <div class="team-modal-name" id="teamModalName">Nama Kru</div>
-      <button class="team-modal-close" onclick="closeTeamPhotoModal()" aria-label="Tutup">✕</button>
+      <button class="team-modal-close" onclick="closeTeamPhotoModal()" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="team-modal-photo-wrap">
       <img id="teamModalImg" src="" alt="Foto Kru" class="team-modal-photo">
@@ -4225,7 +4290,7 @@ html.dark .profile-theme-row {
         <div style="font-size:20px;font-weight:800">Status Bon &amp; Peminjaman Saya — Izzulft</div>
         <div style="font-size:12.5px;color:var(--muted)">NIM 024231441867 · izzulft@mail.m4hakal.ac.id · Kuota Maksimal 3 Paket Aktif</div>
       </div>
-      <button class="btn btn-ghost" onclick="closeLoansModal()">✕ Tutup</button>
+      <button class="btn btn-ghost" onclick="closeLoansModal()">Tutup</button>
     </div>
     <div id="myLoansModalContent"></div>
   </div>
@@ -4235,10 +4300,10 @@ html.dark .profile-theme-row {
 <div class="modal-backdrop" id="printBonModal" onclick="if(event.target===this)closePrintBonModal()">
   <div class="modal-box" style="max-width:720px">
     <div class="no-print" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <div style="font-weight:800;font-size:16px">📄 Lembar Resmi Bon Pemakaian Ruang/Alat Studio M4HAKAL</div>
+      <div style="font-weight:800;font-size:16px">Lembar Resmi Bon Pemakaian Ruang/Alat Studio M4HAKAL</div>
       <div style="display:flex;gap:8px">
-        <button class="btn btn-pri" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
-        <button class="btn btn-ghost" onclick="closePrintBonModal()">✕</button>
+        <button class="btn btn-pri" onclick="window.print()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Cetak Dokumen</button>
+        <button class="btn btn-ghost" onclick="closePrintBonModal()" aria-label="Tutup"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
     </div>
     <div id="printableBonSheet"></div>
@@ -4250,7 +4315,7 @@ html.dark .profile-theme-row {
   <div class="modal-box" style="max-width:520px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <div style="font-size:18px;font-weight:800">Kartu Identitas Peminjam Studio M4HAKAL</div>
-      <button class="btn btn-ghost" onclick="closeProfileModal()">✕</button>
+      <button class="btn btn-ghost" onclick="closeProfileModal()" aria-label="Tutup"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="civitas-id-card" id="profileCivitasCard">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
@@ -4280,7 +4345,7 @@ html.dark .profile-theme-row {
         <div style="font-size:11.5px;color:var(--muted)">Mode Gelap / Terang (Disimpan otomatis)</div>
       </div>
       <button class="btn btn-ghost" id="profileThemeBtn" style="padding:6px 14px;font-size:12.5px;display:flex;align-items:center;gap:6px" onclick="toggleTheme()">
-        <span id="profileThemeIcon">🌙</span>
+        <span id="profileThemeIcon"></span>
         <span id="profileThemeLabel">Mode Gelap</span>
       </button>
     </div>
@@ -4305,7 +4370,7 @@ html.dark .profile-theme-row {
       </div>
       <div>
         <strong style="color:#fff">Unit Studio dan Pemancar — Kampus M4HAKAL</strong>
-        <div style="margin-top:4px">Portal Layanan Digital Unit Studio &amp; Pemancar · Akun Aktif: <b>Izzulft</b> (izzulft@mail.m4hakal.ac.id)</div>
+        <div style="margin-top:4px">Sistem Pengelolaan Peminjaman Alat &amp; Fasilitas Studio Penyiaran M4HAKAL</div>
       </div>
     </div>
     <div style="display:flex;gap:16px;flex-wrap:wrap">
@@ -4320,6 +4385,18 @@ html.dark .profile-theme-row {
 </footer>
 
 <script>
+const SVG_ICONS = {
+  sun: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
+  moon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
+  ticket: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="7.01" y2="15"/><line x1="11" y1="15" x2="13" y2="15"/></svg>',
+  camera: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+  signal: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.93 19.07a10 10 0 0 1 0-14.14"/><path d="M7.76 16.24a6 6 0 0 1 0-8.48"/><path d="M10.59 13.41a2 2 0 0 1 0-2.83"/><circle cx="12" cy="12" r="1"/></svg>',
+  clock: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+  user: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  mic: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>',
+  sliders: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>',
+  bulb: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3 6h8c1.5-1.5 3-3.5 3-6a7 7 0 0 0-7-7z"/></svg>'
+};
 /* =========================================================================
    DATA INVENTARIS LENGKAP: DAFTAR ALAT WORKSHOP ENG, DOCKING & LIGHTING
    (Termasuk seluruh 16 alat pada 5 gambar yang diunggah + katalog lengkap)
@@ -6063,7 +6140,7 @@ function handleAlatSearchInput() {
   alatSearchTimer = setTimeout(() => {
     renderAlatGrid();
     if (badge) {
-      badge.innerHTML = `✓ Hasil Ditemukan`;
+      badge.innerHTML = `Hasil Ditemukan`;
       setTimeout(() => { badge.style.display = 'none'; }, 1000);
     }
   }, 220);
@@ -6108,7 +6185,7 @@ function openAlatCat(cat) {
   setTimeout(() => {
     renderAlatPage();
     if (badge) {
-      badge.innerHTML = `✓ ${cat} Siap`;
+      badge.innerHTML = `${cat} Siap`;
       setTimeout(() => { badge.style.display = 'none'; }, 1000);
     }
   }, 220);
@@ -6153,7 +6230,7 @@ function rebuildMmtcStageCarousel() {
          onmouseleave="onMmtcItemLeave(this)"
          onclick="onMmtcItemClick('${item.id}')">
       <img src="${item.images[0]}" alt="${item.name}" loading="lazy">
-      <span class="mmtc-stage-hover-pill">🔍 ${item.name} · Klik Pop-Up Detail</span>
+      <span class="mmtc-stage-hover-pill">${item.name} · Detail Spesifikasi</span>
     </div>
   `).join('');
 
@@ -6449,15 +6526,15 @@ function toggleAlatAutoSlide() {
   if (state.autoSlideEnabled) {
     if (btnEl) {
       btnEl.className = 'btn btn-ghost';
-      btnEl.innerHTML = '⏸ Jeda Geser';
+      btnEl.innerHTML = 'Jeda Rotasi';
     }
-    showToast('▶️ Animasi bergeser otomatis diaktifkan');
+    showToast('Rotasi otomatis diaktifkan');
   } else {
     if (btnEl) {
       btnEl.className = 'btn btn-lime';
-      btnEl.innerHTML = '▶️ Lanjutkan Geser';
+      btnEl.innerHTML = 'Lanjutkan Rotasi';
     }
-    showToast('⏸ Animasi bergeser otomatis dijeda');
+    showToast('Rotasi otomatis dijeda');
   }
 }
 
@@ -6481,7 +6558,7 @@ function openAlatPopupModal(itemId, event) {
         <span class="badge b-info">${item.cat}</span>
         <span class="badge ${badgeCls}">${badgeTxt}</span>
       </div>
-      <button class="btn btn-ghost" style="min-height:44px;padding:8px 16px;font-size:13.5px;font-weight:700" onclick="closeAlatPopupModal()">✕ Tutup</button>
+      <button class="btn btn-ghost" style="min-height:44px;padding:8px 16px;font-size:13.5px;font-weight:700" onclick="closeAlatPopupModal()">Tutup</button>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;align-items:start">
@@ -6499,7 +6576,7 @@ function openAlatPopupModal(itemId, event) {
 
       <div>
         <div style="font-size:11.5px;font-weight:800;color:var(--royal);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:4px">
-          #Katalog Resmi Unit Studio &amp; Pemancar M4HAKAL
+          Katalog Resmi Unit Studio &amp; Pemancar M4HAKAL
         </div>
         <h3 style="font-family:'Merriweather',serif;font-size:22px;font-weight:700;color:#111827;margin-bottom:14px;word-break:break-word">
           ${item.name}
@@ -6513,7 +6590,7 @@ function openAlatPopupModal(itemId, event) {
 
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button class="btn ${inBon ? 'btn-lime' : 'btn-pri'}" style="flex:1;min-height:48px;padding:12px 18px;font-size:14px;font-weight:700;border-radius:14px" onclick="quickAddEquipToBon('${item.id}');closeAlatPopupModal()">
-            ${inBon ? '✓ Sudah di E-Bon Izzulft (Buka Formulir)' : '+ Masukkan ke E-Bon Peminjaman Izzulft'}
+            ${inBon ? 'Tersimpan di E-Bon' : '+ Tambah ke E-Bon'}
           </button>
         </div>
       </div>
@@ -6543,13 +6620,13 @@ function renderAlatGrid() {
     const safeQ = (q || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     gridEl.innerHTML = `
       <div style="grid-column:1/-1;text-align:center;padding:52px 24px;background:var(--bg);border-radius:20px;border:1.5px dashed var(--line);margin:16px 0">
-        <div style="font-size:38px;margin-bottom:12px">🔍</div>
+        <div style="margin-bottom:12px;display:grid;place-items:center"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div style="font-size:17px;font-weight:800;color:var(--ink);margin-bottom:6px">Peralatan Tidak Ditemukan</div>
         <div style="font-size:13px;color:var(--muted);max-width:440px;margin:0 auto 18px">
           Tidak ditemukan peralatan yang cocok dengan kata kunci "<strong>${safeQ}</strong>" pada inventaris ${state.alatCat}. Silakan periksa ejaan atau ganti kata kunci.
         </div>
         <button class="btn btn-ghost" onclick="clearAlatSearch()" style="padding:10px 18px;font-size:13px;font-weight:700">
-          ✕ Reset Pencarian
+          Reset Pencarian
         </button>
       </div>
     `;
@@ -6579,7 +6656,7 @@ function renderAlatGrid() {
               `).join('')}
             </div>
 
-            <span class="katalog-hover-hint">🔍 Klik Pop-Up Detail</span>
+            <span class="katalog-hover-hint">Detail Spesifikasi</span>
 
             ${hasMulti ? `
               <button class="slide-nav-btn prev" onclick="changeItemSlide('${item.id}', -1, event)" title="Slide sebelumnya">
@@ -6612,9 +6689,9 @@ function renderAlatGrid() {
         <!-- Pinned Bottom Action Footer (Ramah Sentuhan min-height 44px) -->
         <div class="workshop-col-footer">
           <div style="display:flex;gap:8px;width:100%">
-            <button class="btn btn-ghost" style="padding:10px 14px;min-height:44px;font-size:13px;border-radius:12px;font-weight:600" onclick="openAlatPopupModal('${item.id}', event)" title="Lihat Pop-Up Detail">🔍 Detail</button>
+            <button class="btn btn-ghost" style="padding:10px 14px;min-height:44px;font-size:13px;border-radius:12px;font-weight:600" onclick="openAlatPopupModal('${item.id}', event)" title="Lihat Detail">Detail</button>
             <button class="btn ${inBon ? 'btn-lime' : 'btn-pri'}" style="flex:1;padding:10px 14px;min-height:44px;font-size:13px;font-weight:700;border-radius:12px" onclick="quickAddEquipToBon('${item.id}')">
-              ${inBon ? '✓ Masuk E-Bon' : '+ Pinjam Alat'}
+              ${inBon ? 'Tersimpan' : '+ Tambah Alat'}
             </button>
           </div>
         </div>
@@ -6627,7 +6704,7 @@ function quickAddEquipToBon(id) {
   const eq = EQUIPMENT_DATA.find(e => e.id === id);
   if (!state.selectedEquipIds.includes(id)) {
     state.selectedEquipIds.push(id);
-    showToast(`➕ "${eq.name}" ditambahkan ke E-Bon Izzulft`);
+    showToast(`"${eq.name}" ditambahkan ke E-Bon`);
     renderAlatGrid();
   } else {
     switchPage('formulir');
@@ -6679,7 +6756,7 @@ function renderHome() {
             </div>
             <span class="badge ${r.cls}">${r.status}</span>
           </div>
-          <div class="bento-room-meta" style="margin-top:8px">📌 ${r.next}</div>
+          <div class="bento-room-meta" style="margin-top:8px">${r.next}</div>
         </div>
         <div class="bento-room-actions">
           <button class="btn btn-ghost" style="flex:1;padding:7px 10px;font-size:12px;min-height:38px" onclick="switchPage('jadwal')">Cek Jadwal</button>
@@ -6763,11 +6840,11 @@ function renderBonCards() {
           </div>
           <div style="font-weight:700;font-size:8.2px;margin-top:4px">A. Fasilitas Ruang yang Dipinjam:</div>
           <div class="bon-mini-list">
-            ${b.roomsList.map(r => `<div>☑ ${r}</div>`).join('')}
+            ${b.roomsList.map(r => `<div style="display:flex;align-items:center;gap:4px">• ${r}</div>`).join('')}
           </div>
           <div style="font-weight:700;font-size:8.2px;margin-top:6px">B. Peralatan Pendukung Studio:</div>
           <div class="bon-mini-list">
-            ${b.gearList.slice(0, 6).map(g => `<div>☐ ${g}</div>`).join('')}
+            ${b.gearList.slice(0, 6).map(g => `<div style="display:flex;align-items:center;gap:4px">• ${g}</div>`).join('')}
           </div>
           <div style="margin-top:8px;padding-top:5px;border-top:1px dashed #CCC;display:flex;justify-content:flex-end;font-size:7.5px">
             <span>Peminjam: <b>Izzulft</b></span>
@@ -6775,13 +6852,13 @@ function renderBonCards() {
         </div>
         <div class="bon-zoom-bar">
           <span>Halaman 1 / 1</span>
-          <button onclick="openOfficialBonPreview(${idx})" title="Perbesar & Cetak">🔍 Pratinjau</button>
+          <button onclick="openOfficialBonPreview(${idx})" title="Perbesar & Cetak">Pratinjau</button>
         </div>
       </div>
       <div class="bon-caption">${b.title}</div>
       <div style="display:flex;gap:8px;width:100%">
-        <button class="btn btn-pri" style="flex:1;padding:9px 12px;font-size:12.5px" onclick="selectBonTemplate(${idx})">✍️ Isi E-Bon Ini</button>
-        <button class="btn btn-ghost" style="padding:9px 12px;font-size:12.5px" onclick="openOfficialBonPreview(${idx})">🖨️ Cetak</button>
+        <button class="btn btn-pri" style="flex:1;padding:9px 12px;font-size:12.5px" onclick="selectBonTemplate(${idx})">Gunakan Template</button>
+        <button class="btn btn-ghost" style="padding:9px 12px;font-size:12.5px" onclick="openOfficialBonPreview(${idx})">Cetak Lembar</button>
       </div>
     </div>
   `).join('');
@@ -6796,7 +6873,7 @@ function selectBonTemplate(idx) {
     sel.value = tpl.title;
     renderEbonForm();
   }
-  showToast(`📄 Template "${tpl.title}" dipilih atas nama Izzulft`);
+  showToast(`Template "${tpl.title}" dipilih`);
 }
 
 function renderEbonForm() {
@@ -6849,7 +6926,7 @@ function renderEbonSummary() {
       <div style="display:flex;justify-content:space-between"><span>Periode:</span><b>${start} s.d. ${end} (${diffDays} hari)</b></div>
       <div style="display:flex;justify-content:space-between"><span>Mata Kuliah:</span><b>${course}</b></div>
       <div style="display:flex;justify-content:space-between"><span>Kelompok:</span><b>${group}</b></div>
-      ${!validDur ? `<div style="margin-top:8px;color:var(--bad);font-weight:700">⚠️ Durasi harus 1–3 hari sesuai aturan Studio M4HAKAL.</div>` : ''}
+      ${!validDur ? `<div style="margin-top:8px;color:var(--bad);font-weight:700">Durasi harus 1–3 hari sesuai aturan Studio M4HAKAL.</div>` : ''}
       <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #CBD5E1">
         <div style="font-weight:800;margin-bottom:4px">Daftar Alat Dipilih (${selectedItems.length} item):</div>
         ${selectedItems.length ? selectedItems.map(i => `<div style="font-size:12px">• ${i.name} <span style="color:var(--muted)">(${i.cat})</span></div>`).join('') : '<div style="color:var(--bad)">Belum ada alat dipilih.</div>'}
@@ -6889,7 +6966,7 @@ function submitEbon() {
   renderHome();
   renderAlatPage();
   openMyLoansModal();
-  showToast('✅ E-Bon berhasil diajukan atas nama Izzulft! Silakan pantau status & QR Code.');
+  showToast('E-Bon berhasil diajukan. Pantau status peminjaman Anda.');
 
   // Persist to Backend REST API + SQLite Database if running
   fetch(getApiUrl('/api/loans'), {
@@ -6952,48 +7029,48 @@ function openSopTab(tab) {
                   <div class="sop-step-body">
                     <b>Cek Jadwal &amp; Ketersediaan Alat:</b> Periksa stok unit di menu <i>Daftar Alat</i> serta ketersediaan ruang di menu <i>Jadwal Pemakaian Studio</i>.
                   </div>
-                  <button class="sop-step-time" onclick="seekSopVideo(0)" title="Lihat bagian ini di Video Tutorial">▶ 00:00</button>
+                  <button class="sop-step-time" onclick="seekSopVideo(0)" title="Lihat bagian ini di Video Tutorial"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>00:00</button>
                 </div>
                 <div class="sop-step-item">
                   <div class="sop-step-num">2</div>
                   <div class="sop-step-body">
                     <b>Pengajuan Formulir &amp; E-Bon:</b> Isi formulir peminjaman atas nama akun civitas aktif (maksimal 3 hari pinjam, pengajuan maksimal H-7).
                   </div>
-                  <button class="sop-step-time" onclick="seekSopVideo(40)" title="Lihat bagian ini di Video Tutorial">▶ 00:40</button>
+                  <button class="sop-step-time" onclick="seekSopVideo(40)" title="Lihat bagian ini di Video Tutorial"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>00:40</button>
                 </div>
                 <div class="sop-step-item">
                   <div class="sop-step-num">3</div>
                   <div class="sop-step-body">
                     <b>Verifikasi Koordinator &amp; Admin Studio:</b> Koordinator unit memvalidasi daftar alat dan menyetujui permohonan peminjaman.
                   </div>
-                  <button class="sop-step-time" onclick="seekSopVideo(90)" title="Lihat bagian ini di Video Tutorial">▶ 01:30</button>
+                  <button class="sop-step-time" onclick="seekSopVideo(90)" title="Lihat bagian ini di Video Tutorial"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>01:30</button>
                 </div>
                 <div class="sop-step-item">
                   <div class="sop-step-num">4</div>
                   <div class="sop-step-body">
                     <b>Serah Terima &amp; Cek Fisik Alat:</b> Tunjukkan bukti E-Bon di loket studio dan lakukan uji fungsi/kelengkapan alat bersama teknisi/laboran.
                   </div>
-                  <button class="sop-step-time" onclick="seekSopVideo(140)" title="Lihat bagian ini di Video Tutorial">▶ 02:20</button>
+                  <button class="sop-step-time" onclick="seekSopVideo(140)" title="Lihat bagian ini di Video Tutorial"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>02:20</button>
                 </div>
                 <div class="sop-step-item">
                   <div class="sop-step-num">5</div>
                   <div class="sop-step-body">
                     <b>Pengembalian Tepat Waktu:</b> Kembalikan seluruh peralatan paling lambat pukul <b>16.00 WIB</b> dalam kondisi lengkap dan rapi.
                   </div>
-                  <button class="sop-step-time" onclick="seekSopVideo(180)" title="Lihat bagian ini di Video Tutorial">▶ 03:00</button>
+                  <button class="sop-step-time" onclick="seekSopVideo(180)" title="Lihat bagian ini di Video Tutorial"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>03:00</button>
                 </div>
               </div>
             </div>
 
             <div class="sop-actions-bar">
               <button class="btn btn-pri" onclick="sopVideoPlayFromCover()">
-                ▶ Putar Video Tutorial (03:25)
+                Putar Video Tutorial (03:25)
               </button>
               <button class="btn btn-ghost" onclick="switchPage('formulir');switchBonTab('ebon')">
                 + Buat E-Bon Peminjaman
               </button>
               <button class="btn btn-ghost" onclick="openAlatCat('Workshop ENG')">
-                🎙️ Cek Daftar Alat Studio
+                Daftar Alat Studio
               </button>
             </div>
           </div>
@@ -7015,7 +7092,7 @@ function openSopTab(tab) {
                     <img class="v-logo-mahakal" src="assets/logos/mahakal-white.png" alt="MAHAKAL">
                   </div>
                   <button class="sop-theater-btn" id="sopTheaterBtn" onclick="toggleSopVideoTheater()" title="Ubah ukuran tampilan video (Normal / Mode Teater Lebar)">
-                    ${sopVideoTheaterMode ? '🗗 Mode Standar' : '⤢ Mode Teater'}
+                    ${sopVideoTheaterMode ? 'Mode Standar' : 'Mode Teater'}
                   </button>
                 </div>
               </div>
@@ -7034,11 +7111,11 @@ function openSopTab(tab) {
                 <!-- Glassmorphic Studio Play Overlay -->
                 <div class="sop-video-cover" id="sopVideoCover" onclick="sopVideoPlayFromCover()">
                   <div class="sop-cover-top">
-                    <span class="sop-cover-pill">🎬 OFFICIAL VIDEO TUTORIAL · 1080p FULL HD</span>
-                    <span class="sop-cover-pill">⏱️ 03:25</span>
+                    <span class="sop-cover-pill">Video Tutorial Resmi · 1080p</span>
+                    <span class="sop-cover-pill">03:25</span>
                   </div>
                   <div class="sop-cover-play-wrap">
-                    <div class="sop-cover-play-btn" title="Putar Video Tutorial Peminjaman Alat">▶</div>
+                    <div class="sop-cover-play-btn" title="Putar Video Tutorial Peminjaman Alat"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="margin-left:3px"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
                     <span style="font-size:12px;font-weight:800;color:#ffffff;background:rgba(15,23,42,0.78);padding:4px 12px;border-radius:99px;border:1px solid rgba(255,255,255,0.2)">
                       Klik untuk Memutar Video Tutorial
                     </span>
@@ -7059,18 +7136,18 @@ function openSopTab(tab) {
               <div class="sop-video-toolbar">
                 <div class="sop-vctrl-group">
                   <button class="sop-vbtn primary" id="sopPlayToggleBtn" onclick="toggleSopVideoPlay()">
-                    ▶ Putar Video
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:5px"><polygon points="5 3 19 12 5 21 5 3"/></svg>Putar Video
                   </button>
                   <button class="sop-vbtn" onclick="seekSopVideo(0)" title="Ulangi video dari awal">
-                    ↺ Ulangi
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Ulangi
                   </button>
                 </div>
                 <div class="sop-vctrl-group">
                   <button class="sop-vbtn active-speed" id="sopSpeed-1" onclick="setSopVideoSpeed(1)">1.0x</button>
                   <button class="sop-vbtn" id="sopSpeed-125" onclick="setSopVideoSpeed(1.25)">1.25x</button>
                   <button class="sop-vbtn" id="sopSpeed-15" onclick="setSopVideoSpeed(1.5)">1.5x</button>
-                  <button class="sop-vbtn" onclick="toggleSopVideoPiP()" title="Picture-in-Picture (Layar Mengambang)">⧉ PiP</button>
-                  <button class="sop-vbtn" onclick="toggleSopVideoFullscreen()" title="Tampilkan Layar Penuh (Fullscreen)">⛶ Fullscreen</button>
+                  <button class="sop-vbtn" onclick="toggleSopVideoPiP()" title="Picture-in-Picture (Layar Mengambang)">PiP</button>
+                  <button class="sop-vbtn" onclick="toggleSopVideoFullscreen()" title="Tampilkan Layar Penuh (Fullscreen)">Layar Penuh</button>
                 </div>
               </div>
 
@@ -7145,18 +7222,18 @@ function bindSopVideoEvents() {
 
   vid.addEventListener('play', () => {
     if (cover) cover.classList.add('hidden');
-    if (playBtn) playBtn.innerHTML = '⏸ Jeda Video';
+    if (playBtn) playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:5px"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>Jeda Video';
     if (statusTag) statusTag.textContent = 'VIDEO TUTORIAL PEMINJAMAN ALAT · SEDANG DIPUTAR';
   });
 
   vid.addEventListener('pause', () => {
-    if (playBtn) playBtn.innerHTML = '▶ Lanjutkan Video';
+    if (playBtn) playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:5px"><polygon points="5 3 19 12 5 21 5 3"/></svg>Lanjutkan Video';
     if (statusTag) statusTag.textContent = 'VIDEO TUTORIAL PEMINJAMAN ALAT · DIJEDA';
   });
 
   vid.addEventListener('ended', () => {
     if (cover) cover.classList.remove('hidden');
-    if (playBtn) playBtn.innerHTML = '▶ Putar Ulang';
+    if (playBtn) playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:5px"><polygon points="5 3 19 12 5 21 5 3"/></svg>Putar Ulang';
     if (statusTag) statusTag.textContent = 'VIDEO TUTORIAL PEMINJAMAN ALAT';
     sopVideoInitialPreview = true;
     try { vid.currentTime = 2; } catch (e) {}
@@ -7206,7 +7283,7 @@ function setSopVideoSpeed(rate) {
   });
   const activeBtn = document.getElementById(map[rate]);
   if (activeBtn) activeBtn.classList.add('active-speed');
-  showToast(`⚡ Kecepatan putar Video Tutorial diatur ke ${rate}x`);
+  showToast(`Kecepatan video diatur ke ${rate}x`);
 }
 
 function toggleSopVideoTheater() {
@@ -7214,7 +7291,7 @@ function toggleSopVideoTheater() {
   const grid = document.getElementById('sopPeminjamanGrid');
   const btn = document.getElementById('sopTheaterBtn');
   if (grid) grid.classList.toggle('theater-mode', sopVideoTheaterMode);
-  if (btn) btn.innerHTML = sopVideoTheaterMode ? '🗗 Mode Standar' : '⤢ Mode Teater';
+  if (btn) btn.textContent = sopVideoTheaterMode ? 'Mode Standar' : 'Mode Teater';
 }
 
 async function toggleSopVideoPiP() {
@@ -7228,7 +7305,7 @@ async function toggleSopVideoPiP() {
       await vid.requestPictureInPicture();
     }
   } catch (e) {
-    showToast('ℹ️ Mode Picture-in-Picture siap digunakan saat video sedang diputar.');
+    showToast('Mode Picture-in-Picture siap digunakan saat video sedang diputar.');
   }
 }
 
@@ -7255,11 +7332,11 @@ function renderSaranList() {
           <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Diusulkan oleh: <b>${s.author}</b></div>
         </div>
         <button class="btn ${s.voted ? 'btn-pri' : 'btn-ghost'}" style="padding:7px 12px;font-size:12px" onclick="toggleVoteSaran(${s.id})">
-          ▲ ${s.votes}
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px"><polyline points="18 15 12 9 6 15"/></svg>${s.votes}
         </button>
       </div>
       <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px;line-height:1.5">“${s.reason}”</p>
-      <div style="margin-top:8px;font-size:11.5px;font-weight:700;color:var(--ok)">📌 Status: ${s.status}</div>
+      <div style="margin-top:8px"><span class="badge b-ok" style="font-size:11px;font-weight:700">Status: ${s.status}</span></div>
     </div>
   `).join('');
 }
@@ -7272,7 +7349,7 @@ function submitSaran() {
   const prodi = USER_PROFILE.prodi || 'Manajemen Teknik Studio Produksi';
 
   if (!item || !reason) {
-    showToast('⚠️ Mohon isi nama/seri alat dan urgensi kebutuhan produksi terlebih dahulu.');
+    showToast('Mohon lengkapi nama/seri alat dan urgensi kebutuhan produksi.');
     return;
   }
 
@@ -7292,7 +7369,7 @@ function submitSaran() {
   document.getElementById('saranNamaAlat').value = '';
   document.getElementById('saranAlasan').value = '';
   renderSaranList();
-  showToast('🎉 Terima kasih Izzulft! Usulan pengadaan alat berhasil tercatat.');
+  showToast('Usulan pengadaan alat berhasil dikirim.');
 
   // Persist to Backend REST API + SQLite Database if running
   fetch(getApiUrl('/api/suggestions'), {
@@ -7644,7 +7721,7 @@ function renderMyLoansModal() {
         <div style="display:grid;grid-template-columns:1fr auto;gap:16px;margin-top:14px;align-items:center;background:#F8FAFC;padding:14px;border-radius:12px">
           <div>
             <div style="font-size:12.5px;font-weight:700;margin-bottom:6px">Daftar Ruang / Peralatan (${l.start} s.d. ${l.end}):</div>
-            ${l.items.map(it => `<div style="font-size:12.5px;color:var(--ink-soft)">✓ ${it}</div>`).join('')}
+            ${l.items.map(it => `<div style="font-size:12.5px;color:var(--ink-soft)">• ${it}</div>`).join('')}
           </div>
           <div style="text-align:center;background:#fff;padding:8px;border-radius:10px;border:1px solid var(--line)">
             ${makeQrSvg(l.id)}
@@ -7653,8 +7730,8 @@ function renderMyLoansModal() {
         </div>
 
         <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
-          <button class="btn btn-ghost" style="font-size:12.5px;padding:8px 14px" onclick="openLoanPrintPreview(${idx})">🖨️ Cetak Lembar Bon Resmi</button>
-          ${nextAction ? `<button class="btn btn-pri" style="font-size:12.5px;padding:8px 14px" onclick="advanceLoanStatus(${idx})">⚡ Simulasi Laboran: ${nextAction}</button>` : ''}
+          <button class="btn btn-ghost" style="font-size:12.5px;padding:8px 14px" onclick="openLoanPrintPreview(${idx})">Cetak Lembar Bon</button>
+          ${nextAction ? `<button class="btn btn-pri" style="font-size:12.5px;padding:8px 14px" onclick="advanceLoanStatus(${idx})">Simulasi Laboran: ${nextAction}</button>` : ''}
         </div>
       </div>
     `;
@@ -7666,13 +7743,13 @@ function advanceLoanStatus(idx) {
   if (!loan) return;
   if (loan.status === 'Menunggu') {
     loan.status = 'Disetujui';
-    showToast(`✅ Bon ${loan.id} disetujui Koordinator! QR Code siap dipindai di studio.`);
+    showToast(`Bon ${loan.id} disetujui Koordinator. QR Code siap dipindai.`);
   } else if (loan.status === 'Disetujui') {
     loan.status = 'Dipinjam';
-    showToast(`📦 Alat untuk Bon ${loan.id} telah diserahkan kepada Izzulft.`);
+    showToast(`Alat untuk Bon ${loan.id} telah diserahterimakan.`);
   } else if (loan.status === 'Dipinjam') {
     loan.status = 'Selesai';
-    showToast(`✔️ Alat telah dikembalikan tepat waktu oleh Izzulft. Kondisi: Baik.`);
+    showToast(`Alat telah dikembalikan dalam kondisi baik.`);
   }
   renderHome();
   renderMyLoansModal();
@@ -7782,8 +7859,8 @@ function renderPrintableBon(data) {
             <tr>
               <td style="border:1px solid #111;padding:6px;text-align:center">${i + 1}</td>
               <td style="border:1px solid #111;padding:6px">${item}</td>
-              <td style="border:1px solid #111;padding:6px;text-align:center">☑ Baik</td>
-              <td style="border:1px solid #111;padding:6px;text-align:center">☐ Baik</td>
+              <td style="border:1px solid #111;padding:6px;text-align:center"><span style="display:inline-block;width:12px;height:12px;border:1.5px solid #111;text-align:center;line-height:10px;font-size:10px;font-weight:800;margin-right:4px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:top;margin-top:1px"><polyline points="20 6 9 17 4 12"/></svg></span> Baik</td>
+              <td style="border:1px solid #111;padding:6px;text-align:center"><span style="display:inline-block;width:12px;height:12px;border:1.5px solid #111;margin-right:4px"></span> Baik</td>
             </tr>
           `).join('')}
         </tbody>
@@ -7890,14 +7967,14 @@ function applyTheme(theme, save = true) {
   const iconEl = document.getElementById('themeIcon');
   const labelEl = document.getElementById('themeLabel');
   const btnEl = document.getElementById('themeToggleBtn');
-  if (iconEl) iconEl.textContent = isDark ? '☀️' : '🌙';
+  if (iconEl) iconEl.innerHTML = isDark ? SVG_ICONS.sun : SVG_ICONS.moon;
   if (labelEl) labelEl.textContent = isDark ? 'Mode Terang' : 'Mode Gelap';
   if (btnEl) btnEl.setAttribute('title', isDark ? 'Beralih ke Mode Terang (Light Mode)' : 'Beralih ke Mode Gelap (Dark Mode)');
 
   // Update Profile Modal Toggle Button
   const profIcon = document.getElementById('profileThemeIcon');
   const profLabel = document.getElementById('profileThemeLabel');
-  if (profIcon) profIcon.textContent = isDark ? '☀️' : '🌙';
+  if (profIcon) profIcon.innerHTML = isDark ? SVG_ICONS.sun : SVG_ICONS.moon;
   if (profLabel) profLabel.textContent = isDark ? 'Mode Terang' : 'Mode Gelap';
 
   if (save) {
@@ -7911,7 +7988,7 @@ function toggleTheme() {
   const isCurrentlyDark = document.documentElement.classList.contains('dark');
   const nextTheme = isCurrentlyDark ? 'light' : 'dark';
   applyTheme(nextTheme, true);
-  showToast(nextTheme === 'dark' ? '🌙 Mode Gelap aktif' : '☀️ Mode Terang aktif');
+  showToast(nextTheme === 'dark' ? 'Mode Gelap diaktifkan' : 'Mode Terang diaktifkan');
 }
 
 function initThemeEngine() {
