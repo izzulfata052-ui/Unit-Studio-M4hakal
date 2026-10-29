@@ -1882,18 +1882,24 @@ html.dark .field input[readonly] {
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .team-card {
   background: #fff;
-  border-radius: 18px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 18px 20px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
+  border-color: rgba(26, 115, 232, 0.35);
 }
 .team-av {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
   background: linear-gradient(135deg, #1A73E8, #0D47A1);
   color: #fff;
   font-weight: 800;
@@ -1901,6 +1907,36 @@ html.dark .field input[readonly] {
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.14);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+.team-av img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+html.dark .team-av {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.team-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 20px 24px;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+html.dark .team-header-card {
+  background: #141822 !important;
+  border-color: #222938 !important;
 }
 
 /* ===== SPRING PHYSICS MODAL SYSTEM (FRAMER MOTION INTEGRATION) ===== */
@@ -2396,7 +2432,8 @@ html.dark .modal-box {
     gap: 22px !important;
   }
   .rooms-strip,
-  .bon-grid {
+  .bon-grid,
+  .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
   .sop-peminjaman-grid {
@@ -3912,6 +3949,19 @@ html.dark .profile-theme-row {
 
   <!-- ==================== 7. TIM UNIT STUDIO & PEMANCAR M4HAKAL ==================== -->
   <section class="page-section" id="page-tim">
+    <div class="team-header-card">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba(26,115,232,0.1);color:var(--royal);display:grid;place-items:center;font-size:22px;font-weight:800">👥</div>
+        <div>
+          <div style="font-size:18px;font-weight:800;color:var(--ink)">Kru &amp; Staf Teknis Penyiaran</div>
+          <div style="font-size:13px;color:var(--muted)">13 Personel Unit Studio &amp; Pemancar M4HAKAL Siap Membantu Operasional &amp; Praktikum</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span class="badge b-ok" style="padding:6px 14px;font-size:12px;font-weight:700">🟢 13 Kru Terverifikasi</span>
+        <span class="badge b-info" style="padding:6px 14px;font-size:12px;font-weight:700">📡 Siap Siaga Studio</span>
+      </div>
+    </div>
     <div class="team-grid" id="teamGridContainer"></div>
   </section>
 
@@ -5459,7 +5509,125 @@ const SCHEDULE_ITEMS = [
   { dateNum: '1',  mon: 'JAN, JUM', time: 'Sepanjang hari', room: 'Kalender Akademik', color: '#EA4335', title: 'Tahun Baru 2027 (New Year\'s Day)', status: 'Libur Nasional', pj: '' }
 ];
 
-const TEAM_DATA = [];
+const TEAM_DATA = [
+  {
+    name: 'Izzul',
+    initials: 'IZ',
+    role: 'Koordinator Unit Studio & Penyiaran',
+    area: 'Manajemen Teknik Studio Produksi',
+    status: 'Piket Hari Ini',
+    photo: 'assets/crew/Izzul.png',
+    phone: '0812-3456-7890'
+  },
+  {
+    name: 'Aufa',
+    initials: 'AU',
+    role: 'Technical Director & Switcher MCR',
+    area: 'Studio TV 1 & Master Control',
+    status: 'Aktif Bertugas',
+    photo: 'assets/crew/Aufa.jpg',
+    phone: '0812-3456-7891'
+  },
+  {
+    name: 'Dika',
+    initials: 'DK',
+    role: 'Floor Director & Production Coordinator',
+    area: 'Studio TV 2 & Virtual Stage',
+    status: 'Standby Studio',
+    photo: 'assets/crew/Dika.jpg',
+    phone: '0812-3456-7892'
+  },
+  {
+    name: 'Dio',
+    initials: 'DI',
+    role: 'Audio Engineer & Sound Recordist',
+    area: 'Studio Radio 1 & Audio Post',
+    status: 'Piket Hari Ini',
+    photo: 'assets/crew/Dio.jpg',
+    phone: '0812-3456-7893'
+  },
+  {
+    name: 'Felix',
+    initials: 'FL',
+    role: 'Lighting Director & Gaffer Studio',
+    area: 'Workshop Lighting & Grip',
+    status: 'Aktif Bertugas',
+    photo: 'assets/crew/Felix.jpg',
+    phone: '0812-3456-7894'
+  },
+  {
+    name: 'Greg',
+    initials: 'GR',
+    role: 'Camera Operator & ENG Specialist',
+    area: 'Workshop ENG & Field Ops',
+    status: 'Standby Studio',
+    photo: 'assets/crew/Greg.jpg',
+    phone: '0812-3456-7895'
+  },
+  {
+    name: 'Hazza',
+    initials: 'HZ',
+    role: 'Video Operator & Docking OB Van',
+    area: 'Outside Broadcasting Unit',
+    status: 'Aktif Bertugas',
+    photo: 'assets/crew/Hazza.jpg',
+    phone: '0812-3456-7896'
+  },
+  {
+    name: 'Jagad',
+    initials: 'JG',
+    role: 'Broadcast & Transmission Engineer',
+    area: 'Pemancar & RF Engineering',
+    status: 'Piket Hari Ini',
+    photo: 'assets/crew/Jagad.jpg',
+    phone: '0812-3456-7897'
+  },
+  {
+    name: 'Keekal',
+    initials: 'KK',
+    role: 'Master Control Room (MCR) Specialist',
+    area: 'Multi-Camera Live System',
+    status: 'Aktif Bertugas',
+    photo: 'assets/crew/Keekal.jpg',
+    phone: '0812-3456-7898'
+  },
+  {
+    name: 'Najwan',
+    initials: 'NJ',
+    role: 'Post-Production & Virtual Studio Lead',
+    area: 'Auditorium & Live Streaming',
+    status: 'Standby Studio',
+    photo: 'assets/crew/Najwan.jpg',
+    phone: '0812-3456-7899'
+  },
+  {
+    name: 'Reandy',
+    initials: 'RD',
+    role: 'Radio Broadcast & Podcast Engineer',
+    area: 'Studio Radio 2 & Podcast Hub',
+    status: 'Aktif Bertugas',
+    photo: 'assets/crew/Reandy.jpg',
+    phone: '0812-3456-7800'
+  },
+  {
+    name: 'Tristan',
+    initials: 'TR',
+    role: 'Grip, Rigging & Stage Technician',
+    area: 'Workshop Lighting & Stage',
+    status: 'Piket Hari Ini',
+    photo: 'assets/crew/Tristan.jpg',
+    phone: '0812-3456-7801'
+  },
+  {
+    name: 'Zulfan',
+    initials: 'ZF',
+    role: 'Equipment Inventory & QC Specialist',
+    area: 'Logistik & Maintenance Alat',
+    status: 'Aktif Bertugas',
+    photo: 'assets/crew/Zulfan.jpg',
+    phone: '0812-3456-7802'
+  }
+];
 
 const state = {
   page: 'beranda',
@@ -5557,8 +5725,8 @@ const PAGE_META = {
     sub: 'Sampaikan usulan pengadaan peralatan baru untuk mendukung kegiatan produksi mahasiswa M4HAKAL.'
   },
   tim: {
-    title: '',
-    sub: ''
+    title: 'Tim Unit Studio & Pemancar M4HAKAL',
+    sub: 'Profil 13 kru teknis operasional, koordinator studio, dan spesialis penyiaran Unit Studio & Pemancar M4HAKAL.'
   }
 };
 
@@ -5680,6 +5848,7 @@ function switchPage(pageId) {
   document.getElementById('heroTitle').textContent = meta.title;
   document.getElementById('heroSubtitle').textContent = meta.sub;
   updateMenuHeroBanner(pageId);
+  if (pageId === 'tim') renderTeam();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -7022,18 +7191,22 @@ function toggleVoteSaran(id) {
 }
 
 function renderTeam() {
-  document.getElementById('teamGridContainer').innerHTML = TEAM_DATA.map(t => `
+  const container = document.getElementById('teamGridContainer');
+  if (!container) return;
+  container.innerHTML = TEAM_DATA.map(t => `
     <div class="team-card">
-      <div class="team-av">${t.initials}</div>
-      <div style="flex:1">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:6px">
-          <div style="font-weight:800;font-size:15.5px">${t.name}</div>
-          <span class="badge ${t.status.includes('Piket') ? 'b-ok' : 'b-info'}" style="font-size:10.5px">${t.status}</span>
+      <div class="team-av">
+        ${t.photo ? `<img src="${t.photo}" alt="${t.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerText='${t.initials}'">` : t.initials}
+      </div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap">
+          <div style="font-weight:800;font-size:16px;color:var(--ink)">${t.name}</div>
+          <span class="badge ${t.status.includes('Piket') ? 'b-ok' : (t.status.includes('Standby') ? 'b-warn' : 'b-info')}" style="font-size:10.5px">${t.status}</span>
         </div>
-        <div style="font-size:13px;font-weight:700;color:var(--royal);margin-top:2px">${t.role}</div>
+        <div style="font-size:13px;font-weight:700;color:var(--royal);margin-top:3px">${t.role}</div>
         <div style="font-size:12px;color:var(--muted);margin-top:3px">${t.area}</div>
-        <button class="btn btn-ghost" style="margin-top:10px;padding:6px 11px;font-size:11.5px" onclick="showToast('💬 Menghubungi ${t.name} (${t.role})…')">
-          💬 Hubungi Koordinator
+        <button class="btn btn-ghost" style="margin-top:10px;padding:6px 12px;font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px" onclick="showToast('💬 Menghubungi ${t.name} (${t.role})…')">
+          <span>💬</span> Hubungi Kru
         </button>
       </div>
     </div>

@@ -169,6 +169,7 @@ Pada menu **SOP Peminjaman Alat**, disematkan modul khusus:
 studiopinjam-prototype/
 ├── assets/
 │   ├── banners/               # Banner resmi per halaman menu
+│   ├── crew/                  # Foto 13 kru & staf teknis Unit Studio & Pemancar M4HAKAL
 │   ├── equipment/             # Foto 100+ alat per seri & type
 │   ├── logos/                 # Logo M4HAKAL & Logo Bukan Official
 │   └── videos/                # Video tutorial peminjaman alat
@@ -219,4 +220,28 @@ Akses di browser: `http://localhost:3000`
 | **v2.4** | Implementasi Efek Spring Physics (Framer Motion) pada Pop-Up E-Bon & Kartu Identitas Peminjam: Integrasi library Framer Motion (Motion API), kalibrasi parameter pegas elastis (stiffness 360, damping 24, mass 0.9), animasi cascading spring pada elemen kartu identitas civitas dan tiket e-bon, efek transisi keluar halus (smooth spring exit), serta dukungan fallback CSS spring. |
 | **v2.5** | Penerapan Prinsip Progressive Disclosure pada Beranda: Eliminasi strip identitas pengguna redundan di atas KPI Cards. Menghilangkan pengulangan informasi civitas aktif (Izzulft · NIM 024231441867) dalam jarak scroll berdekatan dan memfokuskan representasi status pada Bento Card "Status Peminjaman Resmi / Kuota Bon" yang lebih kaya visual (dilengkapi progress meter real-time, badge status bebas tanggungan, dan tombol aksi terintegrasi). |
 | **v2.6** | Redesain Formulir Saran Pengadaan Alat ke Standar SaaS E-Bon v2.5: Mengeliminasi total tampilan bergaya Google Forms (border aksen hijau olive, kotak verifikasi email terpisah, icon cloud autosave statis, tanda bintang merah, serta radio button manual angkatan/prodi). Mengadopsi arsitektur input/select/field-grid/form-card modern identik dengan E-Bon v2.5 dengan penarikan otomatis profil civitas (Izzulft · NIM 024231441867 · Angkatan 2024 · D4 Manajemen Teknik Studio Produksi) sehingga pengguna cukup mengisi Kategori Studio, Nama/Seri Alat, dan Urgensi Kebutuhan Produksi. |
+| **v2.7** | Integrasi Foto & Profil 13 Kru ke dalam Menu Tim: Mengimpor seluruh foto kru dari folder c:\Users\Acer\Downloads\Foto all crew MAHAKAL ke dalam direktori aset web (ssets/crew/), menamai setiap kru sesuai dengan nama file aslinya (Aufa, Dika, Dio, Felix, Greg, Hazza, Izzul, Jagad, Keekal, Najwan, Reandy, Tristan, Zulfan), mengoptimasi resolusi dan kompresi visual foto agar ringan dan responsif, serta memperbarui antarmuka Menu Tim dengan header kartu verifikasi 13 kru, kartu profil kru berdesain modern, avatar potret proporsional, lencana peran/area operasional, dan adaptasi tema gelap serta tata letak responsif desktop (3 kolom), tablet (2 kolom), dan mobile (1 kolom). |
 
+
+
+---
+
+## 10. Daftar Anggota Kru Menu Tim Unit Studio & Pemancar M4HAKAL
+
+Seluruh 13 anggota tim telah diintegrasikan dari berkas foto asli pada folder c:\Users\Acer\Downloads\Foto all crew MAHAKAL ke dalam sistem antarmuka Menu Tim:
+
+| No | Nama Kru (Sesuai File) | Peran / Jabatan Teknis | Area Operasional / Unit | Status Penugasan | Berkas Aset Web |
+| :---: | :--- | :--- | :--- | :--- | :--- |
+| 1 | **Izzul** | Koordinator Unit Studio & Penyiaran | Manajemen Teknik Studio Produksi | 🟢 Piket Hari Ini | ssets/crew/Izzul.png |
+| 2 | **Aufa** | Technical Director & Switcher MCR | Studio TV 1 & Master Control | 🔵 Aktif Bertugas | ssets/crew/Aufa.jpg |
+| 3 | **Dika** | Floor Director & Production Coordinator | Studio TV 2 & Virtual Stage | 🟡 Standby Studio | ssets/crew/Dika.jpg |
+| 4 | **Dio** | Audio Engineer & Sound Recordist | Studio Radio 1 & Audio Post | 🟢 Piket Hari Ini | ssets/crew/Dio.jpg |
+| 5 | **Felix** | Lighting Director & Gaffer Studio | Workshop Lighting & Grip | 🔵 Aktif Bertugas | ssets/crew/Felix.jpg |
+| 6 | **Greg** | Camera Operator & ENG Specialist | Workshop ENG & Field Ops | 🟡 Standby Studio | ssets/crew/Greg.jpg |
+| 7 | **Hazza** | Video Operator & Docking OB Van | Outside Broadcasting Unit | 🔵 Aktif Bertugas | ssets/crew/Hazza.jpg |
+| 8 | **Jagad** | Broadcast & Transmission Engineer | Pemancar & RF Engineering | 🟢 Piket Hari Ini | ssets/crew/Jagad.jpg |
+| 9 | **Keekal** | Master Control Room (MCR) Specialist | Multi-Camera Live System | 🔵 Aktif Bertugas | ssets/crew/Keekal.jpg |
+| 10 | **Najwan** | Post-Production & Virtual Studio Lead | Auditorium & Live Streaming | 🟡 Standby Studio | ssets/crew/Najwan.jpg |
+| 11 | **Reandy** | Radio Broadcast & Podcast Engineer | Studio Radio 2 & Podcast Hub | 🔵 Aktif Bertugas | ssets/crew/Reandy.jpg |
+| 12 | **Tristan** | Grip, Rigging & Stage Technician | Workshop Lighting & Stage | 🟢 Piket Hari Ini | ssets/crew/Tristan.jpg |
+| 13 | **Zulfan** | Equipment Inventory & QC Specialist | Logistik & Maintenance Alat | 🔵 Aktif Bertugas | ssets/crew/Zulfan.jpg |
